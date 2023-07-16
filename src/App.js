@@ -12,7 +12,7 @@ import Events from './pages/Events';
 import EventGallery from './pages/EventGallery';
 import { createTheme, CssBaseline, ThemeProvider, } from '@mui/material';
 import { Button } from '@mui/material';
-
+import MasonryGrid from './components/MasonryGrid';
 
 
 const App = () => {
@@ -45,6 +45,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <MasonryGrid/>
       {/* <head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </head> */}
