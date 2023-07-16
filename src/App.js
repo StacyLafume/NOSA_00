@@ -12,6 +12,8 @@ import Events from './pages/Events';
 import EventGallery from './pages/EventGallery';
 import { createTheme, CssBaseline, ThemeProvider, } from '@mui/material';
 import { Button } from '@mui/material';
+import StandardGrid from './components/StandardGrid'
+import Nav from './components/Nav'
 
 
 
@@ -45,6 +47,8 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <StandardGrid/>
+      <Nav/>
       {/* <head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </head> */}
