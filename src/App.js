@@ -16,7 +16,7 @@ import MasonryGrid from './components/MasonryGrid';
 import StandardGrid from './components/StandardGrid'
 import Nav from './components/Nav'
 import FilterGrid from './components/FilterGrid';
-
+import Video from './components/Video';
 
 
 
@@ -99,6 +99,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Video></Video>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
