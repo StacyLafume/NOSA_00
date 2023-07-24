@@ -14,6 +14,7 @@ import { createTheme, CssBaseline, ThemeProvider, } from '@mui/material';
 import { Button } from '@mui/material';
 import StandardGrid from './components/StandardGrid'
 import Nav from './components/Nav'
+import Buttons from './components/Buttons'
 
 
 
@@ -47,8 +48,9 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <StandardGrid/>
       <Nav/>
+      <StandardGrid/>
+      <Buttons/>
       {/* <head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </head> */}
