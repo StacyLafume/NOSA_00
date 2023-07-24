@@ -16,6 +16,7 @@ import MasonryGrid from './components/MasonryGrid';
 import StandardGrid from './components/StandardGrid'
 import Nav from './components/Nav'
 import FilterGrid from './components/FilterGrid';
+import ContactForm from './components/ContactForm';
 
 
 
@@ -99,6 +100,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <ContactForm/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
