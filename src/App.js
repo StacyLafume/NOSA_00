@@ -18,6 +18,7 @@ import Nav from './components/Nav'
 import FilterGrid from './components/FilterGrid';
 import ContactForm from './components/ContactForm';
 
+import Video from './components/Video';
 
 
 
@@ -101,6 +102,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <ContactForm/>
+      <Video></Video>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
