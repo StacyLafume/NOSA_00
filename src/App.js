@@ -11,14 +11,10 @@ import PastEvents from './pages/PastEvents';
 import Events from './pages/Events';
 import EventGallery from './pages/EventGallery';
 import { createTheme, CssBaseline, ThemeProvider, } from '@mui/material';
-import { Button } from '@mui/material';
-import MasonryGrid from './components/MasonryGrid';
-import StandardGrid from './components/StandardGrid'
-import Nav from './components/Nav'
-import FilterGrid from './components/FilterGrid';
+import Map from './components/Map';
 import ContactForm from './components/ContactForm';
-
 import Video from './components/Video';
+
 
 
 
@@ -101,8 +97,9 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <ContactForm/>
-      <Video></Video>
+      <Video/>
+      <Map />
+      <ContactForm />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
