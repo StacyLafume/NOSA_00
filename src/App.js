@@ -11,6 +11,10 @@ import PastEvents from './pages/PastEvents';
 import Events from './pages/Events';
 import EventGallery from './pages/EventGallery';
 import { createTheme, CssBaseline, ThemeProvider, } from '@mui/material';
+import { Button } from '@mui/material';
+import StandardGrid from './components/StandardGrid'
+import Nav from './components/Nav'
+import Buttons from './components/Buttons'
 import Map from './components/Map';
 import ContactForm from './components/ContactForm';
 import Video from './components/Video';
@@ -97,6 +101,8 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Buttons/>
+      <Button variant="contained" >Hello worlds</Button>
       <Video/>
       <Map />
       <ContactForm />
