@@ -23,11 +23,7 @@ const Video = () => {
                             <video
                                 autoPlay
                                 loop
-                                muted
-                            // poster={paintbrushPic}
-
-
-                            
+                                muted 
                             >
                                 <source
                                     src="https://static.vecteezy.com/system/resources/previews/020/286/262/mp4/professional-female-artist-girl-use-paintbrush-in-abstract-art-for-create-masterpiece-painter-paint-with-watercolors-or-oil-in-studio-house-beautiful-woman-enjoy-painting-as-hobby-work-recreation-free-video.mp4"
