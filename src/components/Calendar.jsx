@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Box, Grid, Typography, Paper, Button, IconButton, Link, Dialog, DialogTitle, DialogContent, DialogActions, Stepper, Step, StepLabel } from '@mui/material';
+import { Box, Grid, Typography, Paper, Button, IconButton, Link, Dialog, DialogTitle, DialogContent, StepLabel, DialogActions } from '@mui/material';
 import { ArrowBack, ArrowForward } from '@mui/icons-material';
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, isSameDay, addYears, subYears, getYear } from 'date-fns';
 import { styled } from '@mui/material/styles'; // Import styled from Material-UI
 
-// Custom CSS for larger, square tiles
 const calendarStyles = {
   largeSquareTile: {
     height: 150,
@@ -12,12 +11,14 @@ const calendarStyles = {
   },
 };
 
-const CalendarTile = ({ date, background, image, eventLink, onTileClick, setCarouselIndex, setIsCarouselAutoplaying }) => {
-  const handleTileClick = () => {
-    if (image) {
-      onTileClick(date, image, setCarouselIndex, setIsCarouselAutoplaying);
-    }
-  };
+const CalendarTile = ({ date, background, image, onTileClick, setCarouselIndex, setIsCarouselAutoplaying, setIsModalOpen }) => {
+    const handleTileClick = () => {
+      if (image) {
+        onTileClick(date, image);
+      } else {
+        setIsModalOpen(true);
+      }
+    };
 
   return (
     <Box
@@ -54,7 +55,7 @@ const Calendar = ({ eventsArray }) => {
     const images = eventsArray.filter((event) => event.image).map((event) => event.image);
     setCarouselImages(images);
     setCarouselIndex(0);
-  }, [eventsArray]);
+  }, [eventsArray, setCarouselImages]);
 
   const StyledStepLabel = styled(StepLabel)(({ theme, active }) => ({
     '& .MuiStepIcon-root': {
@@ -73,7 +74,7 @@ const Calendar = ({ eventsArray }) => {
               height: 8,
               borderRadius: '50%',
               mx: 1,
-              backgroundColor: index === carouselIndex ? 'primary.main' : 'gray', // Change the active and inactive colors as needed
+              backgroundColor: index === carouselIndex ? 'primary.main' : 'gray',
             }}
           />
         ))}
@@ -114,23 +115,19 @@ const Calendar = ({ eventsArray }) => {
 
   const handleTileClick = (date, image) => {
     setSelectedDate(date);
-
-    // Check if there's an image associated with the selected date
+  
     if (image) {
       setSelectedImage(image);
-
-      // Find the index of the selected image in the carouselImages array
-      const selectedIndex = carouselImages.findIndex((carouselImage) => carouselImage === image);
-
+      const selectedIndex = carouselImages.findIndex((carouselImage) => `url(${carouselImage})` === image);
       if (selectedIndex !== -1) {
-        // Call the function to update the carousel index in the Carousel component
-        updateCarouselIndex(selectedIndex);
+        setCarouselIndex(selectedIndex);
+        setIsCarouselAutoplaying(false);
+      } else {
+        setIsCarouselAutoplaying(true);
       }
-
-      setIsCarouselAutoplaying(false); // Pause the carousel autoplay when an image is clicked
     } else {
       setSelectedImage(null);
-      setIsModalOpen(true); // Show the modal for tiles without events
+      setIsModalOpen(true);
     }
   };
 
@@ -170,14 +167,11 @@ const Calendar = ({ eventsArray }) => {
 
       days.push({ date: new Date(date), background, eventLink: event ? event.eventLink : null });
     }
-    // Calculate the number of days in the month
-    const numDaysInMonth = days.length;
 
-    // Calculate the number of rows and columns to make a perfect square
+    const numDaysInMonth = days.length;
     const gridSize = Math.ceil(Math.sqrt(numDaysInMonth));
     const numEmptyCells = gridSize * gridSize - numDaysInMonth;
 
-    // Add empty cells to make the grid a perfect square
     for (let i = 0; i < numEmptyCells; i++) {
       days.push({ date: null, background: '#ff9574' });
     }
@@ -189,7 +183,6 @@ const Calendar = ({ eventsArray }) => {
     const days = generateCalendar(eventsArray);
 
     if (yearlyView) {
-      // Render the yearly view
       return (
         <Grid container spacing={1}>
           {generateYears().map((year) => (
@@ -200,23 +193,22 @@ const Calendar = ({ eventsArray }) => {
         </Grid>
       );
     } else {
-      // Render the monthly view
       return (
         <Grid container spacing={1}>
-          {days.map((day) => (
-            <Grid item key={day.date?.toString()}>
-              <CalendarTile
-                date={day.date}
-                background={day.background}
-                image={day.background} // Use "day.background" instead of "day.image"
-                eventLink={day.eventLink}
-                onTileClick={handleTileClick}
-                setCarouselIndex={setCarouselIndex} // Pass the state setters down to CalendarTile
-                setIsCarouselAutoplaying={setIsCarouselAutoplaying} // Pass the state setters down to CalendarTile
-              />
-            </Grid>
-          ))}
-        </Grid>
+        {days.map((day) => (
+          <Grid item key={day.date?.toString()}>
+            <CalendarTile
+              date={day.date}
+              background={day.background}
+              image={day.background}
+              onTileClick={handleTileClick}
+              setCarouselIndex={setCarouselIndex}
+              setIsCarouselAutoplaying={setIsCarouselAutoplaying}
+              setIsModalOpen={setIsModalOpen} // Pass setIsModalOpen to CalendarTile
+            />
+          </Grid>
+        ))}
+      </Grid>
       );
     }
   };
@@ -231,19 +223,42 @@ const Calendar = ({ eventsArray }) => {
   };
 
   const handleCarouselNext = useCallback(() => {
-    setCarouselIndex((prevIndex) => (prevIndex + 1) % carouselImages.length);
-  }, [carouselImages.length]);
+    const nextIndex = (carouselIndex + 1) % carouselImages.length;
+    setCarouselIndex(nextIndex);
+    resumeAutoplay();
+  }, [carouselImages.length, carouselIndex]);
 
   const handleCarouselPrevious = useCallback(() => {
-    setCarouselIndex((prevIndex) => (prevIndex - 1 + carouselImages.length) % carouselImages.length);
-  }, [carouselImages.length]);
+    const previousIndex = (carouselIndex - 1 + carouselImages.length) % carouselImages.length;
+    setCarouselIndex(previousIndex);
+    resumeAutoplay();
+  }, [carouselImages.length, carouselIndex]);
+
+  const resumeAutoplay = () => {
+    setIsCarouselAutoplaying(true);
+  };
+
+  useEffect(() => {
+    const images = eventsArray.filter((event) => event.image).map((event) => event.image);
+    setCarouselImages(images);
+    setCarouselIndex(0);
+  }, [eventsArray]);
+
+  useEffect(() => {
+    const selectedIndex = carouselImages.findIndex((carouselImage) => carouselImage === selectedImage);
+
+    if (selectedIndex !== -1) {
+      setCarouselIndex(selectedIndex);
+      setIsCarouselAutoplaying(false);
+    }
+  }, [selectedImage, carouselImages]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       if (isCarouselAutoplaying) {
         handleCarouselNext();
       }
-    }, 3000); // Change slide every 3 seconds
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [carouselIndex, isCarouselAutoplaying, handleCarouselNext]);
@@ -286,7 +301,6 @@ const Calendar = ({ eventsArray }) => {
       <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
         <Box sx={{ flex: '2 0 66.66%' }}>{renderCalendar()}</Box>
         <Box sx={{ flex: '1 0 33.33%', padding: '0 16px' }}>
-          {/* Automated carousel */}
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: 300 }}>
             {carouselImages.length > 0 ? (
               <img src={carouselImages[carouselIndex]} alt={`Event ${carouselIndex}`} style={{ maxWidth: '100%', maxHeight: '100%' }} />
@@ -311,7 +325,6 @@ const Calendar = ({ eventsArray }) => {
         </Box>
       </Box>
 
-      {/* Dialogue box for tiles without events */}
       <Dialog open={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <DialogTitle>No Event Found</DialogTitle>
         <DialogContent>
