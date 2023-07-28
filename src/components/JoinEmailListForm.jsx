@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Button, Grid, Paper } from "@mui/material";
+import { TextField, Button, Grid, Box } from "@mui/material";
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    minHeight: '100vh',
+    minHeight: '53vh',
     padding: theme.spacing(2),
   },
   formWrapper: {
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     width: '100%',
-    height: '90%',
+    height: '57%',
     marginBottom: theme.spacing(2),
     alignItems: 'center',
     justifyContent: 'center',
@@ -59,15 +59,17 @@ const JoinEmailListForm = () => {
         src='https://secure.meetupstatic.com/photos/event/8/2/2/d/clean_511833325.webp'
         alt="Join Our Email List"
         className={classes.image}
+       
       />
-      <Paper className={classes.formWrapper}>
+      <Box className={classes.formWrapper}>
+        
         <form onSubmit={handleSubmit}>
           <Grid container alignItems="center"> {/* Set alignItems to center */}
             <Grid item xs={12}>
               <TextField
                 required
                 type="email"
-                label="Your Email Address"
+                label="Join our mailing list!"
                 value={email}
                 onChange={handleEmailChange}
                 fullWidth
@@ -88,7 +90,7 @@ const JoinEmailListForm = () => {
             </Grid>
           </Grid>
         </form>
-      </Paper>
+      </Box>
     </div>
   );
 };
