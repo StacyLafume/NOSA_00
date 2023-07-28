@@ -18,6 +18,8 @@ import Buttons from './components/Buttons'
 import Map from './components/Map';
 import ContactForm from './components/ContactForm';
 import Video from './components/Video';
+import KPI from './components/KPI';
+import ParticleAnimation from './components/ParticleAnimation';
 
 
 
@@ -73,6 +75,8 @@ const App = () => {
       title: "Bike",
     },
   ];
+  const kpiNumbers = [75, 50, 25, 46, 55];
+ 
   const theme = createTheme({
     palette: {
       mode: 'light',
@@ -104,6 +108,8 @@ const App = () => {
       <Buttons/>
       <Button variant="contained" >Hello worlds</Button>
       <Video/>
+      <ParticleAnimation/>
+      <KPI numbers={kpiNumbers} interval={15} />
       <Map />
       <ContactForm />
       <Routes>
