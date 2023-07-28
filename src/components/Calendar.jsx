@@ -1,44 +1,66 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Box, Grid, Typography, Paper, Button, IconButton, Link, Dialog, DialogTitle, DialogContent, StepLabel, DialogActions } from '@mui/material';
-import { ArrowBack, ArrowForward } from '@mui/icons-material';
+import KeyboardArrowLeftSharpIcon from '@mui/icons-material/KeyboardArrowLeftSharp';
+import KeyboardArrowRightSharpIcon from '@mui/icons-material/KeyboardArrowRightSharp';
+import KeyboardDoubleArrowLeftSharpIcon from '@mui/icons-material/KeyboardDoubleArrowLeftSharp';
+import KeyboardDoubleArrowRightSharpIcon from '@mui/icons-material/KeyboardDoubleArrowRightSharp';
+import PauseCircleFilledSharpIcon from '@mui/icons-material/PauseCircleFilledSharp';
+import PlayCircleFilledSharpIcon from '@mui/icons-material/PlayCircleFilledSharp';
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, isSameDay, addYears, subYears, getYear } from 'date-fns';
 import { styled } from '@mui/material/styles'; // Import styled from Material-UI
+import { borderLeft } from '@mui/system';
 
 const calendarStyles = {
   largeSquareTile: {
     height: 150,
     width: 150,
+    // padding: '0 !important',
+    // borderRadius: '0 !important'
   },
 };
 
 const CalendarTile = ({ date, background, image, onTileClick, setCarouselIndex, setIsCarouselAutoplaying, setIsModalOpen }) => {
-    const handleTileClick = () => {
-      if (image) {
-        onTileClick(date, image);
-      } else {
-        setIsModalOpen(true);
-      }
-    };
 
+  const handleTileClick = () => {
+    if (image) {
+      onTileClick(date, image);
+    } else {
+      setIsModalOpen(true);
+    }
+  };
   return (
     <Box
       component={Paper}
       sx={{
         ...calendarStyles.largeSquareTile,
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
         cursor: 'pointer',
         background: background,
         backgroundImage: `url(${image})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+        width: '8vw',
+        height: '8vw',
+        borderRadius: '0',
+        border: 'solid #ff6d00 .5px',
+        borderLeft: '0',
+        borderTop: '0',
+        '&:hover': {
+          boxShadow: "0 5px 6px 3px #f7b28bbf"
+        }
+
       }}
       onClick={handleTileClick}
     >
-      {date?.getDate() ?? ''}
+      <Paper sx={{ paddingLeft: '3.85%', width: '30%', borderRadius: '0' }}>
+        {date?.getDate() ?? ''}
+      </Paper>
+
     </Box>
-  );
+
+  )
 };
 
 const Calendar = ({ eventsArray }) => {
@@ -65,7 +87,8 @@ const Calendar = ({ eventsArray }) => {
 
   const renderCarouselIndicators = () => {
     return (
-      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+      <Box sx={{ display: 'flex', mt: 2, margin: 0,
+      justifyContent: 'space-between', }}>
         {carouselImages.map((_, index) => (
           <Box
             key={index}
@@ -115,7 +138,7 @@ const Calendar = ({ eventsArray }) => {
 
   const handleTileClick = (date, image) => {
     setSelectedDate(date);
-  
+
     if (image) {
       setSelectedImage(image);
       const selectedIndex = carouselImages.findIndex((carouselImage) => `url(${carouselImage})` === image);
@@ -173,7 +196,11 @@ const Calendar = ({ eventsArray }) => {
     const numEmptyCells = gridSize * gridSize - numDaysInMonth;
 
     for (let i = 0; i < numEmptyCells; i++) {
-      days.push({ date: null, background: '#ff9574' });
+      if (days.length % 7 === 0) {
+        break
+      } else {
+        days.push({ date: null, background: '#ff9574' })
+      };
     }
 
     return days;
@@ -194,21 +221,21 @@ const Calendar = ({ eventsArray }) => {
       );
     } else {
       return (
-        <Grid container spacing={1}>
-        {days.map((day) => (
-          <Grid item key={day.date?.toString()}>
-            <CalendarTile
-              date={day.date}
-              background={day.background}
-              image={day.background}
-              onTileClick={handleTileClick}
-              setCarouselIndex={setCarouselIndex}
-              setIsCarouselAutoplaying={setIsCarouselAutoplaying}
-              setIsModalOpen={setIsModalOpen} // Pass setIsModalOpen to CalendarTile
-            />
-          </Grid>
-        ))}
-      </Grid>
+        <Grid sx={{ justifyContent: 'center', width: '94%', margin: '0' }} container spacing={0} >
+          {days.map((day) => (
+            <Grid item key={day.date?.toString()}>
+              <CalendarTile
+                date={day.date}
+                background={day.background}
+                image={day.background}
+                onTileClick={handleTileClick}
+                setCarouselIndex={setCarouselIndex}
+                setIsCarouselAutoplaying={setIsCarouselAutoplaying}
+                setIsModalOpen={setIsModalOpen} // Pass setIsModalOpen to CalendarTile
+              />
+            </Grid>
+          ))}
+        </Grid>
       );
     }
   };
@@ -264,63 +291,66 @@ const Calendar = ({ eventsArray }) => {
   }, [carouselIndex, isCarouselAutoplaying, handleCarouselNext]);
 
   return (
-    <Box>
-      <Box sx={{ display: 'flex', justifyContent: 'center', my: 2 }}>
+    <Box sx={{ height: '100vw', padding: '0vh 3vw' }}>
+      <Box sx={{ display: 'inline-flex', width: '62.667%', justifyContent: 'center', my: 2, margin: '1% 0' }}>
         {yearlyView ? (
           <IconButton onClick={toggleYearlyView}>
-            <ArrowBack />
+            {/* <KeyboardArrowLeftSharpIcon/> */}
           </IconButton>
         ) : (
           <>
-            <IconButton onClick={navigateToPreviousYear}>
-              <ArrowBack />
+            <IconButton sx={{ padding: '0', fill: '#ff6d00' }} onClick={navigateToPreviousYear}>
+              <KeyboardDoubleArrowLeftSharpIcon sx={{ fontSize: '2rem' }} />
             </IconButton>
-            <IconButton onClick={navigateBackward}>
-              <ArrowBack />
+            <IconButton sx={{ padding: '0', fill: '#ff6d00' }} onClick={navigateBackward}>
+              <KeyboardArrowLeftSharpIcon sx={{ fontSize: '2rem' }} />
             </IconButton>
           </>
         )}
-        <Typography variant="h6" gutterBottom>
+        <Typography sx={{ margin: '0' }} variant="h6" gutterBottom>
           {yearlyView ? 'Select a Year' : format(currentMonth, 'MMMM yyyy')}
         </Typography>
         {yearlyView ? (
           <IconButton onClick={toggleYearlyView}>
-            <ArrowForward />
+            {/* <ArrowForward /> */}
           </IconButton>
         ) : (
           <>
-            <IconButton onClick={navigateForward}>
-              <ArrowForward />
+            <IconButton sx={{ padding: '0', fill: '#ff6d00' }} onClick={navigateForward}>
+              <KeyboardArrowRightSharpIcon sx={{ fontSize: '2rem' }} />
             </IconButton>
-            <IconButton onClick={navigateToNextYear}>
-              <ArrowForward />
+            <IconButton sx={{ padding: '0', fill: '#ff6d00' }} onClick={navigateToNextYear}>
+              <KeyboardDoubleArrowRightSharpIcon sx={{ fontSize: '2rem' }} />
             </IconButton>
           </>
         )}
       </Box>
-      <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
-        <Box sx={{ flex: '2 0 66.66%' }}>{renderCalendar()}</Box>
-        <Box sx={{ flex: '1 0 33.33%', padding: '0 16px' }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: 300 }}>
+      {/* <Typography sx={{display: 'inline-flex', fontWeight: '500', fontSize: '1.00rem'}}>
+        Book your next event with NOSA 
+        <Link href="#" onClick={handleBookingLinkClick} >
+           HERE
+        </Link>
+      </Typography> */}
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', "& .outer-container": { padding: 0, borderRadius: 0, height: 'fit-content' } }}>
+        <Box sx={{ flex: '2 0 66.66%' }} className="outer-container">{renderCalendar()}</Box>
+        <Box sx={{ flex: '1 0 33.33%', padding: '1.5% 0% 0% 0%', textAlign: 'center', backgroundColor: '#ff9574', borderRadius: '0 13%' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: 'fitContent', marginTop: '2%', border: 'doubleThick #d75a34' }}>
             {carouselImages.length > 0 ? (
-              <img src={carouselImages[carouselIndex]} alt={`Event ${carouselIndex}`} style={{ maxWidth: '100%', maxHeight: '100%' }} />
+              <img src={carouselImages[carouselIndex]} alt={`Event ${carouselIndex}`} style={{ maxWidth: '72%', borderRadius: '0 13%', paddingTop: '1%' }} />
             ) : (
               <Typography variant="subtitle1">No images available</Typography>
             )}
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <IconButton onClick={handleCarouselPrevious}>
-              <ArrowBack />
-            </IconButton>
-            <IconButton onClick={handleCarouselNext}>
-              <ArrowForward />
-            </IconButton>
           </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
+            <IconButton onClick={handleCarouselPrevious}>
+              <KeyboardDoubleArrowLeftSharpIcon />
+            </IconButton>
           {renderCarouselIndicators()}
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
-            <Link href="#" onClick={handleBookingLinkClick}>
-              Book an event
-            </Link>
+            <IconButton onClick={handleCarouselNext}>
+              <KeyboardDoubleArrowRightSharpIcon />
+            </IconButton>
           </Box>
         </Box>
       </Box>
