@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     minHeight: "300px",
     position: "relative",
-    minHeight: "300px",
     overflow: "hidden",
     width: "100%",
   },
@@ -20,8 +19,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100%",
     zIndex: -1, // Set a negative z-index to place the image behind the content
-    filter: "blur(5px)", // Apply the blur effect only to the image
-    filter: "contrast(120%)"
+    filter: "blur(8px) contrast(120%)", // Apply the blur effect only to the image
   },
   kpiContent: {
     position: "relative",
@@ -92,6 +90,7 @@ const KPI = ({ numbers, interval }) => {
             }}
           >
             <iframe
+             title="waves"
               src="https://giphy.com/embed/t2aAdTgnU9Ie6jvG0W"
               width="100%"
               height="100%"

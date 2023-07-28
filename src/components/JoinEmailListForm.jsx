@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: theme.spacing(2),
   },
 }));
 
