@@ -11,13 +11,11 @@ import PastEvents from './pages/PastEvents';
 import Events from './pages/Events';
 import EventGallery from './pages/EventGallery';
 import { createTheme, CssBaseline, ThemeProvider, } from '@mui/material';
-import { Button } from '@mui/material';
-import MasonryGrid from './components/MasonryGrid';
-import StandardGrid from './components/StandardGrid'
-import Nav from './components/Nav'
-import FilterGrid from './components/FilterGrid';
+import Map from './components/Map';
+import ContactForm from './components/ContactForm';
 import Video from './components/Video';
 import Calendar from './components/Calendar';
+import KPI from './components/KPI';
 
 const App = () => {
 
@@ -85,6 +83,32 @@ const App = () => {
       title: "Bike",
     },
   ];
+
+  const kpiNumbers = [75, 50, 25, 46, 55];
+  const services = [{ 
+    title: "Photo Shoot", 
+    video: "https://www.shutterstock.com/shutterstock/videos/1031450246/preview/stock-footage-backstage-of-the-photo-shoot-make-up-artist-applies-makeup-on-beautiful-black-model-in-a-moment.webm",
+    price: "$100.00"
+  },
+  { 
+    title: "Podcasts", 
+    video: "https://www.shutterstock.com/shutterstock/videos/1072038289/preview/stock-footage-three-diverse-female-radio-hosts-wearing-headphones-talking-on-microphone-for-radio-podcast.webm",
+    price: "$200.00"
+  },
+  { 
+    title: "Events", 
+    video: "https://www.shutterstock.com/shutterstock/videos/1055170904/preview/stock-footage-waiter-is-pouring-champagne-pour-the-champagne-into-a-glass-bartender-pouring-champagne-into.webm",
+    price: "$300.00"
+  },
+  { 
+    title: "Co Working Space", 
+    video: "https://www.shutterstock.com/shutterstock/videos/1057496554/preview/stock-footage--d-rendering-of-comfortable-co-working-space.webm",
+    price: "$400.00"
+  },
+  
+  
+];
+
   const theme = createTheme({
     palette: {
       mode: 'light',
@@ -108,6 +132,9 @@ const App = () => {
         main: '#ff6e40',
       },
     },
+    shape: {
+      borderRadius: 0, // Set the global borderRadius to 0 to remove it
+    },
   })
 
   return (
@@ -115,6 +142,11 @@ const App = () => {
       <CssBaseline />
       <Video></Video>
       <Calendar eventsArray={eventsArray}></Calendar>
+      <Video videoHeight={900} />
+      <KPI numbers={kpiNumbers} interval={15} />
+      <Map />
+      <Services services={services} theme={theme} />
+      <ContactForm />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
