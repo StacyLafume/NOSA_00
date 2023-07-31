@@ -101,6 +101,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Nav/>
       <Buttons/>
       <Button variant="contained" >Hello worlds</Button>
       <Video/>

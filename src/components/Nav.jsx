@@ -51,7 +51,7 @@ const a11yProps = (index) => {
     };
 };
 
-const ReactSwipableView = () => {
+const Nav = () => {
     const theme = useTheme();
     const [value, setValue] = React.useState(0);
     const [scrollTriggered, setScrollTriggered] = React.useState(false);
@@ -150,4 +150,4 @@ const ReactSwipableView = () => {
     );
 };
 
-export default ReactSwipableView;
+export default Nav;
