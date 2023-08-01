@@ -96,30 +96,46 @@ const Nav = () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
+      <LinkScroll to="/"  spy={true} smooth={true} offset={50} duration={500}>      
       <MenuItem onClick={() => { handleMenuClose(); setValue("1"); }}>
         Home
       </MenuItem>
+      </LinkScroll>
+      <LinkScroll to="/ourmission"  spy={true} smooth={true} offset={50} duration={500}>
       <MenuItem onClick={() => { handleMenuClose(); setValue("2"); }}>
         Our Mission
       </MenuItem>
+      </LinkScroll>
+      <LinkScroll to="/aboutus"  spy={true} smooth={true} offset={50} duration={500}>      
       <MenuItem onClick={() => { handleMenuClose(); setValue("3"); }}>
         About Us
       </MenuItem>
+      </LinkScroll>
+      <LinkScroll to="/events"  spy={true} smooth={true} offset={50} duration={500}>      
       <MenuItem onClick={() => { handleMenuClose(); setValue("4"); }}>
         Events
       </MenuItem>
+      </LinkScroll>
+      <LinkScroll to="/artistofthemonth"  spy={true} smooth={true} offset={50} duration={500}>      
       <MenuItem onClick={() => { handleMenuClose(); setValue("5"); }}>
         Artist Of The Month
       </MenuItem>
+      </LinkScroll>
+      <LinkScroll to="/pastexhibitions"  spy={true} smooth={true} offset={50} duration={500}>      
       <MenuItem onClick={() => { handleMenuClose(); setValue("6"); }}>
         Past Exhibitions
       </MenuItem>
+      </LinkScroll>
+      <LinkScroll to="/services"  spy={true} smooth={true} offset={50} duration={500}>      
       <MenuItem onClick={() => { handleMenuClose(); setValue("7"); }}>
         Services
       </MenuItem>
+      </LinkScroll>
+      <LinkScroll to="/contactus"  spy={true} smooth={true} offset={50} duration={500}>      
       <MenuItem onClick={() => { handleMenuClose(); setValue("8"); }}>
         Contact Us
       </MenuItem>
+      </LinkScroll>
     </Menu>
   );
 
