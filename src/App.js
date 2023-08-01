@@ -11,11 +11,10 @@ import PastEvents from './pages/PastEvents';
 import Events from './pages/Events';
 import EventGallery from './pages/EventGallery';
 import { createTheme, CssBaseline, ThemeProvider, } from '@mui/material';
-import Map from './components/Map';
-import ContactForm from './components/ContactForm';
+import Nav from './components/Nav'
+import { Container } from "@mui/material";
 import Video from './components/Video';
-import Calendar from './components/Calendar';
-import KPI from './components/KPI';
+
 
 const App = () => {
 
@@ -140,26 +139,31 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Video></Video>
-      <Calendar eventsArray={eventsArray}></Calendar>
-      <Video videoHeight={900} />
-      <KPI numbers={kpiNumbers} interval={15} />
-      <Map />
-      <Services services={services} theme={theme} />
-      <ContactForm />
+      <Nav/>
+      <Video videoHeight={"100vh"}/>
+      <OurMission />
+      <AboutUs />
+      <Events />
+      <ArtistOfTheMonth />
+      <PastExhb />
+      <Services services={services}/>
+      <ContactUs />
+    <Container>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/artistofthemonth" element={<ArtistOfTheMonth />} />
         <Route path="/ourmission" element={<OurMission />} />
         <Route path="/contactus" element={<ContactUs />} />
-        <Route path="/services" element={<Services />} />
+        <Route path="/services" element={<Services services={services}/>} />
         <Route path="/pastevents" element={<PastEvents />} />
         <Route path="/pastexhibitions" element={<PastExhb />} />
         <Route path="/events" element={<Events />} />
         <Route path="/eventgallery" element={<EventGallery />} />
       </Routes>
-    </ThemeProvider>)
+    </Container>
+    </ThemeProvider>
+  )
 }
 
 export default App
