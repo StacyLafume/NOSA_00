@@ -1,154 +1,196 @@
-import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import CssBaseline from '@mui/material/CssBaseline';
-import useScrollTrigger from '@mui/material/useScrollTrigger';
-import SwipeableViews from 'react-swipeable-views';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import TabContext from "@mui/lab/TabContext";
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { makeStyles, useTheme } from '@mui/styles';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { Link as LinkRouter } from 'react-router-dom';
+import { Link as LinkScroll } from 'react-scroll/modules';
 
-const ElevationScroll = (props) => {
-    const { children, window } = props;
+const useStyles = makeStyles((theme) => ({
+  colorFill: {
+    backgroundColor: "#ff8b26 !important",
+    color: "black !important"
+  },
+  noColorFill: {
+    backgroundColor: "transparent !important",
+    color: "white !important"
+  },
+  appBar: {
+    height: '99px',
+    [theme.breakpoints.down('sm')]: {
+      height: '64px',
+    },
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    boxShadow: 'none !important',
+  },
+  tabsContainer: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+    display: 'flex',
+    justifyContent: 'space-evenly', // Evenly space the tabs
+    width: '100%',
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
+  },
+}));
 
-    const trigger = useScrollTrigger({
-        disableHysteresis: true,
-        threshold: 0,
-        target: window ? window() : undefined,
-    });
+const Nav = () => {
+  const classes = useStyles();
+  const theme = useTheme();
+  const [navColor, setNavColor] = useState(false);
+  const [value, setValue] = useState("1");
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const [anchorEl, setAnchorEl] = useState(null);
+  const isMenuOpen = Boolean(anchorEl);
 
-const Nav = (props) => {
-  return (
-    <React.Fragment>
-      <CssBaseline />
-      <ElevationScroll {...props}>
-        <AppBar>
-          <Toolbar>
-            <Typography variant="h6" component="div">
-              Scroll to elevate App bar
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </ElevationScroll>
-      <Toolbar />
-    </React.Fragment>
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const handleScroll = () => {
+    if (window.scrollY >= 99) {
+      setNavColor(true);
+    } else {
+      setNavColor(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const menuId = 'nav-menu';
+
+  const renderMenu = (
+    <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      id={menuId}
+      keepMounted
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
+    >
+      <MenuItem onClick={() => { handleMenuClose(); setValue("1"); }}>
+        Home
+      </MenuItem>
+      <MenuItem onClick={() => { handleMenuClose(); setValue("2"); }}>
+        Our Mission
+      </MenuItem>
+      <MenuItem onClick={() => { handleMenuClose(); setValue("3"); }}>
+        About Us
+      </MenuItem>
+      <MenuItem onClick={() => { handleMenuClose(); setValue("4"); }}>
+        Events
+      </MenuItem>
+      <MenuItem onClick={() => { handleMenuClose(); setValue("5"); }}>
+        Artist Of The Month
+      </MenuItem>
+      <MenuItem onClick={() => { handleMenuClose(); setValue("6"); }}>
+        Past Exhibitions
+      </MenuItem>
+      <MenuItem onClick={() => { handleMenuClose(); setValue("7"); }}>
+        Services
+      </MenuItem>
+      <MenuItem onClick={() => { handleMenuClose(); setValue("8"); }}>
+        Contact Us
+      </MenuItem>
+    </Menu>
   );
-}
 
-const TabPanel = (props) => {
-    const { children, value, index, ...other } = props;
-    return (
-        <div
-            role="tabpanel"
-            hidden={value !== index}
-            id={`full-width-tabpanel-${index}`}
-            aria-labelledby={`full-width-tab-${index}`}
-            {...other}
-        >
-        </div>
-    );
+  return (
+    <div>
+      <AppBar
+        className={`${classes.appBar} ${navColor ? classes.colorFill : classes.noColorFill}`}
+      >
+        <Toolbar>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+            onClick={handleMenuOpen}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Box sx={{ width: "100%", typography: "body1" }}>
+            <TabContext value={value}  >
+              <Box className={isSmallScreen ? classes.tabsContainer : ''}>
+                <Tabs centered onChange={handleChange} indicatorColor="secondary" aria-label="lab API tabs example">
+                  <LinkScroll to="/"  spy={true} smooth={true} offset={50} duration={500}>
+                    <LinkRouter to="/">
+                      <Tab className={navColor ? classes.colorFill : classes.noColorFill} label="Home" />
+                    </LinkRouter>
+                  </LinkScroll>
+                  <LinkScroll to="/ourmission"  spy={true} smooth={true} offset={50} duration={500}>
+                    <LinkRouter to="/ourmission">
+                      <Tab className={navColor ? classes.colorFill : classes.noColorFill} label="Our Mission" />
+                    </LinkRouter>
+                  </LinkScroll>
+                  <LinkScroll to="/aboutus"  spy={true} smooth={true} offset={50} duration={500}>
+                    <LinkRouter to="/aboutus">
+                      <Tab className={navColor ? classes.colorFill : classes.noColorFill} label="About Us" />
+                    </LinkRouter>
+                  </LinkScroll>
+                  <LinkScroll to="/events"  spy={true} smooth={true} offset={50} duration={500}>
+                    <LinkRouter to="/events">
+                      <Tab className={navColor ? classes.colorFill : classes.noColorFill} label="Events" />
+                    </LinkRouter>
+                  </LinkScroll>
+                  <LinkScroll to="/artistofthemonth"  spy={true} smooth={true} offset={50} duration={500}>
+                    <LinkRouter to="/artistofthemonth">
+                      <Tab className={navColor ? classes.colorFill : classes.noColorFill} label="Artist Of The Month" />
+                    </LinkRouter>
+                  </LinkScroll>
+                  <LinkScroll to="/pastexhibitions" spy={true} smooth={true} offset={50} duration={500}>
+                    <LinkRouter to="/pastexhibitions">
+                      <Tab className={navColor ? classes.colorFill : classes.noColorFill} label="Past Exhibitions" />
+                    </LinkRouter>
+                  </LinkScroll>
+                  <LinkScroll to="/services"  spy={true} smooth={true} offset={50} duration={500}>
+                    <LinkRouter to="/services">
+                      <Tab className={navColor ? classes.colorFill : classes.noColorFill} label="Services" />
+                    </LinkRouter>
+                  </LinkScroll>
+                  <LinkScroll to="/contactus"  spy={true} smooth={true} offset={50} duration={500}>
+                    <LinkRouter to="/contactus">
+                      <Tab className={navColor ? classes.colorFill : classes.noColorFill} label="Contact Us" />
+                    </LinkRouter>
+                  </LinkScroll>
+                </Tabs>
+              </Box>
+            </TabContext>
+          </Box>
+        </Toolbar>
+      </AppBar>
+      {renderMenu}
+    </div>
+  );
 };
 
-TabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
-};
-
-const a11yProps = (index) => {
-    return {
-        'aria-controls': `full-width-tabpanel-${index}`,
-    };
-};
-
-const ReactSwipableView = () => {
-    const theme = useTheme();
-    const [value, setValue] = React.useState(0);
-    const [scrollTriggered, setScrollTriggered] = React.useState(false);
-
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
-
-    const handleScroll = (e) => {
-        const scrollTop = e.target.documentElement.scrollTop;
-        if (scrollTop > 0) {
-            setScrollTriggered(true);
-        } else {
-            setScrollTriggered(false);
-        }
-    };
-
-    React.useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-    return (
-        <React.Fragment>
-            <CssBaseline />
-            <ElevationScroll>
-                <AppBar
-                    sx={{
-                        background: scrollTriggered ? '#D9D9D9' : 'transparent',
-                        color: scrollTriggered ? '#000000' : '#FFFFFF',
-                    }}
-                >
-                    <Toolbar>
-                        <Tabs
-                            value={value}
-                            onChange={handleChange}
-                            indicatorColor="secondary"
-                            textColor="inherit"
-                            variant="fullWidth"
-                            aria-label="full width tabs example"
-                        >
-                            <Tab label="Our Mission" {...a11yProps(0)} />
-                            <Tab label="About Us" {...a11yProps(1)} />
-                            <Tab label="Events" {...a11yProps(2)} />
-                            <Tab label="Artist of the Month" {...a11yProps(2)} />
-                            <Tab label="Past Exhibitions" {...a11yProps(2)} />
-                            <Tab label="Services" {...a11yProps(2)} />
-                            <Tab label="Contact Us" {...a11yProps(2)} />
-                        </Tabs>
-                    </Toolbar>
-                </AppBar>
-            </ElevationScroll>
-            <SwipeableViews
-                axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-                index={value}
-                onChangeIndex={handleChange}
-            >
-                <TabPanel value={value} index={0} dir={theme.direction}>
-                    Our Mission
-                </TabPanel>
-                <TabPanel value={value} index={1} dir={theme.direction}>
-                    About Us
-                </TabPanel>
-                <TabPanel value={value} index={2} dir={theme.direction}>
-                    Events
-                </TabPanel>
-                <TabPanel value={value} index={2} dir={theme.direction}>
-                    Artist of the Month
-                </TabPanel>
-                <TabPanel value={value} index={2} dir={theme.direction}>
-                    Past Exhibitions
-                </TabPanel>
-                <TabPanel value={value} index={2} dir={theme.direction}>
-                    Contact Us
-                    <TabPanel value={value} index={2} dir={theme.direction}>
-                        Services
-                    </TabPanel>
-                </TabPanel>
-            </SwipeableViews>
-            <Toolbar />
-        </React.Fragment>
-    );
-};
-}
-export default ReactSwipableView
+export default Nav;
