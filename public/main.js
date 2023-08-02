@@ -1,9 +1,8 @@
 const path = require("path")
 const fs = require("fs")
 
-const dirPath = path.join(__dirname, "../artistOfTheMonth")
-const dirPathPages = path.join(__dirname, "../src/pages/artistOfTheMonth")
-
+const dirPath = path.join(__dirname, "..", "artistOfTheMonth");
+const dirPathPages = path.join(__dirname, "..", "src", "pages", "artistOfTheMonth");
 
 let artistOfTheMonthList = []
 let pagelist = []
