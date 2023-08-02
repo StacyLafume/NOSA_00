@@ -8,8 +8,8 @@ const ArtistOfTheMonth = ({ name, monthYear, headshot, mainArtwork, artistPara, 
 
     return (
         <>
-            <h1>Artist Of The Month: {monthYear}</h1>
-            <Container id="/artistofthemonth" sx={{ backgroundColor: { backgroundColor } }}>
+            <h1 id="/artistofthemonth">Artist Of The Month: {monthYear}</h1>
+            <Container  sx={{ backgroundColor: { backgroundColor } }}>
                 <h2>{name}</h2>
                 <img
                     src={`${mainArtwork}`}

@@ -1,6 +1,4 @@
-// ContactForm.js
-
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   TextField,
   Button,
@@ -10,11 +8,12 @@ import {
   MenuItem,
   Grid,
   Box,
-  Container
-} from '@mui/material';
+  Container,
+} from "@mui/material";
+import {SendButton} from "./Buttons"
 
-import { makeStyles } from '@mui/styles';
-import JoinEmailListForm from './JoinEmailListForm';
+import { makeStyles } from "@mui/styles";
+import JoinEmailListForm from "./JoinEmailListForm";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -22,11 +21,9 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 120,
   },
   formContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '800px',
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
   },
   contactFormSection: {
     flexGrow: 1,
@@ -35,18 +32,25 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(4),
   },
   flexContainer: {
-    display: 'flex',
+    display: "flex",
   },
+  // image: {
+  //   width: '100%',
+  //   height: '57%',
+  //   marginBottom: theme.spacing(2),
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  // },
 }));
 
 const ContactForm = () => {
   const classes = useStyles();
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    subject: '',
-    message: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -75,15 +79,15 @@ const ContactForm = () => {
     // Validate form fields
     const newErrors = {};
     if (!formData.firstName) {
-      newErrors.firstName = 'First name is required';
+      newErrors.firstName = "First name is required";
     }
     if (!formData.lastName) {
-      newErrors.lastName = 'Last name is required';
+      newErrors.lastName = "Last name is required";
     }
     if (!formData.email) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!validateEmail(formData.email)) {
-      newErrors.email = 'Invalid email format';
+      newErrors.email = "Invalid email format";
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -97,11 +101,11 @@ const ContactForm = () => {
 
     // Reset the form after submission (if desired)
     setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      subject: '',
-      message: '',
+      firstName: "",
+      lastName: "",
+      email: "",
+      subject: "",
+      message: "",
     });
     setErrors({});
   };
@@ -112,6 +116,11 @@ const ContactForm = () => {
         <Grid item xs={7} className={classes.contactFormSection}>
           <Box sx={{ height: "100%" }}>
             <div className={classes.formContainer}>
+              {/* <img
+                src="https://secure.meetupstatic.com/photos/event/8/2/2/d/clean_511833325.webp"
+                alt="Join Our Email List"
+                className={classes.image}
+              /> */}
               <form onSubmit={handleSubmit}>
                 <Grid container spacing={2}>
                   <Grid item xs={6}>
@@ -177,9 +186,9 @@ const ContactForm = () => {
                   fullWidth
                   margin="normal"
                 />
-                <Button type="submit" variant="contained" color="primary">
-                  Submit
-                </Button>
+                <SendButton type="submit" variant="contained" color="primary"/>
+                  
+               
               </form>
             </div>
           </Box>
@@ -188,6 +197,7 @@ const ContactForm = () => {
           <Box style={{ minHeight: "53vh" }}>
             <div className={classes.flexContainer}>
               <JoinEmailListForm />
+           
             </div>
           </Box>
         </Grid>

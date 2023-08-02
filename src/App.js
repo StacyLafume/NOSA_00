@@ -12,12 +12,14 @@ import Events from './pages/Events';
 import EventGallery from './pages/EventGallery';
 import { createTheme, CssBaseline, ThemeProvider, } from '@mui/material';
 import Nav from './components/Nav'
-import { Container } from "@mui/material";
 import Video from './components/Video';
+import Footer from './pages/Footer'
+import {Cloudinary} from "@cloudinary/url-gen";
 
 
 
 const App = () => {
+  const cld = new Cloudinary({cloud: {cloudName: 'deb1qesva'}});
 
   const eventsArray = [
     {
@@ -135,12 +137,13 @@ const App = () => {
     shape: {
       borderRadius: "0 !important", // Set the global borderRadius to 0 to remove it
     },
+
+    
   })
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline defaultMode="dark" />
-
       <Nav/>
       <Video videoHeight={"100vh"}/>
       <OurMission />
@@ -150,7 +153,8 @@ const App = () => {
       <PastExhb />
       <Services services={services}/>
       <ContactUs />
-    <Container>
+      <Footer/>
+    {/* <Container style={{display:"none"}}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
@@ -163,7 +167,7 @@ const App = () => {
         <Route path="/events" element={<Events />} />
         <Route path="/eventgallery" element={<EventGallery />} />
       </Routes>
-    </Container>
+    </Container> */}
     </ThemeProvider>
   )
 }

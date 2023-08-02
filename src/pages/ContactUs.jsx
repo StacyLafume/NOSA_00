@@ -1,17 +1,14 @@
-import React from 'react';
-import Video from "../components/Video"
-
+import React from "react";
+import ContactForm from "../components/ContactForm";
 
 const ContactUs = () => {
-  
-        return (
-            <div id="/contactus">
-                <h2>ContactUs</h2>
-                <Video videoHeight={"100vh"}/>
-
-            </div>
-        )
+  return (
+    <div id="/contactus">
+      <h2>ContactUs</h2>
+      <ContactForm />
     
-}
+    </div>
+  );
+};
 
-export default ContactUs
+export default ContactUs;
