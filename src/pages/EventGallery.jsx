@@ -12,3 +12,5 @@ const EventGallery = (eventName, date) => {
 }
 
 export default EventGallery
+
+// need a pg for viewEventGallery

@@ -24,7 +24,7 @@ import { CssVarsProvider as JoyCssVarsProvider } from "@mui/joy/styles";
 
 const useStyles = makeStyles((theme) => ({
   colorFill: {
-    backgroundColor: "#ff8b26 !important",
+    backgroundColor: "#d9d9d9 !important",
     color: "black !important",
     fontWeight: "900 !important",
   },
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "900 !important",
   },
   appBar: {
-    height: "199px",
+    height: "fitContent",
     [theme.breakpoints.down("sm")]: {
       height: "64px",
     },
@@ -56,6 +56,14 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  vanishBox: {
+    display: 'none !important',
+    height: 'fit-content'
+  },
+  noLineVanish:{
+    display:'inline-block'
+  }
+
 }));
 
 const Nav = () => {
@@ -244,11 +252,12 @@ const Nav = () => {
           <Box
             sx={{
               width: "100%",
-              height: 300,
+              height: 'fit-content',
               backgroundColor: "primary",
               mx: 3,
               // display: "flex",
             }}
+            className= {navColor ? classes.vanishBox : null}
           >
             <img
               width={"12%"}
@@ -259,12 +268,13 @@ const Nav = () => {
             />
           </Box>
           <LinearProgress
-            style={{ zIndex: "-3", bottom: "60px", color:"orange" }}
+            style={{ zIndex: "-3", bottom: "60px", color:"orange", marginTop:'1.8rem'}}
             determinate
             value={100}
             thickness={3}
+            className={navColor ? classes.vanishBox : null}
           />
-          <Toolbar       style={{backgroundColor: navColor ? "#f0e8d4" : "transparent"}}
+          <Toolbar       style={{backgroundColor: navColor ? "#D9D9D9" : "transparent"}}
 >
             <IconButton
               edge="start"
@@ -275,7 +285,7 @@ const Nav = () => {
             >
               <MenuIcon />
             </IconButton>
-            <Box sx={{ width: "100%", typography: "body1" }}>
+            <Box sx={{ width: "100%", typography: "body1", backgroundColor: navColor ? "#D9D9D9" : "transparent" }}>
               <TabContext value={value}>
                 <Box className={isSmallScreen ? classes.tabsContainer : ""}>
                   <Tabs
@@ -283,6 +293,7 @@ const Nav = () => {
                     onChange={handleChange}
                     indicatorColor="secondary"
                     aria-label="lab API tabs example"
+                    sx={{backgroundColor:'#d9d9d9'}}
                   >
                     <LinkScroll
                       to="/"

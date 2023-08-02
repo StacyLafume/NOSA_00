@@ -33,6 +33,8 @@ const App = () => {
     // Add more events as needed
   ];
 
+  const pastExhbArr = []
+
   const itemData = [
     {
       img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
@@ -146,6 +148,7 @@ const App = () => {
       <OurMission />
       <AboutUs />
       <Events />
+      <PastEvents pastEventArr= {itemData}/>
       <ArtistOfTheMonth name='Bridgett' monthYear='June 2023'  backgroundColor='#e66ae6' headshot='https://cdn.pixabay.com/photo/2017/02/16/23/10/smile-2072907_1280.jpg' mainArtwork='https://cdn.pixabay.com/photo/2013/01/29/20/46/black-and-white-76651_1280.jpg'/>
       <PastExhb />
       <Services services={services}/>

@@ -2,8 +2,9 @@ import React from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import Container from '@mui/material/Container';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
 
-const StandardGrid = ({ itemData = [{img: "", title: ""}] }) => {
+const StandardGrid = ({ itemData = [{ img: "", title: "" }] }) => {
 
     return (
         <Container maxWidth="xl">
@@ -16,6 +17,12 @@ const StandardGrid = ({ itemData = [{img: "", title: ""}] }) => {
                             alt={item.title}
                             loading="lazy"
                         />
+                        <ImageListItemBar
+                            title={item.title}
+                            subtitle={<span>by: {item.author}</span>}
+                            position="below"
+                        />
+
                     </ImageListItem>
                 ))}
             </ImageList>
