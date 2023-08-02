@@ -1,59 +1,70 @@
-import React, { useState, useEffect } from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import React, { useState, useEffect } from "react";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
 import TabContext from "@mui/lab/TabContext";
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { makeStyles, useTheme } from '@mui/styles';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import { Link as LinkRouter } from 'react-router-dom';
-import { Link as LinkScroll } from 'react-scroll/modules';
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { makeStyles, useTheme } from "@mui/styles";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { Link as LinkRouter } from "react-router-dom";
+import { Link as LinkScroll } from "react-scroll/modules";
+import "../images/Nosa_Logo_white.png";
+import LinearProgress from "@mui/joy/LinearProgress";
+import {
+  experimental_extendTheme as materialExtendTheme,
+  Experimental_CssVarsProvider as MaterialCssVarsProvider,
+  THEME_ID as MATERIAL_THEME_ID,
+} from "@mui/material/styles";
+import { CssVarsProvider as JoyCssVarsProvider } from "@mui/joy/styles";
 
 const useStyles = makeStyles((theme) => ({
   colorFill: {
     backgroundColor: "#ff8b26 !important",
-    color: "black !important"
+    color: "black !important",
+    fontWeight: "900 !important",
   },
   noColorFill: {
     backgroundColor: "transparent !important",
-    color: "white !important"
+    color: "white !important",
+    fontWeight: "900 !important",
   },
   appBar: {
-    height: '99px',
-    [theme.breakpoints.down('sm')]: {
-      height: '64px',
+    height: "199px",
+    [theme.breakpoints.down("sm")]: {
+      height: "64px",
     },
-    display: 'flex',
-    justifyContent: 'space-evenly',
-    boxShadow: 'none !important',
+    display: "flex",
+    justifyContent: "space-evenly",
+    boxShadow: "none !important",
   },
   tabsContainer: {
-    [theme.breakpoints.down('sm')]: {
-      display: 'none',
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
     },
-    display: 'flex',
-    justifyContent: 'space-evenly', // Evenly space the tabs
-    width: '100%',
+    display: "flex",
+    justifyContent: "space-evenly", // Evenly space the tabs
+    width: "100%",
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    [theme.breakpoints.up('md')]: {
-      display: 'none',
+    [theme.breakpoints.up("md")]: {
+      display: "none",
     },
   },
 }));
 
 const Nav = () => {
+  const materialTheme = materialExtendTheme();
   const classes = useStyles();
   const theme = useTheme();
   const [navColor, setNavColor] = useState(false);
   const [value, setValue] = useState("1");
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [anchorEl, setAnchorEl] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
 
@@ -62,7 +73,7 @@ const Nav = () => {
   };
 
   const handleScroll = () => {
-    if (window.scrollY >= 99) {
+    if (window.scrollY >= 199) {
       setNavColor(true);
     } else {
       setNavColor(false);
@@ -70,9 +81,9 @@ const Nav = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -84,112 +95,332 @@ const Nav = () => {
     setAnchorEl(null);
   };
 
-  const menuId = 'nav-menu';
+  const menuId = "nav-menu";
 
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
       id={menuId}
       keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMenuOpen}
       onClose={handleMenuClose}
+      style={{backgroundColor: "transparent !important"}}
     >
-      <MenuItem onClick={() => { handleMenuClose(); setValue("1"); }}>
-        Home
-      </MenuItem>
-      <MenuItem onClick={() => { handleMenuClose(); setValue("2"); }}>
-        Our Mission
-      </MenuItem>
-      <MenuItem onClick={() => { handleMenuClose(); setValue("3"); }}>
-        About Us
-      </MenuItem>
-      <MenuItem onClick={() => { handleMenuClose(); setValue("4"); }}>
-        Events
-      </MenuItem>
-      <MenuItem onClick={() => { handleMenuClose(); setValue("5"); }}>
-        Artist Of The Month
-      </MenuItem>
-      <MenuItem onClick={() => { handleMenuClose(); setValue("6"); }}>
-        Past Exhibitions
-      </MenuItem>
-      <MenuItem onClick={() => { handleMenuClose(); setValue("7"); }}>
-        Services
-      </MenuItem>
-      <MenuItem onClick={() => { handleMenuClose(); setValue("8"); }}>
-        Contact Us
-      </MenuItem>
+      <LinkScroll to="/" spy={true} smooth={true} offset={50} duration={500}>
+        <MenuItem
+          onClick={() => {
+            handleMenuClose();
+            setValue("1");
+          }}
+        >
+          Home
+        </MenuItem>
+      </LinkScroll>
+      <LinkScroll
+        to="/ourmission"
+        spy={true}
+        smooth={true}
+        offset={50}
+        duration={500}
+      >
+        <MenuItem
+          onClick={() => {
+            handleMenuClose();
+            setValue("2");
+          }}
+        >
+          Our Mission
+        </MenuItem>
+      </LinkScroll>
+      <LinkScroll
+        to="/aboutus"
+        spy={true}
+        smooth={true}
+        offset={50}
+        duration={500}
+      >
+        <MenuItem
+          onClick={() => {
+            handleMenuClose();
+            setValue("3");
+          }}
+        >
+          About Us
+        </MenuItem>
+      </LinkScroll>
+      <LinkScroll
+        to="/events"
+        spy={true}
+        smooth={true}
+        offset={50}
+        duration={500}
+      >
+        <MenuItem
+          onClick={() => {
+            handleMenuClose();
+            setValue("4");
+          }}
+        >
+          Events
+        </MenuItem>
+      </LinkScroll>
+      <LinkScroll
+        to="/artistofthemonth"
+        spy={true}
+        smooth={true}
+        offset={50}
+        duration={500}
+      >
+        <MenuItem
+          onClick={() => {
+            handleMenuClose();
+            setValue("5");
+          }}
+        >
+          Artist Of The Month
+        </MenuItem>
+      </LinkScroll>
+      <LinkScroll
+        to="/pastexhibitions"
+        spy={true}
+        smooth={true}
+        offset={50}
+        duration={500}
+      >
+        <MenuItem
+          onClick={() => {
+            handleMenuClose();
+            setValue("6");
+          }}
+        >
+          Past Exhibitions
+        </MenuItem>
+      </LinkScroll>
+      <LinkScroll
+        to="/services"
+        spy={true}
+        smooth={true}
+        offset={50}
+        duration={500}
+      >
+        <MenuItem
+          onClick={() => {
+            handleMenuClose();
+            setValue("7");
+          }}
+        >
+          Services
+        </MenuItem>
+      </LinkScroll>
+      <LinkScroll
+        to="/contactus"
+        spy={true}
+        smooth={true}
+        offset={50}
+        duration={500}
+      >
+        <MenuItem
+          onClick={() => {
+            handleMenuClose();
+            setValue("8");
+          }}
+        >
+          Contact Us
+        </MenuItem>
+      </LinkScroll>
     </Menu>
   );
 
   return (
-    <div>
-      <AppBar
-        className={`${classes.appBar} ${navColor ? classes.colorFill : classes.noColorFill}`}
-      >
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-            onClick={handleMenuOpen}
+    <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
+      <JoyCssVarsProvider>
+        <AppBar
+          className={`${classes.appBar} ${
+            navColor ? classes.colorFill : classes.noColorFill
+          }`}
+        >
+          <Box
+            sx={{
+              width: "100%",
+              height: 300,
+              backgroundColor: "primary",
+              mx: 3,
+              // display: "flex",
+            }}
           >
-            <MenuIcon />
-          </IconButton>
-          <Box sx={{ width: "100%", typography: "body1" }}>
-            <TabContext value={value}  >
-              <Box className={isSmallScreen ? classes.tabsContainer : ''}>
-                <Tabs centered onChange={handleChange} indicatorColor="secondary" aria-label="lab API tabs example">
-                  <LinkScroll to="/"  spy={true} smooth={true} offset={50} duration={500}>
-                    <LinkRouter to="/">
-                      <Tab className={navColor ? classes.colorFill : classes.noColorFill} label="Home" />
-                    </LinkRouter>
-                  </LinkScroll>
-                  <LinkScroll to="/ourmission"  spy={true} smooth={true} offset={50} duration={500}>
-                    <LinkRouter to="/ourmission">
-                      <Tab className={navColor ? classes.colorFill : classes.noColorFill} label="Our Mission" />
-                    </LinkRouter>
-                  </LinkScroll>
-                  <LinkScroll to="/aboutus"  spy={true} smooth={true} offset={50} duration={500}>
-                    <LinkRouter to="/aboutus">
-                      <Tab className={navColor ? classes.colorFill : classes.noColorFill} label="About Us" />
-                    </LinkRouter>
-                  </LinkScroll>
-                  <LinkScroll to="/events"  spy={true} smooth={true} offset={50} duration={500}>
-                    <LinkRouter to="/events">
-                      <Tab className={navColor ? classes.colorFill : classes.noColorFill} label="Events" />
-                    </LinkRouter>
-                  </LinkScroll>
-                  <LinkScroll to="/artistofthemonth"  spy={true} smooth={true} offset={50} duration={500}>
-                    <LinkRouter to="/artistofthemonth">
-                      <Tab className={navColor ? classes.colorFill : classes.noColorFill} label="Artist Of The Month" />
-                    </LinkRouter>
-                  </LinkScroll>
-                  <LinkScroll to="/pastexhibitions" spy={true} smooth={true} offset={50} duration={500}>
-                    <LinkRouter to="/pastexhibitions">
-                      <Tab className={navColor ? classes.colorFill : classes.noColorFill} label="Past Exhibitions" />
-                    </LinkRouter>
-                  </LinkScroll>
-                  <LinkScroll to="/services"  spy={true} smooth={true} offset={50} duration={500}>
-                    <LinkRouter to="/services">
-                      <Tab className={navColor ? classes.colorFill : classes.noColorFill} label="Services" />
-                    </LinkRouter>
-                  </LinkScroll>
-                  <LinkScroll to="/contactus"  spy={true} smooth={true} offset={50} duration={500}>
-                    <LinkRouter to="/contactus">
-                      <Tab className={navColor ? classes.colorFill : classes.noColorFill} label="Contact Us" />
-                    </LinkRouter>
-                  </LinkScroll>
-                </Tabs>
-              </Box>
-            </TabContext>
+            <img
+              width={"12%"}
+              height={'auto'}
+              src={navColor ?  require("../images/Nosa_Logo_black.png") : require("../images/Nosa_Logo_white.png")}
+              alt=""
+              style={{marginTop: "35px"}}
+            />
           </Box>
-        </Toolbar>
-      </AppBar>
-      {renderMenu}
-    </div>
+          <LinearProgress
+            style={{ zIndex: "-3", bottom: "60px", color:"orange" }}
+            determinate
+            value={100}
+            thickness={3}
+          />
+          <Toolbar       style={{backgroundColor: navColor ? "#f0e8d4" : "transparent"}}
+>
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="menu"
+              onClick={handleMenuOpen}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Box sx={{ width: "100%", typography: "body1" }}>
+              <TabContext value={value}>
+                <Box className={isSmallScreen ? classes.tabsContainer : ""}>
+                  <Tabs
+                    centered
+                    onChange={handleChange}
+                    indicatorColor="secondary"
+                    aria-label="lab API tabs example"
+                  >
+                    <LinkScroll
+                      to="/"
+                      spy={true}
+                      smooth={true}
+                      offset={50}
+                      duration={500}
+                    >
+                      <LinkRouter to="/">
+                        <Tab
+                          className={
+                            navColor ? classes.colorFill : classes.noColorFill
+                          }
+                          label="Home"
+                        />
+                      </LinkRouter>
+                    </LinkScroll>
+                    <LinkScroll
+                      to="/ourmission"
+                      spy={true}
+                      smooth={true}
+                      offset={50}
+                      duration={500}
+                    >
+                      <LinkRouter to="/ourmission">
+                        <Tab
+                          className={
+                            navColor ? classes.colorFill : classes.noColorFill
+                          }
+                          label="Our Mission"
+                        />
+                      </LinkRouter>
+                    </LinkScroll>
+                    <LinkScroll
+                      to="/aboutus"
+                      spy={true}
+                      smooth={true}
+                      offset={50}
+                      duration={500}
+                    >
+                      <LinkRouter to="/aboutus">
+                        <Tab
+                          className={
+                            navColor ? classes.colorFill : classes.noColorFill
+                          }
+                          label="About Us"
+                        />
+                      </LinkRouter>
+                    </LinkScroll>
+                    <LinkScroll
+                      to="/events"
+                      spy={true}
+                      smooth={true}
+                      offset={50}
+                      duration={500}
+                    >
+                      <LinkRouter to="/events">
+                        <Tab
+                          className={
+                            navColor ? classes.colorFill : classes.noColorFill
+                          }
+                          label="Events"
+                        />
+                      </LinkRouter>
+                    </LinkScroll>
+                    <LinkScroll
+                      to="/artistofthemonth"
+                      spy={true}
+                      smooth={true}
+                      offset={50}
+                      duration={500}
+                    >
+                      <LinkRouter to="/artistofthemonth">
+                        <Tab
+                          className={
+                            navColor ? classes.colorFill : classes.noColorFill
+                          }
+                          label="Artist Of The Month"
+                        />
+                      </LinkRouter>
+                    </LinkScroll>
+                    <LinkScroll
+                      to="/pastexhibitions"
+                      spy={true}
+                      smooth={true}
+                      offset={50}
+                      duration={500}
+                    >
+                      <LinkRouter to="/pastexhibitions">
+                        <Tab
+                          className={
+                            navColor ? classes.colorFill : classes.noColorFill
+                          }
+                          label="Past Exhibitions"
+                        />
+                      </LinkRouter>
+                    </LinkScroll>
+                    <LinkScroll
+                      to="/services"
+                      spy={true}
+                      smooth={true}
+                      offset={50}
+                      duration={500}
+                    >
+                      <LinkRouter to="/services">
+                        <Tab
+                          className={
+                            navColor ? classes.colorFill : classes.noColorFill
+                          }
+                          label="Services"
+                        />
+                      </LinkRouter>
+                    </LinkScroll>
+                    <LinkScroll
+                      to="/contactus"
+                      spy={true}
+                      smooth={true}
+                      offset={50}
+                      duration={500}
+                    >
+                      <LinkRouter to="/contactus">
+                        <Tab
+                          className={
+                            navColor ? classes.colorFill : classes.noColorFill
+                          }
+                          label="Contact Us"
+                        />
+                      </LinkRouter>
+                    </LinkScroll>
+                  </Tabs>
+                </Box>
+              </TabContext>
+            </Box>
+          </Toolbar>
+        </AppBar>
+        {renderMenu}
+      </JoyCssVarsProvider>
+    </MaterialCssVarsProvider>
   );
 };
 

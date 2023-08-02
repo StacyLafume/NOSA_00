@@ -1,17 +1,19 @@
 import React from 'react';
 import ServiceCard from '../components/ServiceCard';
-import{  Box
-} from '@mui/material'
+import { Box, Container, Typography } from '@mui/material';
+
 const Services = ({ services }) => {
   return (
-    <Box id="/services" spacing={2} style={{ display: "flex", flexWrap: "wrap" }}>
-      <h1>Services</h1>
-      {services.map((service, index) => (
-        <ServiceCard
-          service={service}
-        />
-      ))}
-    </Box>
+    <Container id="/services" maxWidth="xl" sx={{ py: 4 }}>
+      <Typography variant="h4" component="h1" align="center" gutterBottom>
+        Services
+      </Typography>
+      <Box display="flex" flexWrap="wrap" justifyContent="center" gap={4}>
+        {services.map((service, index) => (
+          <ServiceCard key={index} service={service} />
+        ))}
+      </Box>
+    </Container>
   );
 }
 
