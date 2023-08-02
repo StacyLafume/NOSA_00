@@ -14,6 +14,7 @@ import { createTheme, CssBaseline, ThemeProvider, } from '@mui/material';
 import Nav from './components/Nav'
 import { Container } from "@mui/material";
 import Video from './components/Video';
+import Footer from './pages/Footer'
 
 
 
@@ -135,6 +136,7 @@ const App = () => {
     shape: {
       borderRadius: "0 !important", // Set the global borderRadius to 0 to remove it
     },
+
     
   })
 
@@ -151,6 +153,7 @@ const App = () => {
       <PastExhb />
       <Services services={services}/>
       <ContactUs />
+      <Footer/>
     {/* <Container style={{display:"none"}}>
       <Routes>
         <Route path="/" element={<Home />} />

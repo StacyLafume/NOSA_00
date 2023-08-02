@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 120,
   },
   formContainer: {
-    height: "800px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",

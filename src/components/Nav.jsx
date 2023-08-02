@@ -13,7 +13,6 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 // import { Link as LinkRouter } from "react-router-dom";
 import { Link as LinkScroll } from "react-scroll/modules";
-import "../images/Nosa_Logo_white.png";
 import LinearProgress from "@mui/joy/LinearProgress";
 import {
   experimental_extendTheme as materialExtendTheme,
@@ -75,6 +74,7 @@ const Nav = () => {
   const handleScroll = () => {
     if (window.scrollY >= 199) {
       setNavColor(true);
+
     } else {
       setNavColor(false);
     }
