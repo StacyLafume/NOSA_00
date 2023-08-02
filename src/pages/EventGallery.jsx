@@ -1,10 +1,12 @@
 import React from 'react';
+import MasonryGrid from '../components/MasonryGrid';
 
 
-const EventGallery = () => {
+const EventGallery = (eventName, date) => {
     return (
         <div id="/eventgallery">
-            <h2>EventGallery</h2>
+            <h1>{eventName} - {date}</h1>
+            <MasonryGrid />
         </div>
     )
 }
