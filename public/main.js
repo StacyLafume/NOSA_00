@@ -37,7 +37,7 @@ const formatDate = (date) => {
     return {"month": month, "monthName": monthName, "day": day, "year": year, "time": time}
 }
 
-onst getPosts = () => {
+const getPosts = () => {
     fs.readdir(dirPath, (err, files) => {
         if (err) {
             return console.log("Failed to list contents of directory: " + err)
