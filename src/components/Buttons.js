@@ -2,25 +2,44 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import Stack from '@mui/material/Stack';
-import Icon from '@mdi/react';
-import { mdiShareVariant } from '@mdi/js';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { makeStyles } from '@mui/styles';
 
 
-const Buttons = () => {
+
+const useStyles = makeStyles((theme) => ({
+    donate: {
+      width: "100%",
+      height: "6vh",
+    }
+  }));
+
+
+const  SendButton = () => {
 
     return (
         <Stack direction="row" spacing={2}>
-            {/* <Button variant="outlined" startIcon={<DeleteIcon />}>
-                Delete
-            </Button> */}
             <Button variant="contained" endIcon={<SendIcon />}>
                 Send
             </Button>
-            <Icon path={mdiShareVariant} size={1} />
         </Stack>
     )
 
 }
 
-export default Buttons
+const DonateButton = () => {
+    const classes = useStyles();
 
+
+    return (
+        <Stack className={classes.donate}  direction="column" spacing={2} mt={2}>
+            <Button  variant="contained" endIcon={<FavoriteIcon/>}>
+                Donate
+            </Button>
+        </Stack>
+    )
+
+}
+
+
+export  {SendButton, DonateButton }

@@ -11,7 +11,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { makeStyles, useTheme } from "@mui/styles";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { Link as LinkRouter } from "react-router-dom";
+// import { Link as LinkRouter } from "react-router-dom";
 import { Link as LinkScroll } from "react-scroll/modules";
 import "../images/Nosa_Logo_white.png";
 import LinearProgress from "@mui/joy/LinearProgress";
@@ -170,7 +170,7 @@ const Nav = () => {
         to="/artistofthemonth"
         spy={true}
         smooth={true}
-        offset={50}
+        offset={5000000000}
         duration={500}
       >
         <MenuItem
@@ -291,14 +291,14 @@ const Nav = () => {
                       offset={50}
                       duration={500}
                     >
-                      <LinkRouter to="/">
+                      {/* <LinkRouter to="/"> */}
                         <Tab
                           className={
                             navColor ? classes.colorFill : classes.noColorFill
                           }
                           label="Home"
                         />
-                      </LinkRouter>
+                      {/* </LinkRouter> */}
                     </LinkScroll>
                     <LinkScroll
                       to="/ourmission"
@@ -307,14 +307,14 @@ const Nav = () => {
                       offset={50}
                       duration={500}
                     >
-                      <LinkRouter to="/ourmission">
+                      {/* <LinkRouter to="/ourmission"> */}
                         <Tab
                           className={
                             navColor ? classes.colorFill : classes.noColorFill
                           }
                           label="Our Mission"
                         />
-                      </LinkRouter>
+                      {/* </LinkRouter> */}
                     </LinkScroll>
                     <LinkScroll
                       to="/aboutus"
@@ -323,14 +323,14 @@ const Nav = () => {
                       offset={50}
                       duration={500}
                     >
-                      <LinkRouter to="/aboutus">
+                      {/* <LinkRouter to="/aboutus"> */}
                         <Tab
                           className={
                             navColor ? classes.colorFill : classes.noColorFill
                           }
                           label="About Us"
                         />
-                      </LinkRouter>
+                      {/* </LinkRouter> */}
                     </LinkScroll>
                     <LinkScroll
                       to="/events"
@@ -339,14 +339,14 @@ const Nav = () => {
                       offset={50}
                       duration={500}
                     >
-                      <LinkRouter to="/events">
+                      {/* <LinkRouter to="/events"> */}
                         <Tab
                           className={
                             navColor ? classes.colorFill : classes.noColorFill
                           }
                           label="Events"
                         />
-                      </LinkRouter>
+                      {/* </LinkRouter> */}
                     </LinkScroll>
                     <LinkScroll
                       to="/artistofthemonth"
@@ -355,14 +355,14 @@ const Nav = () => {
                       offset={50}
                       duration={500}
                     >
-                      <LinkRouter to="/artistofthemonth">
+                      {/* <LinkRouter to="/artistofthemonth"> */}
                         <Tab
                           className={
                             navColor ? classes.colorFill : classes.noColorFill
                           }
                           label="Artist Of The Month"
                         />
-                      </LinkRouter>
+                      {/* </LinkRouter> */}
                     </LinkScroll>
                     <LinkScroll
                       to="/pastexhibitions"
@@ -371,14 +371,14 @@ const Nav = () => {
                       offset={50}
                       duration={500}
                     >
-                      <LinkRouter to="/pastexhibitions">
+                      {/* <LinkRouter to="/pastexhibitions"> */}
                         <Tab
                           className={
                             navColor ? classes.colorFill : classes.noColorFill
                           }
                           label="Past Exhibitions"
                         />
-                      </LinkRouter>
+                      {/* </LinkRouter> */}
                     </LinkScroll>
                     <LinkScroll
                       to="/services"
@@ -387,14 +387,14 @@ const Nav = () => {
                       offset={50}
                       duration={500}
                     >
-                      <LinkRouter to="/services">
+                      {/* <LinkRouter to="/services"> */}
                         <Tab
                           className={
                             navColor ? classes.colorFill : classes.noColorFill
                           }
                           label="Services"
                         />
-                      </LinkRouter>
+                      {/* </LinkRouter> */}
                     </LinkScroll>
                     <LinkScroll
                       to="/contactus"
@@ -403,14 +403,14 @@ const Nav = () => {
                       offset={50}
                       duration={500}
                     >
-                      <LinkRouter to="/contactus">
+                      {/* <LinkRouter to="/contactus"> */}
                         <Tab
                           className={
                             navColor ? classes.colorFill : classes.noColorFill
                           }
                           label="Contact Us"
                         />
-                      </LinkRouter>
+                      {/* </LinkRouter> */}
                     </LinkScroll>
                   </Tabs>
                 </Box>

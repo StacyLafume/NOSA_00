@@ -135,6 +135,7 @@ const App = () => {
     shape: {
       borderRadius: "0 !important", // Set the global borderRadius to 0 to remove it
     },
+    
   })
 
   return (
@@ -150,7 +151,7 @@ const App = () => {
       <PastExhb />
       <Services services={services}/>
       <ContactUs />
-    <Container>
+    {/* <Container style={{display:"none"}}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
@@ -163,7 +164,7 @@ const App = () => {
         <Route path="/events" element={<Events />} />
         <Route path="/eventgallery" element={<EventGallery />} />
       </Routes>
-    </Container>
+    </Container> */}
     </ThemeProvider>
   )
 }

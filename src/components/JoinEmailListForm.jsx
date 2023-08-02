@@ -1,15 +1,19 @@
 import React, { useState } from "react";
-import { TextField, Button, Grid, Box } from "@mui/material";
+import { TextField, Button, Grid, Box, Typography} from "@mui/material";
 import { makeStyles } from '@mui/styles';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import { DonateButton } from "./Buttons"
+
 
 const useStyles = makeStyles((theme) => ({
   formContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: '53vh',
-    padding: theme.spacing(2),
+    width: "100%",
+    display: "flex",
+    paddingLeft: "50px",
+    minHeight: "40vh",
+    alignItems: "center",
+    flexDirection: "column",
+    justifyContent: "space-evenly",
   },
   formWrapper: {
     width: '100%',
@@ -22,18 +26,19 @@ const useStyles = makeStyles((theme) => ({
 
   },
   submitButton: {
-    height: '56px',
-    width: '20px',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  image: {
+    height: "3vh",
     width: '100%',
-    height: '57%',
-    marginBottom: theme.spacing(2),
     alignItems: 'center',
     justifyContent: 'center',
   },
+  title: {
+    fontWeight : "200 !important",
+    margin: "auto !important"
+  },
+  donate: {
+    width: "100%",
+    height: "6vh",
+  }
 }));
 
 const JoinEmailListForm = () => {
@@ -54,21 +59,17 @@ const JoinEmailListForm = () => {
 
   return (
     <div className={classes.formContainer}>
-       <img
-        src='https://secure.meetupstatic.com/photos/event/8/2/2/d/clean_511833325.webp'
-        alt="Join Our Email List"
-        className={classes.image}
-       
-      />
+      
       <Box className={classes.formWrapper}>
         
         <form onSubmit={handleSubmit}>
           <Grid container alignItems="center"> {/* Set alignItems to center */}
+          <Typography className={classes.title}align={"center"} variant={"h3"}><MailOutlineIcon fontSize={"30px"}/> Join our mailing list</Typography>
             <Grid item xs={12}>
               <TextField
                 required
                 type="email"
-                label="Join our mailing list!"
+                label=""
                 value={email}
                 onChange={handleEmailChange}
                 fullWidth
@@ -86,6 +87,7 @@ const JoinEmailListForm = () => {
               >
                 Join
               </Button>
+              <DonateButton className={classes.donate}/>
             </Grid>
           </Grid>
         </form>
