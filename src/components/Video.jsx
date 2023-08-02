@@ -11,7 +11,10 @@ import {
 } from "@mui/material/styles";
 import { CssVarsProvider as JoyCssVarsProvider } from "@mui/joy/styles";
 
-const Video = ({videoHeight, videoSrc = 'https://www.shutterstock.com/shutterstock/videos/1059669308/preview/stock-footage-luxurious-pale-gold-glitter-moving-in-orange-and-black-background-feels-sophisticated-and-retro.webm'}) => {
+const Video = ({
+  videoHeight,
+  videoSrc = "https://www.shutterstock.com/shutterstock/videos/1059669308/preview/stock-footage-luxurious-pale-gold-glitter-moving-in-orange-and-black-background-feels-sophisticated-and-retro.webm",
+}) => {
   const materialTheme = materialExtendTheme();
 
   return (
@@ -31,12 +34,14 @@ const Video = ({videoHeight, videoSrc = 'https://www.shutterstock.com/shuttersto
             component="li"
             sx={{ minWidth: 300, flexGrow: 1, borderRadius: 0 }}
           >
-            <CardCover>
-              <video autoPlay loop muted>
-                <source
-                  src={videoSrc}
-                  type="video/mp4"
-                />
+            <CardCover sx={{ borderRadius: 0 }}>
+              <video
+                autoPlay
+                loop
+                muted
+                style={{ borderRadius: 0, width: "100%", height: "100%" }}
+              >
+                <source src={videoSrc} type="video/mp4" />
               </video>
             </CardCover>
             <CardContent></CardContent>

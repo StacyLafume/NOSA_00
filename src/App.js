@@ -16,6 +16,7 @@ import { Container } from "@mui/material";
 import Video from './components/Video';
 
 
+
 const App = () => {
 
   const eventsArray = [
@@ -132,13 +133,14 @@ const App = () => {
       },
     },
     shape: {
-      borderRadius: 0, // Set the global borderRadius to 0 to remove it
+      borderRadius: "0 !important", // Set the global borderRadius to 0 to remove it
     },
   })
 
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
+      <CssBaseline defaultMode="dark" />
+
       <Nav/>
       <Video videoHeight={"100vh"}/>
       <OurMission />
