@@ -1,10 +1,23 @@
 const path = require("path")
 const fs = require("fs")
 
-const dirPath = path.join(__dirname, "../posts")
-const dirPathPages = path.join(__dirname, "../src/pages/content")
-let postlist = []
+const fs = require("fs");
+
+const dirPath = path.join(__dirname, "../artistOfTheMonth");
+const dirPathPages = path.join(__dirname, "../src/pages/artistOfTheMonth");
+
+// Create the directories if they don't exist
+if (!fs.existsSync(dirPath)) {
+  fs.mkdirSync(dirPath);
+}
+
+if (!fs.existsSync(dirPathPages)) {
+  fs.mkdirSync(dirPathPages);
+}
+
+let artistOfTheMonthList = []
 let pagelist = []
+
 
 const months = {
     "01": "January",
@@ -34,9 +47,7 @@ const formatDate = (date) => {
     return {"month": month, "monthName": monthName, "day": day, "year": year, "time": time}
 }
 
-  
-
-const getPosts = () => {
+const getArtistOfTheMonth = () => {
     fs.readdir(dirPath, (err, files) => {
         if (err) {
             return console.log("Failed to list contents of directory: " + err)
@@ -44,7 +55,7 @@ const getPosts = () => {
         let ilist = []
         files.forEach((file, i) => {
             let obj = {}
-            let post
+            let artistOfTheMonth
             fs.readFile(`${dirPath}/${file}`, "utf8", (err, contents) => {
                 const getMetadataIndices = (acc, elem, i) => {
                     if (/^---/.test(elem)) {
@@ -76,7 +87,7 @@ const getPosts = () => {
                 const datestring = `${parsedDate["year"]}-${parsedDate["month"]}-${parsedDate["day"]}T${parsedDate["time"]}:00`
                 const date = new Date(datestring)
                 const timestamp = date.getTime() / 1000
-                post = {
+                artistOfTheMonth = {
                     id: timestamp,
                     title: metadata.title ? metadata.title : "No title given",
                     author: metadata.author ? metadata.author : "No author given",
@@ -85,14 +96,14 @@ const getPosts = () => {
                     thumbnail: metadata.thumbnail,
                     content: content ? content : "No content given",
                 }
-                postlist.push(post)
+                artistOfTheMonthList.push(post)
                 ilist.push(i)
                 if (ilist.length === files.length) {
                     const sortedList = postlist.sort ((a, b) => {
                         return a.id < b.id ? 1 : -1
                     })
                     let data = JSON.stringify(sortedList)
-                    fs.writeFileSync("src/posts.json", data)
+                    fs.writeFileSync("src/artistOfTheMonth.json", data)
                 }
             })
         })
@@ -120,5 +131,5 @@ const getPages = () => {
     return 
 }
 
-getPosts()
+getArtistOfTheMonth()
 getPages()
