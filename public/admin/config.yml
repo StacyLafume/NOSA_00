@@ -3,13 +3,13 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "public/images"
-public_folder: "/images"
+media_folder: "src/content/images"
+public_folder: "src/content/images"
 
 collections:
   - name: "artist_of_the_month"
     label: "Artist Of The Month"
-    folder: "src/content/artist_of_the_month"
+    folder: "src/content/artistOfTheMonth"
     create: true
     fields:
       - { label: "Name", name: "name", widget: "string" }
