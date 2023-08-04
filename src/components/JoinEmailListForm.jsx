@@ -72,7 +72,7 @@ const JoinEmailListForm = () => {
                 label=""
                 value={email}
                 onChange={handleEmailChange}
-                fullWidth
+                 
                 margin="normal"
                 className={classes.inputField}
               />
@@ -82,7 +82,7 @@ const JoinEmailListForm = () => {
                 type="submit"
                 variant="contained"
                 color="primary"
-                fullWidth
+                 
                 className={classes.submitButton}
               >
                 Join
