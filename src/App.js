@@ -16,7 +16,6 @@ import { Container } from "@mui/material";
 import Video from './components/Video';
 
 
-
 const App = () => {
 
   const eventsArray = [
