@@ -12,8 +12,8 @@ import { borderLeft } from '@mui/system';
 
 const calendarStyles = {
   largeSquareTile: {
-    height: 150,
-    width: 150,
+    height: '7vw',
+    width: '7vw',
     // padding: '0 !important',
     // borderRadius: '0 !important'
   },
@@ -28,6 +28,9 @@ const CalendarTile = ({ date, background, image, onTileClick, setCarouselIndex, 
       setIsModalOpen(true);
     }
   };
+
+
+
   return (
     <Box
       component={Paper}
@@ -41,8 +44,6 @@ const CalendarTile = ({ date, background, image, onTileClick, setCarouselIndex, 
         backgroundImage: `url(${image})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        width: '8vw',
-        height: '8vw',
         borderRadius: '0',
         border: 'solid #ff6d00 .5px',
         borderLeft: '0',
@@ -57,10 +58,10 @@ const CalendarTile = ({ date, background, image, onTileClick, setCarouselIndex, 
       <Paper sx={{ paddingLeft: '3.85%', width: '30%', borderRadius: '0' }}>
         {date?.getDate() ?? ''}
       </Paper>
-
     </Box>
-
   )
+
+
 };
 
 const Calendar = ({ eventsArray }) => {
@@ -87,8 +88,10 @@ const Calendar = ({ eventsArray }) => {
 
   const renderCarouselIndicators = () => {
     return (
-      <Box sx={{ display: 'flex', mt: 2, margin: 0,
-      justifyContent: 'space-between', }}>
+      <Box sx={{
+        display: 'flex', mt: 2, margin: 0,
+        justifyContent: 'space-between',
+      }}>
         {carouselImages.map((_, index) => (
           <Box
             key={index}
@@ -182,7 +185,7 @@ const Calendar = ({ eventsArray }) => {
   const generateCalendar = (eventsArray) => {
     const startDate = startOfMonth(currentMonth);
     const endDate = endOfMonth(currentMonth);
-
+    console.log('eventArr:', JSON.stringify(eventsArray, null, 2));
     const days = [];
     for (let date = new Date(startDate); date <= endDate; date.setDate(date.getDate() + 1)) {
       const event = eventsArray.find((evt) => isSameDay(evt.date, date));
@@ -199,7 +202,7 @@ const Calendar = ({ eventsArray }) => {
       if (days.length % 7 === 0) {
         break
       } else {
-        days.push({ date: null, background: '#ff9574' })
+        days.push({ date: null, background: '#f2ebeb' })
       };
     }
 
@@ -221,7 +224,7 @@ const Calendar = ({ eventsArray }) => {
       );
     } else {
       return (
-        <Grid sx={{ justifyContent: 'center', width: '94%', margin: '0' }} container spacing={0} >
+        <Grid sx={{ justifyContent: 'center', width: '84%', margin: '0', borderBottom: '#f09b05 solid 2px', borderTop: '#f09b05 solid 2px' }} container spacing={0} >
           {days.map((day) => (
             <Grid item key={day.date?.toString()}>
               <CalendarTile
@@ -291,18 +294,18 @@ const Calendar = ({ eventsArray }) => {
   }, [carouselIndex, isCarouselAutoplaying, handleCarouselNext]);
 
   return (
-    <Box sx={{ height: '100vw', padding: '0vh 3vw' }}>
-      <Box sx={{ display: 'inline-flex', width: '62.667%', justifyContent: 'center', my: 2, margin: '1% 0' }}>
+    <Box sx={{ height: '80vh', padding: '0vh 3vw' }}>
+      <Box sx={{ display: 'inline-flex', width: '56.1%', justifyContent: 'center', my: 2, margin: '1% 0' }}>
         {yearlyView ? (
           <IconButton onClick={toggleYearlyView}>
             {/* <KeyboardArrowLeftSharpIcon/> */}
           </IconButton>
         ) : (
           <>
-            <IconButton sx={{ padding: '0', fill: '#ff6d00' }} onClick={navigateToPreviousYear}>
+            <IconButton sx={{ padding: '0', fill: '##ed9904' }} onClick={navigateToPreviousYear}>
               <KeyboardDoubleArrowLeftSharpIcon sx={{ fontSize: '2rem' }} />
             </IconButton>
-            <IconButton sx={{ padding: '0', fill: '#ff6d00' }} onClick={navigateBackward}>
+            <IconButton sx={{ padding: '0', fill: '##ed9904' }} onClick={navigateBackward}>
               <KeyboardArrowLeftSharpIcon sx={{ fontSize: '2rem' }} />
             </IconButton>
           </>
@@ -316,10 +319,10 @@ const Calendar = ({ eventsArray }) => {
           </IconButton>
         ) : (
           <>
-            <IconButton sx={{ padding: '0', fill: '#ff6d00' }} onClick={navigateForward}>
+            <IconButton sx={{ padding: '0', fill: '##ed9904' }} onClick={navigateForward}>
               <KeyboardArrowRightSharpIcon sx={{ fontSize: '2rem' }} />
             </IconButton>
-            <IconButton sx={{ padding: '0', fill: '#ff6d00' }} onClick={navigateToNextYear}>
+            <IconButton sx={{ padding: '0', fill: '##ed9904' }} onClick={navigateToNextYear}>
               <KeyboardDoubleArrowRightSharpIcon sx={{ fontSize: '2rem' }} />
             </IconButton>
           </>
@@ -332,33 +335,39 @@ const Calendar = ({ eventsArray }) => {
         </Link>
       </Typography> */}
       <Box sx={{ display: 'flex', flexWrap: 'wrap', "& .outer-container": { padding: 0, borderRadius: 0, height: 'fit-content' } }}>
-        <Box sx={{ flex: '2 0 66.66%' }} className="outer-container">{renderCalendar()}</Box>
-        <Box sx={{ flex: '1 0 33.33%', padding: '1.5% 0% 0% 0%', textAlign: 'center', backgroundColor: '#ff9574', borderRadius: '0 13%' }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: 'fitContent', marginTop: '2%', border: 'doubleThick #d75a34' }}>
+        <Box sx={{ flex: '2 0 66.66%', height: '80vh' }} className="outer-container">{renderCalendar()} </Box>
+        <Box sx={{ flex: '1 0 33.33%',textAlign: 'center', height: '25.2rem' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '25.2rem', backgroundImage: 'url(https://p1.pxfuel.com/preview/782/525/96/paint-painting-image-design.jpg)', padding: '3%', borderRadius: '5px' }}>
             {carouselImages.length > 0 ? (
-              <img src={carouselImages[carouselIndex]} alt={`Event ${carouselIndex}`} style={{ maxWidth: '72%', borderRadius: '0 13%', paddingTop: '1%' }} />
+              <img src={carouselImages[carouselIndex]} alt={`Event ${carouselIndex}`} style={{ width: '70%', borderRadius: '5px' }} />
             ) : (
               <Typography variant="subtitle1">No images available</Typography>
             )}
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
+          <Box sx={{
+            display: 'flex', alignItems: 'center', justifyContent: 'space-evenly', width: '100%',
+            margin: '0', marginBottom: '2rem', padding: '.3rem 1.5rem'
+          }}>
+
             <IconButton onClick={handleCarouselPrevious}>
-              <KeyboardDoubleArrowLeftSharpIcon />
+              <KeyboardDoubleArrowLeftSharpIcon sx={{ marginLeft: '5rem' }} />
             </IconButton>
-          {renderCarouselIndicators()}
+            {renderCarouselIndicators()}
             <IconButton onClick={handleCarouselNext}>
-              <KeyboardDoubleArrowRightSharpIcon />
+              <KeyboardDoubleArrowRightSharpIcon sx={{ marginRight: '5rem' }} />
             </IconButton>
           </Box>
         </Box>
       </Box>
 
       <Dialog open={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <DialogTitle>No Event Found</DialogTitle>
+        <DialogTitle>No event scheduled</DialogTitle>
         <DialogContent>
-          <Typography variant="body1">There is no event scheduled for this date.</Typography>
+          <Typography variant="body1">Want to book an event with NOSA? Click <Link href="#" onClick={handleBookingLinkClick} >
+            HERE
+          </Link></Typography>
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setIsModalOpen(false)}>Close</Button>

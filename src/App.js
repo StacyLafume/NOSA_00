@@ -134,9 +134,6 @@ const App = () => {
         main: '#ff6e40',
       },
     },
-    shape: {
-      borderRadius: "0 !important", // Set the global borderRadius to 0 to remove it
-    },
   })
 
   return (
@@ -147,14 +144,14 @@ const App = () => {
       <Video videoHeight={"100vh"}/>
       <OurMission />
       <AboutUs />
-      <Events />
-      <PastEvents pastEventArr= {itemData}/>
-      <ArtistOfTheMonth name='Bridgett' monthYear='June 2023'  backgroundColor='#e66ae6' headshot='https://cdn.pixabay.com/photo/2017/02/16/23/10/smile-2072907_1280.jpg' mainArtwork='https://cdn.pixabay.com/photo/2013/01/29/20/46/black-and-white-76651_1280.jpg'/>
+      <Events eventArr={eventsArray}/>
+      {/* <PastEvents/> */}
+      <ArtistOfTheMonth name='Bridgett' monthYear='June 2023'  backgroundColor='#e6bdfc' headshot='https://images.pexels.com/photos/3031397/pexels-photo-3031397.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' mainArtwork='https://cdn.pixabay.com/photo/2022/09/19/22/34/black-woman-7466559_1280.jpg'/>
       <PastExhb />
       <Services services={services}/>
       <ContactUs />
     <Container>
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/artistofthemonth" element={<ArtistOfTheMonth />} />
@@ -165,7 +162,7 @@ const App = () => {
         <Route path="/pastexhibitions" element={<PastExhb />} />
         <Route path="/events" element={<Events />} />
         <Route path="/eventgallery" element={<EventGallery />} />
-      </Routes>
+      </Routes> */}
     </Container>
     </ThemeProvider>
   )
