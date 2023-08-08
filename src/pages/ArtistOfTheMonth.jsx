@@ -7,20 +7,18 @@ import { Box } from '@mui/joy';
 import headshot from '../content/images/headshots/headshot.jpg';
 
 
+const ArtistOfTheMonth = ({ name, monthYear, headshot, mainArtwork, artistPara, exhibtionPara, backgroundColor }) => {
 
-
-const ArtistOfTheMonth = ({ artistOfTheMonthData, backgroundColor  }) => {
-        const {date,exhibition_statement, artist_statement,main_artwork,thumbnail,title} = artistOfTheMonthData
     return (
         <>
             <Divider textAlign="right" role="presentation" style={{ backgroundColor: 'orange', height: '.2rem', alignItems: 'center', margin: '10vh 0' }}>
                 <h1 style={{ display: 'inline', backgroundColor: 'white', fontWeight: 'normal' }}>Artist Of The Month: {monthYear}</h1>
             </Divider>
 
-            <Grid container sx={{flexWrap: 'nowrap', backgroundColor:'#e6bdfc', padding: ' 1rem 4rem 2rem 4rem'}} spacing={1} >
+            <Grid container sx={{ flexWrap: 'nowrap', backgroundColor: '#e6bdfc', padding: ' 1rem 4rem 2rem 4rem' }} spacing={1} >
                 {/* Column 1 */}
                 <Grid item xs={12} md={3}>
-                    <h2 style={{ fontSize: '3.5rem', fontWeight: 'bold', textShadow: 'rgb(255, 175, 32) 0px 7px 1px', textAlign:'center'}}>{name}</h2>
+                    <h2 style={{ fontSize: '3.5rem', fontWeight: 'bold', textShadow: 'rgb(255, 175, 32) 0px 7px 1px', textAlign: 'center' }}>{name}</h2>
                     <img
                         src={`${mainArtwork}`}
                         loading="lazy"
@@ -54,14 +52,71 @@ const ArtistOfTheMonth = ({ artistOfTheMonthData, backgroundColor  }) => {
                     <p>{exhibtionPara} Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima dolorem reprehenderit enim doloribus, quidem expedita? Impedit, debitis odit ipsa, eveniet dolore laudantium repellat doloribus dignissimos perferendis, molestias tempore eligendi veritatis.</p>
                 </Grid>
             </Grid>
-<Container sx={{width:'40vw'}}>
-
-            <SGridWCarousel />
-</Container>
+            <Container sx={{ width: '40vw' }}>
+                <SGridWCarousel />
+            </Container>
         </>
     )
-
 }
 
 export default ArtistOfTheMonth
+
+
+
+// const ArtistOfTheMonth = ({ artistOfTheMonthData, backgroundColor }) => {
+//     const { date, exhibition_statement, artist_statement, main_artwork, thumbnail, title } = artistOfTheMonthData
+//     return (
+//         <>
+//             <Divider textAlign="right" role="presentation" style={{ backgroundColor: 'orange', height: '.2rem', alignItems: 'center', margin: '10vh 0' }}>
+//                 <h1 style={{ display: 'inline', backgroundColor: 'white', fontWeight: 'normal' }}>Artist Of The Month:
+//                     {/* {date} */}
+//                 </h1>
+//             </Divider>
+
+//             <Grid container sx={{ flexWrap: 'nowrap', backgroundColor: '#e6bdfc', padding: ' 1rem 4rem 2rem 4rem' }} spacing={1} >
+//                 {/* Column 1 */}
+//                 <Grid item xs={12} md={3}>
+//                     <h2 style={{ fontSize: '3.5rem', fontWeight: 'bold', textShadow: 'rgb(255, 175, 32) 0px 7px 1px', textAlign: 'center' }}>{title}</h2>
+//                     <img
+//                         src={`${main_artwork}`}
+//                         loading="lazy"
+//                         alt="Main Artwork"
+//                         style={{
+//                             width: "100%",
+//                         }}
+//                     />
+//                 </Grid>
+
+//                 {/* Column 2 */}
+//                 <Grid item xs={12} md={6} style={{ width: '100%' }}>
+//                     {/* Element 2 */}
+//                     <img
+//                         src={`${headshot}`}
+//                         loading="lazy"
+//                         alt="Headshot"
+//                         style={{ width: '30%' }}
+//                     // Add styles or attributes here if needed
+//                     />
+
+//                 </Grid>
+
+//                 {/* Column 3 */}
+//                 <Grid item xs={12} md={6}>
+//                     {/* Element 3 */}
+//                     <h3>Artist statement</h3>
+//                     <p>{artist_statement}</p>
+
+//                     <h3>Exhibit statement</h3>
+//                     <p>{exhibition_statement}</p>
+//                 </Grid>
+//             </Grid>
+//             <Container sx={{ width: '40vw' }}>
+
+//                 <SGridWCarousel />
+//             </Container>
+//         </>
+//     )
+
+// }
+
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import { Routes, Route } from 'react-router-dom';
-import PastExhb from './pages/PastExhb';
+// import PastExhb from './pages/PastExhb';
 import AboutUs from './pages/AboutUs';
 import OurMission from './pages/OurMission';
 import ContactUs from './pages/ContactUs';
@@ -151,7 +151,6 @@ const App = () => {
       <Video videoHeight={"100vh"} />
       <OurMission />
       <AboutUs />
-
       <Events eventArr={eventsArray}/>
       {/* <PastEvents/> */}
 //       <ArtistOfTheMonth name='Bridgett' monthYear='June 2023'  backgroundColor='#e6bdfc' headshot='https://images.pexels.com/photos/3031397/pexels-photo-3031397.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' mainArtwork='https://cdn.pixabay.com/photo/2022/09/19/22/34/black-woman-7466559_1280.jpg'/>
@@ -161,7 +160,7 @@ const App = () => {
       {ArtistOfTheMonthJson.length > 0 && (
         <ArtistOfTheMonth artistOfTheMonthData={ArtistOfTheMonthJson[0]} />
       )}
-      <PastExhb />
+      {/* <PastExhb /> */}
       <Services services={services} />
       <ContactUs />
       <Footer />
