@@ -2,16 +2,14 @@ import React from 'react';
 import Container from '@mui/material/Box';
 import SGridWCarousel from '../components/SGridWCarousel';
 import { Box } from '@mui/joy';
-import headshot from '../content/images/headshots/headshot.jpg';
-
-
-
+import shot from "../content/images/head-0.png"
 
 const ArtistOfTheMonth = ({ artistOfTheMonthData, backgroundColor  }) => {
-        const {date,exhibition_statement, artist_statement,main_artwork,thumbnail,title} = artistOfTheMonthData
+        const {date,exhibition_statement,headshot, artist_statement,main_artwork,thumbnail,title} = artistOfTheMonthData
+        const imgSrc = headshot.slice(3)
     return (
         <>
-        {console.log(headshot)}
+        {console.log(headshot, "headshot")}
             <h1 id="/artistofthemonth">Artist Of The Month: {title}</h1>
             <Container  sx={{ backgroundColor: { backgroundColor } }}>
                 <h2>{title}</h2>
@@ -27,16 +25,12 @@ const ArtistOfTheMonth = ({ artistOfTheMonthData, backgroundColor  }) => {
                         width: "17%",
                     }}
                 />
-                {console.log(headshot)}
+                {console.log(`..${imgSrc}`)}
                 <img
-                    src={headshot}
-                    //   srcSet={`${}`}
-                    //   alt={title}
+                    src={`..${imgSrc}`}
+             
                     loading="lazy"
-                    style={{
-                        // borderBottomLeftRadius: 4,
-                        // borderBottomRightRadius: 4,
-                        // display: "block",
+                    style={{ 
                         width: "20%",
                     }}
                 />

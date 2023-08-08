@@ -105,6 +105,5 @@ const getSortedArtistList = () => {
 };
 
 const sortedArtistList = getSortedArtistList();
-console.log(sortedArtistList);
 
 module.exports = sortedArtistList;
