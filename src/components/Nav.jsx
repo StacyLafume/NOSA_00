@@ -23,7 +23,7 @@ import { CssVarsProvider as JoyCssVarsProvider } from "@mui/joy/styles";
 
 const useStyles = makeStyles((theme) => ({
   colorFill: {
-    backgroundColor: "#ff8b26 !important",
+    backgroundColor: "#d9d9d9 !important",
     color: "black !important",
     fontWeight: "900 !important",
   },
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "900 !important",
   },
   appBar: {
-    height: "199px",
+    height: "fitContent",
     [theme.breakpoints.down("sm")]: {
       height: "64px",
     },
@@ -55,6 +55,14 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  vanishBox: {
+    display: 'none !important',
+    height: 'fit-content'
+  },
+  noLineVanish: {
+    display: 'inline-block'
+  }
+
 }));
 
 const Nav = () => {
@@ -106,7 +114,7 @@ const Nav = () => {
       transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMenuOpen}
       onClose={handleMenuClose}
-      style={{backgroundColor: "transparent !important"}}
+      style={{ backgroundColor: "transparent !important" }}
     >
       <LinkScroll to="/" spy={true} smooth={true} offset={50} duration={500}>
         <MenuItem
@@ -237,35 +245,36 @@ const Nav = () => {
     <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
       <JoyCssVarsProvider>
         <AppBar
-          className={`${classes.appBar} ${
-            navColor ? classes.colorFill : classes.noColorFill
-          }`}
+          className={`${classes.appBar} ${navColor ? classes.colorFill : classes.noColorFill
+            }`}
         >
           <Box
             sx={{
               width: "100%",
-              height: 300,
-              backgroundColor: "primary",
+              height: 'fit-content',
+              // backgroundColor: "transparent",
               mx: 3,
               // display: "flex",
             }}
+            className={navColor ? classes.vanishBox : null}
           >
             <img
               width={"12%"}
               height={'auto'}
-              src={navColor ?  require("../images/Nosa_Logo_black.png") : require("../images/Nosa_Logo_white.png")}
+              src={navColor ? require("../images/Nosa_Logo_black.png") : require("../images/Nosa_Logo_white.png")}
               alt=""
-              style={{marginTop: "35px"}}
+              style={{ marginTop: "35px" }}
             />
           </Box>
           <LinearProgress
-            style={{ zIndex: "-3", bottom: "60px", color:"orange" }}
+            style={{ zIndex: "-3", bottom: "60px", color: "orange", marginTop: '1.8rem' }}
             determinate
             value={100}
             thickness={3}
+            className={navColor ? classes.vanishBox : null}
           />
-          <Toolbar       style={{backgroundColor: navColor ? "#f0e8d4" : "transparent"}}
->
+          <Toolbar style={{ backgroundColor: navColor ? "#D9D9D9" : "transparent" }}
+          >
             <IconButton
               edge="start"
               className={classes.menuButton}
@@ -275,7 +284,7 @@ const Nav = () => {
             >
               <MenuIcon />
             </IconButton>
-            <Box sx={{ width: "100%", typography: "body1" }}>
+            <Box sx={{ width: "100%", typography: "body1", backgroundColor: navColor ? "#D9D9D9" : "transparent" }}>
               <TabContext value={value}>
                 <Box className={isSmallScreen ? classes.tabsContainer : ""}>
                   <Tabs
@@ -283,6 +292,7 @@ const Nav = () => {
                     onChange={handleChange}
                     indicatorColor="secondary"
                     aria-label="lab API tabs example"
+                    sx={{ backgroundColor: 'transparent' }}
                   >
                     <LinkScroll
                       to="/"

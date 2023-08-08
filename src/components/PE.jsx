@@ -8,9 +8,10 @@ import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputAdornment from "@mui/material/InputAdornment";
 import Divider from '@mui/material/Divider';
+import { styled } from '@mui/system';
 
-const PastEvents = () => {
-    
+const PE = () => {
+
     const eventData = [
         {
             img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
@@ -61,60 +62,73 @@ const PastEvents = () => {
             title: "Bike",
         },
     ];
-    
+
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredData, setFilteredData] = useState(eventData);
-    
+
     const handleSearch = (e) => {
         const searchTerm = e.target.value;
         setSearchTerm(searchTerm);
-        
+
         const filteredData = eventData.filter((item) =>
-        item.title.toLowerCase().includes(searchTerm.toLowerCase()) //||
-        // item.date.toLowerCase().includes(searchTerm.toLowerCase())
+            item.title.toLowerCase().includes(searchTerm.toLowerCase()) //||
+            // item.date.toLowerCase().includes(searchTerm.toLowerCase())
         );
         setFilteredData(filteredData);
     };
-    
+
+    const ImageListItemWithStyle = styled(ImageListItem)(({ theme }) => ({
+        "&:hover": {
+            cursor: "pointer",
+            opacity: 0.9,
+            borderBottom: 'solid 4px orange',
+            // borderLeft: `solid 1px orange`,
+            // borderRight: `solid 4px orange`,
+            boxShadow: `1px 10px 19px rgb(199 119 0)`,
+
+        },
+    }));
+
     return (
         <>
-        <Divider textAlign="center" role="presentation" style={{ backgroundColor: 'orange', height: '.2rem', alignItems: 'center', margin: '2rem 0' }}>
-        <h1 style={{ fontSize: '3.5rem', display: 'inline', backgroundColor: 'white' }}>Past Events</h1>            
-        </Divider>
-        <Container sx={{width:'80vw', marginTop:'10vh'}}maxWidth="xl">
-            <FormControl fullWidth  sx={{ m: 1, padding: '0 7rem', marginBottom: '5vh' }}>
-                <InputLabel sx={{paddingLeft:'9.4rem'}}htmlFor="outlined-adornment-amount">Search</InputLabel>
-                <OutlinedInput
-                    
-                    id="outlined-adornment-amount"
-                    startAdornment={<InputAdornment position="start">Event Name</InputAdornment>}
-                    label="Search"
-                    value={searchTerm}
-                    onChange={handleSearch}
-                    />
-            </FormControl>
-            <ImageList sx={{ width: "100%", height: 'auto'}} cols={5} rowHeight={'auto'} gap={50}>
-                {filteredData.map((item) => (
-                    <ImageListItem key={item.img}>
-                        <img
-                            src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-                            srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                            alt={item.title}
-                            loading="lazy"
-                            />
-                        <ImageListItemBar
-                            sx={{paddingLeft:'.1vw'}}
-                            title={item.title}
-                            subtitle={<span style={{paddingLeft:'.3vw'}}>by: {item.author}</span>}
-                            position="below"
-                            />
+            <Divider textAlign="center" role="presentation" style={{ backgroundColor: 'orange', height: '.2rem', alignItems: 'center', margin: '2rem 0' }}>
+                <h1 style={{ display: 'inline', backgroundColor: 'white' }}>Past Events</h1>
+            </Divider>
+            <Container sx={{ width: '80vw', marginTop: '10vh', }} maxWidth="xl">
+                <FormControl fullWidth sx={{ m: 1, padding: '0 7rem', marginBottom: '5vh' }}>
+                    <InputLabel sx={{ paddingLeft: '9.4rem' }} htmlFor="outlined-adornment-amount">Search</InputLabel>
+                    <OutlinedInput
 
-                    </ImageListItem>
-                ))}
-            </ImageList>
-        </Container>
-</>
+                        id="outlined-adornment-amount"
+                        startAdornment={<InputAdornment position="start"></InputAdornment>}
+                        label="Search"
+                        value={searchTerm}
+                        onChange={handleSearch}
+                    />
+                </FormControl>
+                <ImageList sx={{ width: "100%", height: 'auto' }} cols={5} rowHeight={'auto'} gap={50}>
+                    {filteredData.map((item) => (
+                        <ImageListItemWithStyle key={item.img}>
+                            <img
+                                src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+                                srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                                alt={item.title}
+                                loading="lazy"
+                            />
+                            <ImageListItemBar
+                                title={item.title}
+                                subtitle={<span>by: {item.date}</span>}
+                                position="below"
+                                sx={{ borderBottom: 'solid 4px black' }}
+                            />
+                            {/* event name and date */}
+
+                        </ImageListItemWithStyle>
+                    ))}
+                </ImageList>
+            </Container>
+        </>
     );
 };
 
-export default PastEvents
+export default PE
