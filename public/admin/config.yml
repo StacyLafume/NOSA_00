@@ -1,0 +1,24 @@
+
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "src/content/images"
+public_folder: "src/content/images"
+
+collections:
+  - name: "artist_of_the_month"
+    label: "Artist Of The Month"
+    folder: "src/content/artistOfTheMonth"
+    create: true
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Thumbnail", name: "thumbnail", widget: "image" }
+      - { label: "Headshot", name: "headshot", widget: "image" }
+      - { label: "Artist Statement", name: "artist_statement", widget: "text" }
+      - { label: "Exhibit Statement", name: "exhibition_statement", widget: "text" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Main Artwork", name: "main_artwork", widget: "image" }
+      - { label: "Artwork", name: "artwork", widget: "image" }
+
+

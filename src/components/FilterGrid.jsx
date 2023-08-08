@@ -76,7 +76,7 @@ const FilterGrid = () => {
 
     return (
         <Container maxWidth="xl">
-            <FormControl fullWidth sx={{ m: 1 }}>
+            <FormControl fullwidth sx={{ m: 1 }}>
                 <InputLabel htmlFor="outlined-adornment-amount">Search</InputLabel>
                 <OutlinedInput
                     id="outlined-adornment-amount"

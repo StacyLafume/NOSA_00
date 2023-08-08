@@ -7,7 +7,7 @@ const Map = () => {
   return (
     <Box sx={{width:"100%"}}>
       <Grid container spacing={1}>
-        <Grid item xs={9}>
+        <Grid item xs={12}>
           <Box sx={{ height: "450px" }}>
             <iframe
               title="map"
@@ -21,16 +21,7 @@ const Map = () => {
             ></iframe>
           </Box>
         </Grid>
-        <Grid item xs={3}>
-          <Box sx={{ height: '450px' }}>
-            <img
-              height="450"
-              src="https://github.com/StacyLafume/NOSA_00/assets/47963818/be4c176e-9566-457b-b7c3-825e7940a1f6"
-              width= '100%'
-              alt="NOSA fornt door"
-            />
-          </Box>
-        </Grid>
+        
       </Grid>
     </Box>
   );

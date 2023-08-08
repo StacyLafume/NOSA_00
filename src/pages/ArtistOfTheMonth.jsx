@@ -3,10 +3,14 @@ import Container from '@mui/material/Box';
 import SGridWCarousel from '../components/SGridWCarousel';
 import Divider from '@mui/material/Divider';
 import { Grid } from '@mui/material';
+import { Box } from '@mui/joy';
+import headshot from '../content/images/headshots/headshot.jpg';
 
 
-const ArtistOfTheMonth = ({ name, monthYear, headshot, mainArtwork, artistPara, exhibtionPara, backgroundColor }) => {
 
+
+const ArtistOfTheMonth = ({ artistOfTheMonthData, backgroundColor  }) => {
+        const {date,exhibition_statement, artist_statement,main_artwork,thumbnail,title} = artistOfTheMonthData
     return (
         <>
             <Divider textAlign="right" role="presentation" style={{ backgroundColor: 'orange', height: '.2rem', alignItems: 'center', margin: '10vh 0' }}>
@@ -51,6 +55,7 @@ const ArtistOfTheMonth = ({ name, monthYear, headshot, mainArtwork, artistPara, 
                 </Grid>
             </Grid>
 <Container sx={{width:'40vw'}}>
+
             <SGridWCarousel />
 </Container>
         </>
@@ -59,3 +64,4 @@ const ArtistOfTheMonth = ({ name, monthYear, headshot, mainArtwork, artistPara, 
 }
 
 export default ArtistOfTheMonth
+
