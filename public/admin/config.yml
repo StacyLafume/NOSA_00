@@ -25,14 +25,14 @@ collections:
           { name: "image_description", label: "Image Description", widget: "text", required: true },
         ]}
 
-    - name: "Events"
-      label: "Events"
-      folder: "src/content/event"
-      create: true
-      fields:
-        - { label: "Event Poster", name: "event_poster", widget: "string", required: true }
-        - { label: "Event Link", name: "event_link", widget: "string",  required: true }
-        - { label: "Event Date", name: "event_date", widget: "datetime", required: true}
+  - name: "Events"
+    label: "Events"
+    folder: "src/content/event"
+    create: true
+    fields:
+      - { label: "Event Poster", name: "event_poster", widget: "string", required: true }
+      - { label: "Event Link", name: "event_link", widget: "string",  required: true }
+      - { label: "Event Date", name: "event_date", widget: "datetime", required: true}
 
 
 
