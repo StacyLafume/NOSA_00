@@ -4,7 +4,7 @@ import Calendar from '../components/Calendar';
 import PE from "../components/PE";
 // box-shadow: 0 0px 0px -8px rgb(255 139 38), 50px -2rem 0px -10px rgb(255 139 38), 0px 0rem 0px 0px rgb(255 139 38);
 const Events = ({
-    eventArr=[
+    eventArr =[
         {
             image: 'https://media.istockphoto.com/id/1188613309/photo/a-cat-eating-spaghetti-with-pomodoro.jpg?s=1024x1024&w=is&k=20&c=ih-N_UnDeG0Hpd0DHUdwmfM2bOQuwbtfrZ2OLhkThtA=',
             date: new Date(2023, 7, 12), // July 12, 2023
@@ -23,7 +23,7 @@ const Events = ({
         // Add more events as needed
     ]
 }) => { // Fix the destructuring here
-    console.log(eventArr)
+    
     return (
         <div id="/events" style={{}}>
 

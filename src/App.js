@@ -11,6 +11,7 @@ import Nav from './components/Nav'
 import Video from './components/Video';
 import Footer from './pages/Footer';
 import ArtistOfTheMonthJson from './content/artistOfTheMonth/artistOfTheMonth.json'
+import event from './content/event/event.json';
 import ArtistOfTheMonth from "./pages/ArtistOfTheMonth";
 
 
@@ -151,9 +152,9 @@ const App = () => {
       <Video videoHeight={"100vh"} />
       <OurMission />
       <AboutUs />
-      <Events eventArr={eventsArray}/>
+      <Events eventArr={event}/>
       {/* <PastEvents/> */}
-//       <ArtistOfTheMonth name='Bridgett' monthYear='June 2023'  backgroundColor='#e6bdfc' headshot='https://images.pexels.com/photos/3031397/pexels-photo-3031397.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' mainArtwork='https://cdn.pixabay.com/photo/2022/09/19/22/34/black-woman-7466559_1280.jpg'/>
+       <ArtistOfTheMonth artistOfTheMonthData={ArtistOfTheMonthJson[0]} name='Bridgett' monthYear='June 2023'  backgroundColor='#e6bdfc' headshot='https://images.pexels.com/photos/3031397/pexels-photo-3031397.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' mainArtwork='https://cdn.pixabay.com/photo/2022/09/19/22/34/black-woman-7466559_1280.jpg'/>
 
    
       {/* Check if artistOfTheMonthData exists before rendering the component */}

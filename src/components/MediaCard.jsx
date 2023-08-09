@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 
 
 function MediaCard({ itemData }) {
-  console.log(itemData)
+  
   return (
     <Card sx={{ display: 'flex' }}>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>

@@ -47,28 +47,28 @@ const formatDate = (date) => {
   }
 };
 
-const processMarkdownFile = (filePath) => {
+const processArtistOfTheMonthMarkdownFile = (filePath) => {
     try {
         const markdownContent = fs.readFileSync(filePath, 'utf-8');
         const data = grayMatter(markdownContent).data;
     
         const dateString = data.date ? data.date.toString() : new Date().toISOString();
         const parsedDate = formatDate(dateString);
-        const publishedDate = `${parsedDate.monthName} ${parsedDate.day}, ${parsedDate.year}`;
+        const exhibitionDate = `${parsedDate.monthName} ${parsedDate.day}, ${parsedDate.year}`;
         const datestring = `${parsedDate.year}-${parsedDate.month}-${parsedDate.day}T${parsedDate.time}:00`;
         const date = new Date(datestring);
         const timestamp = date.getTime() / 1000;
-    
+
         const artist = {
           id: timestamp,
-          title: data.name ? data.name : 'No title given',
-          date: publishedDate ? publishedDate : 'No date given',
-          time: parsedDate.time,
-          thumbnail: data.thumbnail || 'No thumbnail given', // Use default value if data.thumbnail is missing or falsy
+          artist_name: data.artist_name ? data.artist_name : 'No Artist Name given',
+          exhibition_name: data.exhibition_name ? data.exhibition_name : 'No Exhibition Name given',
+          exhibition_date: data.exhibition_date ? data.exhibition_date : 'No Exhibition Date given',
           artist_statement: data.artist_statement || 'No artist statement given', // Use default value if data.artist_statement is missing or falsy
           exhibition_statement: data.exhibition_statement || 'No exhibition statement given', // Use default value if data.exhibition_statement is missing or falsy
-          headshot: data.headshot || 'No headshot given', // Use default value if data.headshot is missing or falsy
-          main_artwork: data.main_artwork || 'No main artwork given', // Use default value if data.main_artwork is missing or falsy
+          headshot: data.headshot || 'No Headshot given', // Use default value if data.headshot is missing or falsy
+          exhibition_poster: data.exhibition_poster || 'No main Exhibition Poster given', // Use default value if data.main_artwork is missing or falsy
+          exhibition_pieces: data.exhibition_pieces || 'No main Exhibition Pieces given', // Use default value if data.main_artwork is missing or falsy
         };
     
         return artist;
@@ -76,7 +76,25 @@ const processMarkdownFile = (filePath) => {
         console.error('Error reading Markdown file:', error);
         return null;
       }
-    };
+};
+
+const processEventMarkdownFile = (filePath) => {
+    try {
+        const markdownContent = fs.readFileSync(filePath, 'utf-8');
+        const data = grayMatter(markdownContent).data;
+  
+        const event = {
+            event_poster: data.event_poster,
+            event_link: data.event_link,
+            event_date: data.event_date,
+        };
+    
+        return event;
+      } catch (error) {
+        console.error('Error reading Markdown file:', error);
+        return null;
+      }
+};
     
 
 const getSortedArtistList = () => {
@@ -86,7 +104,7 @@ const getSortedArtistList = () => {
 
   files.forEach((file) => {
     const filePath = path.join(dirPath, file);
-    const artistData = processMarkdownFile(filePath);
+    const artistData = processArtistOfTheMonthMarkdownFile(filePath);
 
     if (artistData) {
         if (artistData.title === 'No title given') {
@@ -100,10 +118,38 @@ const getSortedArtistList = () => {
   const sortedList = artistList.sort((a, b) => (a.id < b.id ? 1 : -1));
   // make sure to only push {} object
   let data = JSON.stringify(sortedList)
-  fs.writeFileSync("src/content/artistOfTheMonth/artistOfTheMonth.json", data)
+  fs.writeFileSync("src/content/event/event.json", data)
   return sortedList;
 };
 
-const sortedArtistList = getSortedArtistList();
+const getSortedEventsList = () => {
+    const dirPath = path.join(__dirname, '../src/content/event');
+    const files = fs.readdirSync(dirPath);
+    const eventList = [];
+  
+    files.forEach((file) => {
+      const filePath = path.join(dirPath, file);
+      const eventData = processEventMarkdownFile(filePath);
+  
+      if (eventData) {
+          if (eventData.event_link === 'No event link given') {
+              console.error("No event link given") 
+            }else{
+                eventList.push(eventData);
+            }
+      }
+    });
+  
+    const sortedList = eventList.sort((a, b) => (a.id < b.id ? 1 : -1));
+    // make sure to only push {} object
+    let data = JSON.stringify(sortedList)
+    fs.writeFileSync("src/content/event/event.json", data)
+    return sortedList;
+};
+  
 
-module.exports = sortedArtistList;
+const sortedArtistList = getSortedArtistList();
+const sortedEventList = getSortedEventsList();
+
+
+module.exports = {sortedArtistList: sortedArtistList, sortedEventList:sortedEventList};

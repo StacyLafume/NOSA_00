@@ -74,8 +74,10 @@ const Calendar = ({ eventsArray }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCarouselAutoplaying, setIsCarouselAutoplaying] = useState(true);
 
+  console.log("eventsArray", eventsArray)
+
   useEffect(() => {
-    const images = eventsArray.filter((event) => event.image).map((event) => event.image);
+    const images = eventsArray.filter((event) => event.event_poster).map((event) => event.event_poster);
     setCarouselImages(images);
     setCarouselIndex(0);
   }, [eventsArray, setCarouselImages]);
@@ -188,10 +190,14 @@ const Calendar = ({ eventsArray }) => {
     console.log('eventArr:', JSON.stringify(eventsArray, null, 2));
     const days = [];
     for (let date = new Date(startDate); date <= endDate; date.setDate(date.getDate() + 1)) {
-      const event = eventsArray.find((evt) => isSameDay(evt.date, date));
-      const background = event && event.image ? `url(${event.image})` : event ? 'lightblue' : null;
+      const event = eventsArray.find((evt) => {
+        console.log("evt",isSameDay(new Date(evt.event_date), date))
+        return isSameDay(new Date(evt.event_date), date)
+      });
+     
+      const background = event && event.event_poster ? `url(${event.event_poster})` : event ? 'lightblue' : null;
 
-      days.push({ date: new Date(date), background, eventLink: event ? event.eventLink : null });
+      days.push({ date: new Date(date), background, event_link: event ? event.event_link : null });
     }
 
     const numDaysInMonth = days.length;
@@ -225,7 +231,9 @@ const Calendar = ({ eventsArray }) => {
     } else {
       return (
         <Grid sx={{ justifyContent: 'center', width: '84%', margin: '0', borderBottom: '#f09b05 solid 2px', borderTop: '#f09b05 solid 2px' }} container spacing={0} >
+          {console.log("days",days)}
           {days.map((day) => (
+            
             <Grid item key={day.date?.toString()}>
               <CalendarTile
                 date={day.date}
@@ -269,7 +277,7 @@ const Calendar = ({ eventsArray }) => {
   };
 
   useEffect(() => {
-    const images = eventsArray.filter((event) => event.image).map((event) => event.image);
+    const images = eventsArray.filter((event) => event.event_poster).map((event) => event.event_poster);
     setCarouselImages(images);
     setCarouselIndex(0);
   }, [eventsArray]);

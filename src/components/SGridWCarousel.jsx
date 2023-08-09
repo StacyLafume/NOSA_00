@@ -9,107 +9,10 @@ import ImageListItem from '@mui/material/ImageListItem';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 
-const SGridWCarousel = () => {
+const SGridWCarousel = ({images}) => {
+  console.log(...images)
   const [open, setOpen] = React.useState(false);
 
-  const itemData = [
-    {
-      image: "https://images.unsplash.com/photo-1518756131217-31eb79b20e8f",
-      title: "Fern",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1627308595229-7830a5c91f9f",
-      title: "Snacks",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1597645587822-e99fa5d45d25",
-      title: "Mushrooms",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1529655683826-aba9b3e77383",
-      title: "Tower",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1471357674240-e1a485acb3e1",
-      title: "Sea star",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62",
-      title: "Honey",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6",
-      title: "Basketball",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-      title: "Breakfast",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1518756131217-31eb79b20e8f",
-      title: "Fern",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1627308595229-7830a5c91f9f",
-      title: "Snacks",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1597645587822-e99fa5d45d25",
-      title: "Mushrooms",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1529655683826-aba9b3e77383",
-      title: "Tower",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1471357674240-e1a485acb3e1",
-      title: "Sea star",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62",
-      title: "Honey",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6",
-      title: "Basketball",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-      title: "Breakfast",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1518756131217-31eb79b20e8f",
-      title: "Fern",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1627308595229-7830a5c91f9f",
-      title: "Snacks",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1597645587822-e99fa5d45d25",
-      title: "Mushrooms",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1529655683826-aba9b3e77383",
-      title: "Tower",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1471357674240-e1a485acb3e1",
-      title: "Sea star",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62",
-      title: "Honey",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6",
-      title: "Basketball",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-      title: "Breakfast",
-    },
-  ];
 
   const captionStyle = {
     fontSize: "2em",
@@ -123,7 +26,6 @@ const SGridWCarousel = () => {
 
   const handleClickOpen = (e) => {
     setOpen(true);
-    console.log("hey girl hey", itemData.indexOf(e.target.src))
   };
 
   const handleClose = () => {
@@ -136,13 +38,13 @@ const SGridWCarousel = () => {
     <Box lg={{ width: "auto", minHeight: 829 }}>
       <Box maxWidth="xl">
         <ImageList sx={{ width: "100%", height: 'auto' }} cols={4} rowHeight={'auto'}>
-          {itemData.map((item, index) => (
+          {images.map((item, index) => (
             <ImageListItem key={item.image}>
               <img
                 onClick={handleClickOpen}
                 src={`${item.image}?w=164&h=164&fit=crop&auto=format`}
                 srcSet={`${item.image}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                alt={item.title}
+                alt={item}
                 loading="lazy"
                 style={{
                   borderBottomLeftRadius: 4,
@@ -168,7 +70,7 @@ const SGridWCarousel = () => {
           </Button>
         </DialogActions>
         <Carousel
-          data={itemData}
+          data={images}
           time={10}
           width="1700px"
           height="500px"

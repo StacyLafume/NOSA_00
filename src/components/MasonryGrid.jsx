@@ -122,7 +122,6 @@ const MasonryGrid = () => {
 
   const handleClickOpen = (e) => {
     setOpen(true);
-    console.log("hey girl hey",  itemData.indexOf(e.target.src))
   };
 
   const handleClose = () => {
