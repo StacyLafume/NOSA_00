@@ -116,7 +116,9 @@ const Nav = () => {
       onClose={handleMenuClose}
       style={{ backgroundColor: "transparent !important" }}
     >
-      <LinkScroll to="/" spy={true} smooth={true} offset={50} duration={500}>
+      <LinkScroll
+      isDynamic={true}
+ to="/" spy={true} smooth={true} offset={-50} duration={500}>
         <MenuItem
           onClick={() => {
             handleMenuClose();
@@ -127,10 +129,12 @@ const Nav = () => {
         </MenuItem>
       </LinkScroll>
       <LinkScroll
+      isDynamic={true}
+
         to="/ourmission"
         spy={true}
         smooth={true}
-        offset={50}
+        offset={-50}
         duration={500}
       >
         <MenuItem
@@ -143,10 +147,12 @@ const Nav = () => {
         </MenuItem>
       </LinkScroll>
       <LinkScroll
+      isDynamic={true}
+
         to="/aboutus"
         spy={true}
         smooth={true}
-        offset={50}
+        offset={-50}
         duration={500}
       >
         <MenuItem
@@ -159,10 +165,12 @@ const Nav = () => {
         </MenuItem>
       </LinkScroll>
       <LinkScroll
+      isDynamic={true}
+
         to="/events"
         spy={true}
         smooth={true}
-        offset={50}
+        offset={-50}
         duration={500}
       >
         <MenuItem
@@ -175,10 +183,12 @@ const Nav = () => {
         </MenuItem>
       </LinkScroll>
       <LinkScroll
+      isDynamic={true}
+
         to="/artistofthemonth"
         spy={true}
         smooth={true}
-        offset={5000000000}
+        offset={-50}
         duration={500}
       >
         <MenuItem
@@ -191,26 +201,12 @@ const Nav = () => {
         </MenuItem>
       </LinkScroll>
       <LinkScroll
-        to="/pastexhibitions"
-        spy={true}
-        smooth={true}
-        offset={50}
-        duration={500}
-      >
-        <MenuItem
-          onClick={() => {
-            handleMenuClose();
-            setValue("6");
-          }}
-        >
-          Past Exhibitions
-        </MenuItem>
-      </LinkScroll>
-      <LinkScroll
+      isDynamic={true}
+
         to="/services"
         spy={true}
         smooth={true}
-        offset={50}
+        offset={-50}
         duration={500}
       >
         <MenuItem
@@ -223,10 +219,12 @@ const Nav = () => {
         </MenuItem>
       </LinkScroll>
       <LinkScroll
+      isDynamic={true}
+
         to="/contactus"
         spy={true}
         smooth={true}
-        offset={50}
+        offset={-50}
         duration={500}
       >
         <MenuItem
@@ -244,7 +242,7 @@ const Nav = () => {
   return (
     <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
       <JoyCssVarsProvider>
-        <AppBar
+        <AppBar 
           className={`${classes.appBar} ${navColor ? classes.colorFill : classes.noColorFill
             }`}
         >
@@ -295,10 +293,12 @@ const Nav = () => {
                     sx={{ backgroundColor: 'transparent' }}
                   >
                     <LinkScroll
+      isDynamic={true}
+
                       to="/"
                       spy={true}
                       smooth={true}
-                      offset={50}
+                      offset={-50}
                       duration={500}
                     >
                       {/* <LinkRouter to="/"> */}
@@ -311,10 +311,12 @@ const Nav = () => {
                       {/* </LinkRouter> */}
                     </LinkScroll>
                     <LinkScroll
+      isDynamic={true}
+
                       to="/ourmission"
                       spy={true}
                       smooth={true}
-                      offset={50}
+                      offset={-50}
                       duration={500}
                     >
                       {/* <LinkRouter to="/ourmission"> */}
@@ -327,10 +329,12 @@ const Nav = () => {
                       {/* </LinkRouter> */}
                     </LinkScroll>
                     <LinkScroll
+      isDynamic={true}
+
                       to="/aboutus"
                       spy={true}
                       smooth={true}
-                      offset={50}
+                      offset={-50}
                       duration={500}
                     >
                       {/* <LinkRouter to="/aboutus"> */}
@@ -343,10 +347,12 @@ const Nav = () => {
                       {/* </LinkRouter> */}
                     </LinkScroll>
                     <LinkScroll
+      isDynamic={true}
+
                       to="/events"
                       spy={true}
                       smooth={true}
-                      offset={50}
+                      offset={-50}
                       duration={500}
                     >
                       {/* <LinkRouter to="/events"> */}
@@ -359,10 +365,12 @@ const Nav = () => {
                       {/* </LinkRouter> */}
                     </LinkScroll>
                     <LinkScroll
+      isDynamic={true}
+
                       to="/artistofthemonth"
                       spy={true}
                       smooth={true}
-                      offset={50}
+                      ooffset={-50}
                       duration={500}
                     >
                       {/* <LinkRouter to="/artistofthemonth"> */}
@@ -374,27 +382,14 @@ const Nav = () => {
                         />
                       {/* </LinkRouter> */}
                     </LinkScroll>
+                    
                     <LinkScroll
-                      to="/pastexhibitions"
-                      spy={true}
-                      smooth={true}
-                      offset={50}
-                      duration={500}
-                    >
-                      {/* <LinkRouter to="/pastexhibitions"> */}
-                        <Tab
-                          className={
-                            navColor ? classes.colorFill : classes.noColorFill
-                          }
-                          label="Past Exhibitions"
-                        />
-                      {/* </LinkRouter> */}
-                    </LinkScroll>
-                    <LinkScroll
+      isDynamic={true}
+
                       to="/services"
                       spy={true}
                       smooth={true}
-                      offset={50}
+                      offset={-50}
                       duration={500}
                     >
                       {/* <LinkRouter to="/services"> */}
@@ -407,10 +402,12 @@ const Nav = () => {
                       {/* </LinkRouter> */}
                     </LinkScroll>
                     <LinkScroll
+      isDynamic={true}
+
                       to="/contactus"
                       spy={true}
                       smooth={true}
-                      offset={50}
+                      offset={10}
                       duration={500}
                     >
                       {/* <LinkRouter to="/contactus"> */}

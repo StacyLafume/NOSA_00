@@ -10,7 +10,6 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 
 const SGridWCarousel = ({images}) => {
-  console.log(...images)
   const [open, setOpen] = React.useState(false);
 
 

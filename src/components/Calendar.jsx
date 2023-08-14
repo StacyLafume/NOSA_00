@@ -74,7 +74,6 @@ const Calendar = ({ eventsArray }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCarouselAutoplaying, setIsCarouselAutoplaying] = useState(true);
 
-  console.log("eventsArray", eventsArray)
 
   useEffect(() => {
     const images = eventsArray.filter((event) => event.event_poster).map((event) => event.event_poster);
@@ -187,11 +186,9 @@ const Calendar = ({ eventsArray }) => {
   const generateCalendar = (eventsArray) => {
     const startDate = startOfMonth(currentMonth);
     const endDate = endOfMonth(currentMonth);
-    console.log('eventArr:', JSON.stringify(eventsArray, null, 2));
     const days = [];
     for (let date = new Date(startDate); date <= endDate; date.setDate(date.getDate() + 1)) {
       const event = eventsArray.find((evt) => {
-        console.log("evt",isSameDay(new Date(evt.event_date), date))
         return isSameDay(new Date(evt.event_date), date)
       });
      
@@ -231,7 +228,7 @@ const Calendar = ({ eventsArray }) => {
     } else {
       return (
         <Grid sx={{ justifyContent: 'center', width: '84%', margin: '0', borderBottom: '#f09b05 solid 2px', borderTop: '#f09b05 solid 2px' }} container spacing={0} >
-          {console.log("days",days)}
+          
           {days.map((day) => (
             
             <Grid item key={day.date?.toString()}>

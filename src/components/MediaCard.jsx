@@ -1,21 +1,38 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
 
-
-function MediaCard({ itemData }) {
-  
+function MediaCard({ artistData }) {
+  // isplay: flex;
+  //   flex-direction: row;
+  //   /* align-content: stretch; */
+  //   justify-content: space-between;
+  //   align-items: center;
   return (
-    <Card sx={{ display: 'flex' }}>
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <CardContent sx={{ flex: '1 0 auto' }}>
+    <Card
+      sx={{
+        display: "flex",
+        height: "20vh",
+        width: "100%",
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+        alignContent: "space-around",
+        
+      }}
+    >
+      <Box sx={{ display: "flex", flexDirection: "column" }}>
+        <CardContent sx={{ flex: "1 0 auto" }}>
           <Typography component="div" variant="h5">
-            {itemData.title}
+            {artistData.exhibition_name}
           </Typography>
-          <Typography variant="subtitle1" color="text.secondary" component="div">
+          <Typography
+            variant="subtitle1"
+            color="text.secondary"
+            component="div"
+          >
             event / exhibition explanation
           </Typography>
         </CardContent>
@@ -23,11 +40,17 @@ function MediaCard({ itemData }) {
       <CardMedia
         component="img"
         sx={{ width: 151 }}
-        image={itemData.img}
+        image={artistData.exhibition_poster}
+        alt="Live from space album cover"
+      />
+      <CardMedia
+        component="img"
+        sx={{ width: 151 }}
+        image={artistData.headshot}
         alt="Live from space album cover"
       />
     </Card>
   );
 }
 
-export default MediaCard
+export default MediaCard;

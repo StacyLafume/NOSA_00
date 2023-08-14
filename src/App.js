@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import { Routes, Route } from 'react-router-dom';
-// import PastExhb from './pages/PastExhb';
+ import PastExhb from './pages/PastExhb';
 import AboutUs from './pages/AboutUs';
 import OurMission from './pages/OurMission';
 import ContactUs from './pages/ContactUs';
@@ -13,25 +13,10 @@ import Footer from './pages/Footer';
 import ArtistOfTheMonthJson from './content/artistOfTheMonth/artistOfTheMonth.json'
 import event from './content/event/event.json';
 import ArtistOfTheMonth from "./pages/ArtistOfTheMonth";
+import { styled } from '@mui/material/styles';
 
 
 const App = () => {
-
-  const eventsArray = [
-    {
-      image: 'https://media.istockphoto.com/id/1188613309/photo/a-cat-eating-spaghetti-with-pomodoro.jpg?s=1024x1024&w=is&k=20&c=ih-N_UnDeG0Hpd0DHUdwmfM2bOQuwbtfrZ2OLhkThtA=',
-      date: new Date(2023, 7, 12), // July 12, 2023
-      eventLink: 'URL_OF_EVENT_1',
-    },
-    {
-      image: 'https://media.istockphoto.com/id/900783724/photo/ginger-cat.jpg?s=1024x1024&w=is&k=20&c=Zh-b132Vqb6Quhm-Z6vv8rqH2TsO-WOGLVuW1f9ExoE=',
-      date: new Date(2023, 7, 25), // July 25, 2023
-      eventLink: 'URL_OF_EVENT_2',
-    },
-    // Add more events as needed
-  ];
-
-  const pastExhbArr = []
 
   const itemData = [
     {
@@ -146,20 +131,19 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline defaultMode="dark" />
-      {console.log("artistOfTheMonthData", ArtistOfTheMonthJson)}
-
+      <div id="/"/>
       <Nav />
-      <Video videoHeight={"100vh"} />
+      <Video  videoHeight={"100vh"} />
       <OurMission />
       <AboutUs />
       <Events eventArr={event}/>
-      {/* <PastEvents/> */}
-       <ArtistOfTheMonth artistOfTheMonthData={ArtistOfTheMonthJson[0]} name='Bridgett' monthYear='June 2023'  backgroundColor='#e6bdfc' headshot='https://images.pexels.com/photos/3031397/pexels-photo-3031397.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' mainArtwork='https://cdn.pixabay.com/photo/2022/09/19/22/34/black-woman-7466559_1280.jpg'/>
+      <PastExhb artistData={ArtistOfTheMonthJson} />
+       {/* <ArtistOfTheMonth artistOfTheMonthData={ArtistOfTheMonthJson[0]} name='Bridgett' monthYear='June 2023'  backgroundColor='#e6bdfc' headshot='https://images.pexels.com/photos/3031397/pexels-photo-3031397.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' mainArtwork='https://cdn.pixabay.com/photo/2022/09/19/22/34/black-woman-7466559_1280.jpg'/> */}
 
    
       {/* Check if artistOfTheMonthData exists before rendering the component */}
       {ArtistOfTheMonthJson.length > 0 && (
-        <ArtistOfTheMonth artistOfTheMonthData={ArtistOfTheMonthJson[0]} />
+        <ArtistOfTheMonth artistsOfTheMonthData={ArtistOfTheMonthJson} artistOfTheMonthData={ArtistOfTheMonthJson[0]} />
       )}
       {/* <PastExhb /> */}
       <Services services={services} />
