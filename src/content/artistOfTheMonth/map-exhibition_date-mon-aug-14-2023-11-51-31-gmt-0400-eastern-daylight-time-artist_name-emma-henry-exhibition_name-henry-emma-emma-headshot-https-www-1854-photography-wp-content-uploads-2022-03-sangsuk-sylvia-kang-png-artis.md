@@ -1,6 +1,6 @@
 ---
 artist_name: " Emma  Henry"
-exhibition_name: " Henry Emma Emma"
+exhibition_name: paper threads
 headshot: https://www.1854.photography/wp-content/uploads/2022/03/Sangsuk-Sylvia-Kang.png
 artist_statement: >-
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
