@@ -1,18 +1,23 @@
 import * as React from "react";
 import Divider from "@mui/material/Divider";
 import { Box, Grid, Typography } from "@mui/material";
+import KPI from "../components/KPI";
 
 const OurMission = () => {
   return (
-    <Box sx={{ flexGrow: 1 }} id="/ourmission" style={{ height: "110vh" }}>
+    <Box
+      sx={{ flexGrow: 1 }}
+      id="/ourmission"
+      style={{ height: "110vh", backgroundColor: "black", overflow: "hidden" }}
+    >
       <Grid container sx={{ pt: "5%" }} spacing={2}>
-        <Grid xs={12} style={{ height: "15vh" }}>
+        <Grid xs={12} style={{ height: "10vh" }}>
           {" "}
           <Divider
             textAlign="center"
             role="presentation"
             style={{
-              backgroundColor: "orange",
+              backgroundColor: "#ff8b25",
               height: ".2rem",
               alignItems: "center",
               margin: "2rem 0",
@@ -22,12 +27,47 @@ const OurMission = () => {
               style={{
                 fontSize: "3.5rem",
                 display: "inline",
-                backgroundColor: "white",
+                backgroundColor: "black",
+                padding: "10%",
+                color: "#ff8b25",
+                position: "relative",
+                right: "2rem"
               }}
             >
               Our Mission
             </h1>
           </Divider>
+        </Grid>
+        <Grid
+          container
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            marginTop: "0px",
+            flexDirection: "column",
+          }}
+          spacing={2}
+        >
+          <Typography
+            sx={{
+              fontSize: "2rem",
+              color: "#ff8b25",
+              fontWeight: "300 !important",
+              textAlign: "center",
+            }}
+          >
+            {"NOSA enables Artists to showcase their work."}
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: "2rem",
+              color: "#ff8b25",
+              fontWeight: "300 !important",
+              textAlign: "center",
+            }}
+          >
+            {" To connect with each other and engage with the public."}{" "}
+          </Typography>
         </Grid>
         <Grid
           style={{
@@ -37,12 +77,13 @@ const OurMission = () => {
             padding: "4%",
             justifyContent: "space-between",
             flexWrap: "wrap",
+            flexDirection: "row-reverse",
           }}
         >
           <Grid
             Grid
             style={{
-              height: "30vh",
+              height: "25vh",
               display: "flex",
               flexDirection: "row",
               padding: "3%",
@@ -55,9 +96,14 @@ const OurMission = () => {
             xs={8}
           >
             <Grid>
-              <Typography sx={{ fontSize: "2rem" }}>
-                Our mission is to provide a platform for artists to showcase
-                their work, connect with each other, and engage with the public.
+              <Typography sx={{ fontSize: "1.2rem", lineHeight: "2rem" }}>
+                Boston's communities have been hit hard by the pandemic, and
+                small businesses and artists have been particularly impacted.
+                Many artists struggle to find affordable space to showcase their
+                work, while small businesses lack the foot traffic they need to
+                thrive. NOSA is solving this problem by providing a platform for
+                artists and small businesses to come together, engage with the
+                public, and boost the local economy.
               </Typography>
             </Grid>
           </Grid>
@@ -79,13 +125,13 @@ const OurMission = () => {
                 backgroundRepeat: "no-repeat",
                 height: "30vh",
                 width: "100%",
-                border: "thick solid orange"
+                border: "thick solid #ff8b25",
               }}
             ></Grid>
           </Grid>
           <Grid
             style={{
-              height: "30vh",
+              height: "25vh",
               flexWrap: "wrap",
               display: "flex",
               alignItems: "center",
@@ -101,7 +147,7 @@ const OurMission = () => {
                 backgroundRepeat: "no-repeat",
                 height: "30vh",
                 width: "100%",
-                border: "thick solid orange"
+                border: "thick solid #ff8b25",
               }}
             >
               xs=4
@@ -116,21 +162,18 @@ const OurMission = () => {
               justifyContent: "space-around",
               color: "#ff8b25",
               backgroundColor: "black",
-              padding: "3%",
+              padding: "0",
+              backgroundImage: `url(https://giphy.com/embed/t2aAdTgnU9Ie6jvG0W)`,
             }}
             Grid
             xs={8}
           >
-            <Grid>
-              <Typography sx={{ fontSize: "1rem" }}>
-                Boston's communities have been hit hard by the pandemic, and
-                small businesses and artists have been particularly impacted.
-                Many artists struggle to find affordable space to showcase their
-                work, while small businesses lack the foot traffic they need to
-                thrive. NOSA is solving this problem by providing a platform for
-                artists and small businesses to come together, engage with the
-                public, and boost the local economy.
-              </Typography>
+            <Grid
+              style={{
+                backgroundImage: `url(https://giphy.com/embed/t2aAdTgnU9Ie6jvG0W)`,
+              }}
+            >
+              <KPI numbers={["$8K", "19", "$5K", "326+"]} interval={1} />
             </Grid>
           </Grid>
         </Grid>

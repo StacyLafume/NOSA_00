@@ -6,9 +6,12 @@ import KeyboardDoubleArrowLeftSharpIcon from '@mui/icons-material/KeyboardDouble
 import KeyboardDoubleArrowRightSharpIcon from '@mui/icons-material/KeyboardDoubleArrowRightSharp';
 import PauseCircleFilledSharpIcon from '@mui/icons-material/PauseCircleFilledSharp';
 import PlayCircleFilledSharpIcon from '@mui/icons-material/PlayCircleFilledSharp';
+import Divider from "@mui/material/Divider";
+
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, isSameDay, addYears, subYears, getYear } from 'date-fns';
 import { styled } from '@mui/material/styles'; // Import styled from Material-UI
 import { borderLeft } from '@mui/system';
+import PE from './PE';
 
 const calendarStyles = {
   largeSquareTile: {
@@ -29,7 +32,7 @@ const CalendarTile = ({ date, background, image, onTileClick, setCarouselIndex, 
     }
   };
 
-
+ 
 
   return (
     <Box
@@ -73,6 +76,7 @@ const Calendar = ({ eventsArray }) => {
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCarouselAutoplaying, setIsCarouselAutoplaying] = useState(true);
+  const [showEvents, setShowEvents] = useState(true);
 
 
   useEffect(() => {
@@ -87,6 +91,13 @@ const Calendar = ({ eventsArray }) => {
     },
   }));
 
+
+  const handleShowEvents = () => {
+    console.log("clicking")
+    setShowEvents(false)
+  }
+
+  
   const renderCarouselIndicators = () => {
     return (
       <Box sx={{
@@ -299,86 +310,91 @@ const Calendar = ({ eventsArray }) => {
   }, [carouselIndex, isCarouselAutoplaying, handleCarouselNext]);
 
   return (
-    <Box sx={{ height: '80vh', padding: '0vh 3vw' }}>
-      <Box sx={{ display: 'inline-flex', width: '56.1%', justifyContent: 'center', my: 2, margin: '1% 0' }}>
-        {yearlyView ? (
-          <IconButton onClick={toggleYearlyView}>
-            {/* <KeyboardArrowLeftSharpIcon/> */}
-          </IconButton>
-        ) : (
-          <>
-            <IconButton sx={{ padding: '0', fill: '##ed9904' }} onClick={navigateToPreviousYear}>
-              <KeyboardDoubleArrowLeftSharpIcon sx={{ fontSize: '2rem' }} />
-            </IconButton>
-            <IconButton sx={{ padding: '0', fill: '##ed9904' }} onClick={navigateBackward}>
-              <KeyboardArrowLeftSharpIcon sx={{ fontSize: '2rem' }} />
-            </IconButton>
-          </>
-        )}
-        <Typography sx={{ margin: '0' }} variant="h6" gutterBottom>
-          {yearlyView ? 'Select a Year' : format(currentMonth, 'MMMM yyyy')}
-        </Typography>
-        {yearlyView ? (
-          <IconButton onClick={toggleYearlyView}>
-            {/* <ArrowForward /> */}
-          </IconButton>
-        ) : (
-          <>
-            <IconButton sx={{ padding: '0', fill: '##ed9904' }} onClick={navigateForward}>
-              <KeyboardArrowRightSharpIcon sx={{ fontSize: '2rem' }} />
-            </IconButton>
-            <IconButton sx={{ padding: '0', fill: '##ed9904' }} onClick={navigateToNextYear}>
-              <KeyboardDoubleArrowRightSharpIcon sx={{ fontSize: '2rem' }} />
-            </IconButton>
-          </>
-        )}
-      </Box>
-      {/* <Typography sx={{display: 'inline-flex', fontWeight: '500', fontSize: '1.00rem'}}>
-        Book your next event with NOSA 
-        <Link href="#" onClick={handleBookingLinkClick} >
-           HERE
-        </Link>
-      </Typography> */}
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', "& .outer-container": { padding: 0, borderRadius: 0, height: 'fit-content' } }}>
-        <Box sx={{ flex: '2 0 66.66%', height: '80vh' }} className="outer-container">{renderCalendar()} </Box>
-        <Box sx={{ flex: '1 0 33.33%',textAlign: 'center', height: '25.2rem' }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '25.2rem', backgroundImage: 'url(https://p1.pxfuel.com/preview/782/525/96/paint-painting-image-design.jpg)', padding: '3%', borderRadius: '5px' }}>
-            {carouselImages.length > 0 ? (
-              <img src={carouselImages[carouselIndex]} alt={`Event ${carouselIndex}`} style={{ width: '70%', borderRadius: '5px' }} />
-            ) : (
-              <Typography variant="subtitle1">No images available</Typography>
-            )}
-          </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          </Box>
-          <Box sx={{
-            display: 'flex', alignItems: 'center', justifyContent: 'space-evenly', width: '100%',
-            margin: '0', marginBottom: '2rem', padding: '.3rem 1.5rem'
-          }}>
+   <div> {showEvents ?  (<Box sx={{ height: '80vh', padding: '0vh 3vw' }}>
+      <Divider textAlign="left" role="presentation" style={{ backgroundColor: '#ff8b25', height: '.2rem', alignItems: 'center', margin: '2rem 0' }}>
+                <h1 style={{display: 'inline', backgroundColor: 'white' }}>Events</h1>
+            </Divider>
+   <Box sx={{ display: 'inline-flex', width: '56.1%', justifyContent: 'center', my: 2, margin: '1% 0' }}>
+     {yearlyView ? (
+       <IconButton onClick={toggleYearlyView}>
+         {/* <KeyboardArrowLeftSharpIcon/> */}
+       </IconButton>
+     ) : (
+       <>
+         <IconButton sx={{ padding: '0', fill: '##ed9904' }} onClick={navigateToPreviousYear}>
+           <KeyboardDoubleArrowLeftSharpIcon sx={{ fontSize: '2rem' }} />
+         </IconButton>
+         <IconButton sx={{ padding: '0', fill: '##ed9904' }} onClick={navigateBackward}>
+           <KeyboardArrowLeftSharpIcon sx={{ fontSize: '2rem' }} />
+         </IconButton>
+       </>
+     )}
+     <Typography sx={{ margin: '0' }} variant="h6" gutterBottom>
+       {yearlyView ? 'Select a Year' : format(currentMonth, 'MMMM yyyy')}
+     </Typography>
+     {yearlyView ? (
+       <IconButton onClick={toggleYearlyView}>
+         {/* <ArrowForward /> */}
+       </IconButton>
+     ) : (
+       <>
+         <IconButton sx={{ padding: '0', fill: '##ed9904' }} onClick={navigateForward}>
+           <KeyboardArrowRightSharpIcon sx={{ fontSize: '2rem' }} />
+         </IconButton>
+         <IconButton sx={{ padding: '0', fill: '##ed9904' }} onClick={navigateToNextYear}>
+           <KeyboardDoubleArrowRightSharpIcon sx={{ fontSize: '2rem' }} />
+         </IconButton>
+       </>
+     )}
+   </Box>
+   {/* <Typography sx={{display: 'inline-flex', fontWeight: '500', fontSize: '1.00rem'}}>
+     Book your next event with NOSA 
+     <Link href="#" onClick={handleBookingLinkClick} >
+        HERE
+     </Link>
+   </Typography> */}
+   <Box sx={{ display: 'flex', flexWrap: 'wrap', "& .outer-container": { padding: 0, borderRadius: 0, height: 'fit-content' } }}>
+     <Box sx={{ flex: '2 0 66.66%', height: '80vh' }} className="outer-container">{renderCalendar()} </Box>
+     <Box sx={{ flex: '1 0 33.33%',textAlign: 'center', height: '25.2rem' }}>
+       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '25.2rem', backgroundImage: 'url(https://p1.pxfuel.com/preview/782/525/96/paint-painting-image-design.jpg)', padding: '3%', borderRadius: '5px' }}>
+         {carouselImages.length > 0 ? (
+           <img src={carouselImages[carouselIndex]} alt={`Event ${carouselIndex}`} style={{ width: '70%', borderRadius: '5px' }} />
+         ) : (
+           <Typography variant="subtitle1">No images available</Typography>
+         )}
+       </Box>
+       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+       </Box>
+       <Box sx={{
+         display: 'flex', alignItems: 'center', justifyContent: 'space-evenly', width: '100%',
+         margin: '0', marginBottom: '2rem', padding: '.3rem 1.5rem'
+       }}>
 
-            <IconButton onClick={handleCarouselPrevious}>
-              <KeyboardDoubleArrowLeftSharpIcon sx={{ marginLeft: '5rem' }} />
-            </IconButton>
-            {renderCarouselIndicators()}
-            <IconButton onClick={handleCarouselNext}>
-              <KeyboardDoubleArrowRightSharpIcon sx={{ marginRight: '5rem' }} />
-            </IconButton>
-          </Box>
-        </Box>
-      </Box>
-
-      <Dialog open={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <DialogTitle>No event scheduled</DialogTitle>
-        <DialogContent>
-          <Typography variant="body1">Want to book an event with NOSA? Click <Link href="#" onClick={handleBookingLinkClick} >
-            HERE
-          </Link></Typography>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setIsModalOpen(false)}>Close</Button>
-        </DialogActions>
-      </Dialog>
-    </Box>
+         <IconButton onClick={handleCarouselPrevious}>
+           <KeyboardDoubleArrowLeftSharpIcon sx={{ marginLeft: '5rem' }} />
+         </IconButton>
+         {renderCarouselIndicators()}
+         <IconButton onClick={handleCarouselNext}>
+           <KeyboardDoubleArrowRightSharpIcon sx={{ marginRight: '5rem' }} />
+         </IconButton>
+       </Box>
+     </Box>
+   </Box>
+       <button onClick={handleShowEvents}>Previous Events</button>
+   <Dialog open={isModalOpen} onClose={() => setIsModalOpen(false)}>
+     <DialogTitle>No event scheduled</DialogTitle>
+     <DialogContent>
+       <Typography variant="body1">Want to book an event with NOSA? Click <Link href="#" onClick={handleBookingLinkClick} >
+         HERE
+       </Link></Typography>
+     </DialogContent>
+     <DialogActions>
+       <Button onClick={() => setIsModalOpen(false)}>Close</Button>
+     </DialogActions>
+   </Dialog>
+ </Box>) : <PE eventArr={eventsArray} setShowEvents={setShowEvents}/> }
+    
+    </div>
   );
 };
 

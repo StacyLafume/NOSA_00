@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ArtistOfTheMonth = ({
   artistOfTheMonthData,
+  artistsOfTheMonthData,
   isPastArtistOfTheMonth = false,
   pastArtistOfTheMonthData,
   name,
@@ -26,6 +27,8 @@ const ArtistOfTheMonth = ({
   exhibtionPara,
   backgroundColor,
 }) => {
+
+
   const [showPerviousExhibition, setShowPreviousExhibition] = useState(false);
 
   const [artistData, setArtistData] = useState({
@@ -38,7 +41,7 @@ const ArtistOfTheMonth = ({
     exhibition_poster: artistOfTheMonthData.exhibition_poster,
   });
 
-  const [isCurrentArtist, setIsCurrentArtist] = useState(false);
+  const [isCurrentArtist, setIsCurrentArtist] = useState(true);
 
 
   const {
@@ -54,15 +57,16 @@ const ArtistOfTheMonth = ({
   const getPastExhibitions = () => {
     setShowPreviousExhibition(true);
   };
+
   const showCurrentArtist = () => {
     setArtistData({ ...pastArtistOfTheMonthData[0] });
-    setIsCurrentArtist(true)
+    setIsCurrentArtist(!isCurrentArtist)
     console.log(isCurrentArtist)
     console.log("I was clicked")
   };
 
   const classes = useStyles();
-
+  
   
   return (
     <>
@@ -75,7 +79,7 @@ const ArtistOfTheMonth = ({
             textAlign="right"
             role="presentation"
             style={{
-              backgroundColor: "orange",
+              backgroundColor: "#ff8b25",
               height: ".2rem",
               alignItems: "center",
               margin: "10vh 0",
@@ -121,13 +125,12 @@ const ArtistOfTheMonth = ({
                   width: "100%",
                 }}
               />
-              <Button
-                className={isCurrentArtist ? classes.hideMe : null}
+              {isCurrentArtist ? (<Button
                 onClick={showCurrentArtist}
               >
                 {" "}
                 Current Artist{" "}
-              </Button>
+              </Button>): '' }
             </Grid>
 
             {/* Column 2 */}
@@ -150,12 +153,15 @@ const ArtistOfTheMonth = ({
 
               <h3>Exhibit statement</h3>
               <p>{exhibition_statement}</p>
-              {isPastArtistOfTheMonth && (
+              {isPastArtistOfTheMonth ?  (
                 <Button onClick={getPastExhibitions}>
                   {" "}
                   Back to pervious exhibitions
                 </Button>
-              )}
+              ):(<Button onClick={getPastExhibitions}>       
+                {" "}
+                pervious exhibitions
+              </Button>)}
             </Grid>
           </Grid>
           <Container sx={{ width: "40vw" }}>

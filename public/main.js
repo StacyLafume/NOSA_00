@@ -84,9 +84,13 @@ const processEventMarkdownFile = (filePath) => {
         const data = grayMatter(markdownContent).data;
   
         const event = {
+            event_name: data.event_name,
             event_poster: data.event_poster,
             event_link: data.event_link,
-            event_date: data.event_date,
+            event_start_date: data.event_start_date,
+            event_end_date: data.event_end_date,
+            event_pictures: data.event_pictures,
+            event_color: data.event_color
         };
     
         return event;
@@ -118,7 +122,7 @@ const getSortedArtistList = () => {
   const sortedList = artistList.sort((a, b) => (a.id < b.id ? 1 : -1));
   // make sure to only push {} object
   let data = JSON.stringify(sortedList)
-  fs.writeFileSync("src/content/event/event.json", data)
+  fs.writeFileSync("src/content/artistOfTheMonth/artistOfTheMonth.json", data)
   return sortedList;
 };
 
@@ -141,13 +145,12 @@ const getSortedEventsList = () => {
     });
   
     const sortedList = eventList.sort((a, b) => (a.id < b.id ? 1 : -1));
-    // make sure to only push {} object
+    // TODO: make sure to only push {} object
     let data = JSON.stringify(sortedList)
     fs.writeFileSync("src/content/event/event.json", data)
     return sortedList;
 };
   
-
 const sortedArtistList = getSortedArtistList();
 const sortedEventList = getSortedEventsList();
 

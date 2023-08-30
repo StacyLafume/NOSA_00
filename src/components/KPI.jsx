@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Container, Grid, Box, Button, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 const useStyles = makeStyles((theme) => ({
   kpiContainer: {
@@ -11,15 +13,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     overflow: "hidden",
     width: "100%",
-  },
-  backgroundImage: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    zIndex: -1, // Set a negative z-index to place the image behind the content
-    filter: "blur(8px) contrast(120%)", // Apply the blur effect only to the image
+    flexWrap: "nowrap"
   },
   kpiContent: {
     position: "relative",
@@ -29,24 +23,22 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center", // Center items vertically
     alignItems: "center", // Center items horizontally
-    padding: theme.spacing(8), // Adjust the padding as needed to center the numbers
+    padding: theme.spacing(5), // Adjust the padding as needed to center the numbers
   },
   buttonWrapper: {
     color: "f1993e",
     marginTop: theme.spacing(2),
+    flexWrap: "no-wrap",
+    padding:"1%"
   },
-  iframeContainer: {
+  circle: {
+    width: "180px !important",
     position: "relative",
-    width: "100%",
-    height: "100%",
-    overflow: "hidden", // Ensure the iframe doesn't overflow outside its container
-  },
-
-  iframe: {
-    width: "100%", // Set iframe width to 100%
-    height: "100%", // Set iframe height to 100%
-    border: 0, // Remove the iframe border
-  },
+    height: "119px !important", 
+    top: "104px",
+    right: "32px",
+    transform: "rotate(-90deg)",
+  }
 }));
 
 const KPI = ({ numbers, interval }) => {
@@ -78,46 +70,26 @@ const KPI = ({ numbers, interval }) => {
 
   return (
     <Container className={classes.kpiContainer} maxWidth={false}>
-      <div className={classes.backgroundImage}>
-        {/* Wrap the iframe in a container */}
-        <div className={classes.iframeContainer}>
-          <div
-            style={{
-              width: "100%",
-              height: "0",
-              paddingBottom: "100%",
-              position: "relative",
-            }}
-          >
-            <iframe
-             title="waves"
-              src="https://giphy.com/embed/t2aAdTgnU9Ie6jvG0W"
-              width="100%"
-              height="100%"
-              style={{ position: "absolute" }}
-              className="giphy-embed"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-      </div>
       <Grid
         container
         spacing={2}
         justifyContent="center"
         alignItems="center"
+        style={{flexWrap:"nowrap"}}
         sx={{}}
       >
         {numbers.map((targetNumber, index) => (
           <Grid item xs={4} key={index}>
             <Box textAlign="center" className={classes.kpiContent}>
-              <Typography variant="h3" fontWeight="bold">
-                {counts[index]}
+            <CircularProgress className={classes.circle} variant="determinate" thickness={1} sx={{color:"#ff8b25",}} value={100} />
+              <Typography variant="h3" fontWeight="thin">
+                {targetNumber}
               </Typography>
               <div className={classes.buttonWrapper}>
-                <Button variant="contained" color="primary">
-                  KPI Label {index + 1}
-                </Button>
+                <Grid item sx={{width:"6rem", position:"relative", top:"40px"}} variant="contained">
+                {index === 0 ? "Ticket sales" : index === 1 ? "Ticked Events" :  index === 2 ? "Art Sales" : "Members"}
+
+                </Grid>
               </div>
             </Box>
           </Grid>

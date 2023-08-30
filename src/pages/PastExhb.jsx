@@ -34,7 +34,7 @@ const PastExhb = ({ artistData }) => {
     const searchTerm = e.target.value;
     setSearchTerm(searchTerm);
 
-    const filteredData = artistData.filter(
+    const filteredData = artistData?.filter(
       (item) =>
         item.exhibition_name.toLowerCase().includes(searchTerm.toLowerCase()) //||
       // item.date.toLowerCase().includes(searchTerm.toLowerCase())
@@ -46,6 +46,8 @@ const PastExhb = ({ artistData }) => {
     setShowPreivousExhb(true);
     setSelectedArtistData(showData);
   };
+  console.log("artistData", artistData )
+
   return (
     <>
       {showPreivousExhb ? (
@@ -60,7 +62,7 @@ const PastExhb = ({ artistData }) => {
             textAlign="center"
             role="presentation"
             style={{
-              backgroundColor: "orange",
+              backgroundColor: "#ff8b25",
               height: ".2rem",
               alignItems: "center",
               margin: "2rem 0",
@@ -100,7 +102,7 @@ const PastExhb = ({ artistData }) => {
               />
             </FormControl>
             <ImageList>
-              {filteredData.map((item) => (
+              {filteredData?.map((item) => (
                 <ImageListItem onClick={() => getPastArtistOfTheMonth(item)}>
                   <MediaCard artistData={item} />
                 </ImageListItem>
