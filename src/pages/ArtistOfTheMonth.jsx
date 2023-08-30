@@ -5,118 +5,55 @@ import Divider from '@mui/material/Divider';
 import { Grid } from '@mui/material';
 import { Box } from '@mui/joy';
 import headshot from '../content/images/headshots/headshot.jpg';
+import Masonry from "@mui/lab/Masonry";
 
+import '../monthlyArtist.css';
 
-const ArtistOfTheMonth = ({ name, monthYear, headshot, mainArtwork, artistPara, exhibtionPara, backgroundColor }) => {
-
+const ArtistOfTheMonth = ({ name, artistStatement, exhibition }) => {
     return (
         <>
-            <Divider textAlign="right" role="presentation" style={{ backgroundColor: 'orange', height: '.2rem', alignItems: 'center', margin: '10vh 0' }}>
-                <h1 style={{ display: 'inline', backgroundColor: 'white', fontWeight: 'normal' }}>Artist Of The Month: {monthYear}</h1>
-            </Divider>
+            <div style={{ marginTop: '10vh', height: '95vh' }} className="container container-inside  group">
+                <div className="top-matter">
+                    <div className="title">
+                        <h1 style={{ width: '32vw' }}>
+                            Artist of the Month <span>{name}</span>
+                        </h1>
+                    </div>
+                    <div className="intro">
+                        <p>
+                            July 2023: IN MY SKIN
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div>
 
-            <Grid container sx={{ flexWrap: 'nowrap', backgroundColor: '#e6bdfc', padding: ' 1rem 4rem 2rem 4rem' }} spacing={1} >
-                {/* Column 1 */}
-                <Grid item xs={12} md={3}>
-                    <h2 style={{ fontSize: '3.5rem', fontWeight: 'bold', textShadow: 'rgb(255, 175, 32) 0px 7px 1px', textAlign: 'center' }}>{name}</h2>
-                    <img
-                        src={`${mainArtwork}`}
-                        loading="lazy"
-                        alt="Main Artwork"
-                        style={{
-                            width: "100%",
-                        }}
-                    />
-                </Grid>
+            </div>
+            <div class="article-container">
+                <div>
+                    <h2>About the Artist</h2>
+                    <p>
+                        Kris, Born 1994, Boston based photographer since 2015. Pronouns She/Her/Hers. Kris has her
+                        bachelor’s in Psychology from Lesley University. Along with pursuing her career as a
+                        photographer, Kris hopes to eventually develop her own practice in art therapy. Her biggest
+                        muse behind her work are black people, especially black femmes. She strives to show the
+                        versatility of the black community by capturing their personalities, culture, stories, &
+                        experiences.</p>
+                </div>
 
-                {/* Column 2 */}
-                <Grid item xs={12} md={6} style={{ width: '100%' }}>
-                    {/* Element 2 */}
-                    <img
-                        src={`${headshot}`}
-                        loading="lazy"
-                        alt="Headshot"
-                        style={{ width: '30%' }}
-                    // Add styles or attributes here if needed
-                    />
+                <img src="https://github.com/StacyLafume/NOSA_00/assets/102001997/b66ce5b4-d056-42c6-8592-f2a58fe3e981"/>
 
-                </Grid>
 
-                {/* Column 3 */}
-                <Grid item xs={12} md={6}>
-                    {/* Element 3 */}
-                    <h3>Artist statement</h3>
-                    <p>{artistPara} Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime sunt non numquam fugiat eveniet rem animi enim alias reprehenderit! Alias, cumque nesciunt delectus quae pariatur nobis ad. Aspernatur, quidem dolores.</p>
+             
 
-                    <h3>Exhibit statement</h3>
-                    <p>{exhibtionPara} Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima dolorem reprehenderit enim doloribus, quidem expedita? Impedit, debitis odit ipsa, eveniet dolore laudantium repellat doloribus dignissimos perferendis, molestias tempore eligendi veritatis.</p>
-                </Grid>
-            </Grid>
-            <Container sx={{ width: '40vw' }}>
-                <SGridWCarousel />
-            </Container>
+
+            </div>
         </>
-    )
-}
+    );
+};
 
 export default ArtistOfTheMonth
 
 
-
-// const ArtistOfTheMonth = ({ artistOfTheMonthData, backgroundColor }) => {
-//     const { date, exhibition_statement, artist_statement, main_artwork, thumbnail, title } = artistOfTheMonthData
-//     return (
-//         <>
-//             <Divider textAlign="right" role="presentation" style={{ backgroundColor: 'orange', height: '.2rem', alignItems: 'center', margin: '10vh 0' }}>
-//                 <h1 style={{ display: 'inline', backgroundColor: 'white', fontWeight: 'normal' }}>Artist Of The Month:
-//                     {/* {date} */}
-//                 </h1>
-//             </Divider>
-
-//             <Grid container sx={{ flexWrap: 'nowrap', backgroundColor: '#e6bdfc', padding: ' 1rem 4rem 2rem 4rem' }} spacing={1} >
-//                 {/* Column 1 */}
-//                 <Grid item xs={12} md={3}>
-//                     <h2 style={{ fontSize: '3.5rem', fontWeight: 'bold', textShadow: 'rgb(255, 175, 32) 0px 7px 1px', textAlign: 'center' }}>{title}</h2>
-//                     <img
-//                         src={`${main_artwork}`}
-//                         loading="lazy"
-//                         alt="Main Artwork"
-//                         style={{
-//                             width: "100%",
-//                         }}
-//                     />
-//                 </Grid>
-
-//                 {/* Column 2 */}
-//                 <Grid item xs={12} md={6} style={{ width: '100%' }}>
-//                     {/* Element 2 */}
-//                     <img
-//                         src={`${headshot}`}
-//                         loading="lazy"
-//                         alt="Headshot"
-//                         style={{ width: '30%' }}
-//                     // Add styles or attributes here if needed
-//                     />
-
-//                 </Grid>
-
-//                 {/* Column 3 */}
-//                 <Grid item xs={12} md={6}>
-//                     {/* Element 3 */}
-//                     <h3>Artist statement</h3>
-//                     <p>{artist_statement}</p>
-
-//                     <h3>Exhibit statement</h3>
-//                     <p>{exhibition_statement}</p>
-//                 </Grid>
-//             </Grid>
-//             <Container sx={{ width: '40vw' }}>
-
-//                 <SGridWCarousel />
-//             </Container>
-//         </>
-//     )
-
-// }
 
 

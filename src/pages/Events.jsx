@@ -23,7 +23,6 @@ const Events = ({
         // Add more events as needed
     ]
 }) => { // Fix the destructuring here
-    console.log(eventArr)
     return (
         <div id="/events" style={{}}>
 

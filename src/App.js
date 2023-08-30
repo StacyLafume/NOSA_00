@@ -12,7 +12,7 @@ import Video from './components/Video';
 import Footer from './pages/Footer';
 import ArtistOfTheMonthJson from './content/artistOfTheMonth/artistOfTheMonth.json'
 import ArtistOfTheMonth from "./pages/ArtistOfTheMonth";
-
+import DemoApp from './components/DemoApp';
 
 const App = () => {
 
@@ -153,13 +153,13 @@ const App = () => {
       <AboutUs />
       <Events eventArr={eventsArray}/>
       {/* <PastEvents/> */}
-//       <ArtistOfTheMonth name='Bridgett' monthYear='June 2023'  backgroundColor='#e6bdfc' headshot='https://images.pexels.com/photos/3031397/pexels-photo-3031397.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' mainArtwork='https://cdn.pixabay.com/photo/2022/09/19/22/34/black-woman-7466559_1280.jpg'/>
+       <ArtistOfTheMonth name='Kris' monthYear='June 2023' headshot='https://images.pexels.com/photos/3031397/pexels-photo-3031397.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' mainArtwork='https://cdn.pixabay.com/photo/2022/09/19/22/34/black-woman-7466559_1280.jpg'/>
 
    
       {/* Check if artistOfTheMonthData exists before rendering the component */}
-      {ArtistOfTheMonthJson.length > 0 && (
+      {/* {ArtistOfTheMonthJson.length > 0 && (
         <ArtistOfTheMonth artistOfTheMonthData={ArtistOfTheMonthJson[0]} />
-      )}
+      )} */}
       {/* <PastExhb /> */}
       <Services services={services} />
       <ContactUs />
