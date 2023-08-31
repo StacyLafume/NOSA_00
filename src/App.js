@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import { Routes, Route } from 'react-router-dom';
- import PastExhb from './pages/PastExhb';
+// import PastExhb from './pages/PastExhb';
 import AboutUs from './pages/AboutUs';
 import OurMission from './pages/OurMission';
 import ContactUs from './pages/ContactUs';
@@ -13,11 +13,11 @@ import Footer from './pages/Footer';
 import ArtistOfTheMonthJson from './content/artistOfTheMonth/artistOfTheMonth.json'
 import event from './content/event/event.json';
 import ArtistOfTheMonth from "./pages/ArtistOfTheMonth";
+import DemoApp from './components/DemoApp';
 import { styled } from '@mui/material/styles';
 import CursorOverlay from './components/CursorOverlay';
 import PE from './components/PE';
 import EventsJson from './content/event/event.json'
-
 
 const App = () => {
 
@@ -93,6 +93,7 @@ const App = () => {
       {ArtistOfTheMonthJson.length > 0 && (
         <ArtistOfTheMonth pastArtistOfTheMonthData={ArtistOfTheMonthJson} artistsOfTheMonthData={ArtistOfTheMonthJson} artistOfTheMonthData={ArtistOfTheMonthJson[0]} />
       )}
+      {/*  <ArtistOfTheMonth name='Kris' monthYear='June 2023' headshot='https://images.pexels.com/photos/3031397/pexels-photo-3031397.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' mainArtwork='https://cdn.pixabay.com/photo/2022/09/19/22/34/black-woman-7466559_1280.jpg'/> */}
       <Services services={services} />
       <ContactUs />
       <Footer />

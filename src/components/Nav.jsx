@@ -56,12 +56,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   vanishBox: {
-    display: "none !important",
-    height: "fit-content",
+    display: 'none !important',
+    height: 'fit-content'
   },
   noLineVanish: {
-    display: "inline-block",
-  },
+    display: 'inline-block'
+  }
+
 }));
 
 const Nav = () => {
@@ -240,14 +241,13 @@ const Nav = () => {
     <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
       <JoyCssVarsProvider>
         <AppBar
-          className={`${classes.appBar} ${
-            navColor ? classes.colorFill : classes.noColorFill
-          }`}
+          className={`${classes.appBar} ${navColor ? classes.colorFill : classes.noColorFill
+            }`}
         >
           <Box
             sx={{
               width: "100%",
-              height: "fit-content",
+              height: 'fit-content',
               // backgroundColor: "transparent",
               mx: 3,
               // display: "flex",
@@ -278,8 +278,7 @@ const Nav = () => {
             thickness={3}
             className={navColor ? classes.vanishBox : null}
           />
-          <Toolbar
-            style={{ backgroundColor: navColor ? "#D9D9D9" : "transparent" }}
+          <Toolbar style={{ backgroundColor: navColor ? "#D9D9D9" : "transparent" }}
           >
             <IconButton
               edge="start"
@@ -290,13 +289,7 @@ const Nav = () => {
             >
               <MenuIcon />
             </IconButton>
-            <Box
-              sx={{
-                width: "100%",
-                typography: "body1",
-                backgroundColor: navColor ? "#D9D9D9" : "transparent",
-              }}
-            >
+            <Box sx={{ width: "100%", typography: "body1", backgroundColor: navColor ? "#D9D9D9" : "transparent" }}>
               <TabContext value={value}>
                 <Box className={isSmallScreen ? classes.tabsContainer : ""}>
                   <Tabs
@@ -304,7 +297,7 @@ const Nav = () => {
                     onChange={handleChange}
                     indicatorColor="secondary"
                     aria-label="lab API tabs example"
-                    sx={{ backgroundColor: "transparent" }}
+                    sx={{ backgroundColor: 'transparent' }}
                   >
                     <LinkScroll
                       isDynamic={true}

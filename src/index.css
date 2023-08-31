@@ -9,9 +9,10 @@ body, html, * {
 }
 
 h1 {
-  font-size: 3.2rem !important
+  font-size: 3.5vw !important
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+

@@ -1,401 +1,212 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Box, Grid, Typography, Paper, Button, IconButton, Link, Dialog, DialogTitle, DialogContent, StepLabel, DialogActions } from '@mui/material';
-import KeyboardArrowLeftSharpIcon from '@mui/icons-material/KeyboardArrowLeftSharp';
-import KeyboardArrowRightSharpIcon from '@mui/icons-material/KeyboardArrowRightSharp';
-import KeyboardDoubleArrowLeftSharpIcon from '@mui/icons-material/KeyboardDoubleArrowLeftSharp';
-import KeyboardDoubleArrowRightSharpIcon from '@mui/icons-material/KeyboardDoubleArrowRightSharp';
-import PauseCircleFilledSharpIcon from '@mui/icons-material/PauseCircleFilledSharp';
-import PlayCircleFilledSharpIcon from '@mui/icons-material/PlayCircleFilledSharp';
+import React, { useState } from "react";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import interactionPlugin from "@fullcalendar/interaction";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import PE from "./PE";
 import Divider from "@mui/material/Divider";
 
-import { format, addMonths, subMonths, startOfMonth, endOfMonth, isSameDay, addYears, subYears, getYear } from 'date-fns';
-import { styled } from '@mui/material/styles'; // Import styled from Material-UI
-import { borderLeft } from '@mui/system';
-import PE from './PE';
-
-const calendarStyles = {
-  largeSquareTile: {
-    height: '7vw',
-    width: '7vw',
-    // padding: '0 !important',
-    // borderRadius: '0 !important'
-  },
-};
-
-const CalendarTile = ({ date, background, image, onTileClick, setCarouselIndex, setIsCarouselAutoplaying, setIsModalOpen }) => {
-
-  const handleTileClick = () => {
-    if (image) {
-      onTileClick(date, image);
-    } else {
-      setIsModalOpen(true);
-    }
-  };
-
- 
-
-  return (
-    <Box
-      component={Paper}
-      sx={{
-        ...calendarStyles.largeSquareTile,
-        display: 'flex',
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
-        cursor: 'pointer',
-        background: background,
-        backgroundImage: `url(${image})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        borderRadius: '0',
-        border: 'solid #ff6d00 .5px',
-        borderLeft: '0',
-        borderTop: '0',
-        '&:hover': {
-          boxShadow: "0 5px 6px 3px #f7b28bbf"
-        }
-
-      }}
-      onClick={handleTileClick}
-    >
-      <Paper sx={{ paddingLeft: '3.85%', width: '30%', borderRadius: '0' }}>
-        {date?.getDate() ?? ''}
-      </Paper>
-    </Box>
-  )
-
-
-};
 
 const Calendar = ({ eventsArray }) => {
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [yearlyView, setYearlyView] = useState(false);
-  const [carouselImages, setCarouselImages] = useState([]);
-  const [carouselIndex, setCarouselIndex] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isCarouselAutoplaying, setIsCarouselAutoplaying] = useState(true);
   const [showEvents, setShowEvents] = useState(true);
 
-
-  useEffect(() => {
-    const images = eventsArray.filter((event) => event.event_poster).map((event) => event.event_poster);
-    setCarouselImages(images);
-    setCarouselIndex(0);
-  }, [eventsArray, setCarouselImages]);
-
-  const StyledStepLabel = styled(StepLabel)(({ theme, active }) => ({
-    '& .MuiStepIcon-root': {
-      color: active ? theme.palette.primary.main : theme.palette.action.active,
+  const [events] = useState([
+    {
+      // id: createEventId(),
+      title: 'oopu',
+      url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFpOzQngfIf_n6iFqscREDpdEyIyobvhN-Tg&usqp=CAU',
+      start: '2023-08-05',
+      end: '2023-08-06',
+      allDay: true,
+      // backgroundColor: bckgrndClr[currentEvents.length]
+      backgroundColor: 'blueGrey'
     },
-  }));
+    {
+      // id: createEventId(),
+      title: 'tgvtee',
+      url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQpAkYjJsapdf0njIpv_qtjQsk5B6yvJqSIw&usqp=CAU',
+      start: '2023-08-10',
+      end: '2023-08-014',
+      allDay: true,
+      // backgroundColor: bckgrndClr[currentEvents.length]
+      backgroundColor: '#ba68c8'
+    },
+    {
+      // id: createEventId(),
+      title: 'kuwyhgref',
+      url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo_YdQj6nVSuxY2AhOIAUxvxNItkljU7sqqQ&usqp=CAU',
+      start: '2023-08-19',
+      end: '2023-08-25',
+      allDay: true,
+      // backgroundColor: bckgrndClr[currentEvents.length]
+      backgroundColor: '#f48fb1'
+    },
+    {
+      // id: createEventId(),
+      title: 'hhhgg',
+      url: 'data:image/jpeg;base64,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',
+      start: '2023-08-16',
+      end: '2023-08-017',
+      allDay: true,
+      // backgroundColor: bckgrndClr[currentEvents.length]
+      backgroundColor: '#4a148c'
+    }
 
+
+  ]);
 
   const handleShowEvents = () => {
     console.log("clicking")
     setShowEvents(false)
   }
 
-  
-  const renderCarouselIndicators = () => {
-    return (
-      <Box sx={{
-        display: 'flex', mt: 2, margin: 0,
-        justifyContent: 'space-between',
-      }}>
-        {carouselImages.map((_, index) => (
-          <Box
-            key={index}
-            sx={{
-              width: 8,
-              height: 8,
-              borderRadius: '50%',
-              mx: 1,
-              backgroundColor: index === carouselIndex ? 'primary.main' : 'gray',
-            }}
-          />
-        ))}
-      </Box>
-    );
-  };
 
-  const updateCarouselIndex = (index) => {
-    setCarouselIndex(index);
-  };
+  const currentDate = new Date().toDateString();
+  const filteredEvents = events.filter((event) => {
+    console.log([events], 'uyjf')
+    const eventDate = new Date(event.start).toDateString();
+    return eventDate >= currentDate;
+  });
 
-  const YearTile = ({ year, onYearClick }) => {
-    return (
-      <Box
-        component={Paper}
-        sx={{
-          ...calendarStyles.largeSquareTile,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          cursor: 'pointer',
-          background: 'lightyellow',
-        }}
-        onClick={() => onYearClick(year)}
-      >
-        <Typography variant="h6" color="inherit">
-          {year}
-        </Typography>
-      </Box>
-    );
-  };
+  const carouselRef = React.createRef();
+  // const [filteredEvents, setFilteredEvents] = useState([]);
 
-  const handleBookingLinkClick = (e) => {
-    e.stopPropagation();
-    // Implement your booking link logic here
-    // For example, you can navigate to a booking page or open a modal with booking options
-  };
-
-  const handleTileClick = (date, image) => {
-    setSelectedDate(date);
-
-    if (image) {
-      setSelectedImage(image);
-      const selectedIndex = carouselImages.findIndex((carouselImage) => `url(${carouselImage})` === image);
-      if (selectedIndex !== -1) {
-        setCarouselIndex(selectedIndex);
-        setIsCarouselAutoplaying(false);
-      } else {
-        setIsCarouselAutoplaying(true);
-      }
-    } else {
-      setSelectedImage(null);
-      setIsModalOpen(true);
-    }
-  };
-
-  const navigateForward = () => {
-    setCurrentMonth(addMonths(currentMonth, 1));
-  };
-
-  const navigateBackward = () => {
-    setCurrentMonth(subMonths(currentMonth, 1));
-  };
-
-  const navigateToPreviousYear = () => {
-    setCurrentMonth(subYears(currentMonth, 1));
-  };
-
-  const navigateToNextYear = () => {
-    setCurrentMonth(addYears(currentMonth, 1));
-  };
-
-  const handleYearClick = (year) => {
-    setCurrentMonth(new Date(year, currentMonth.getMonth(), 1));
-    setYearlyView(false);
-  };
-
-  const toggleYearlyView = () => {
-    setYearlyView(!yearlyView);
-  };
-
-  const generateCalendar = (eventsArray) => {
-    const startDate = startOfMonth(currentMonth);
-    const endDate = endOfMonth(currentMonth);
-    const days = [];
-    for (let date = new Date(startDate); date <= endDate; date.setDate(date.getDate() + 1)) {
-      const event = eventsArray.find((evt) => {
-        return isSameDay(new Date(evt.event_date), date)
-      });
-     
-      const background = event && event.event_poster ? `url(${event.event_poster})` : event ? 'lightblue' : null;
-
-      days.push({ date: new Date(date), background, event_link: event ? event.event_link : null });
-    }
-
-    const numDaysInMonth = days.length;
-    const gridSize = Math.ceil(Math.sqrt(numDaysInMonth));
-    const numEmptyCells = gridSize * gridSize - numDaysInMonth;
-
-    for (let i = 0; i < numEmptyCells; i++) {
-      if (days.length % 7 === 0) {
-        break
-      } else {
-        days.push({ date: null, background: '#f2ebeb' })
-      };
-    }
-
-    return days;
-  };
-
-  const renderCalendar = () => {
-    const days = generateCalendar(eventsArray);
-
-    if (yearlyView) {
-      return (
-        <Grid container spacing={1}>
-          {generateYears().map((year) => (
-            <Grid item key={year}>
-              <YearTile year={year} onYearClick={handleYearClick} />
-            </Grid>
-          ))}
-        </Grid>
+  const handleEventClick = (clickInfo) => {
+    const eventDate = new Date(clickInfo.event.start).toDateString();
+    if (eventDate >= currentDate) {
+      const index = filteredEvents.findIndex(
+        (event) => event.url === clickInfo.event.url
       );
-    } else {
-      return (
-        <Grid sx={{ justifyContent: 'center', width: '84%', margin: '0', borderBottom: '#f09b05 solid 2px', borderTop: '#f09b05 solid 2px' }} container spacing={0} >
-          
-          {days.map((day) => (
-            
-            <Grid item key={day.date?.toString()}>
-              <CalendarTile
-                date={day.date}
-                background={day.background}
-                image={day.background}
-                onTileClick={handleTileClick}
-                setCarouselIndex={setCarouselIndex}
-                setIsCarouselAutoplaying={setIsCarouselAutoplaying}
-                setIsModalOpen={setIsModalOpen} // Pass setIsModalOpen to CalendarTile
-              />
-            </Grid>
-          ))}
-        </Grid>
-      );
-    }
-  };
-
-  const generateYears = () => {
-    const startYear = getYear(currentMonth) - 10;
-    const years = [];
-    for (let i = 0; i < 20; i++) {
-      years.push(startYear + i);
-    }
-    return years;
-  };
-
-  const handleCarouselNext = useCallback(() => {
-    const nextIndex = (carouselIndex + 1) % carouselImages.length;
-    setCarouselIndex(nextIndex);
-    resumeAutoplay();
-  }, [carouselImages.length, carouselIndex]);
-
-  const handleCarouselPrevious = useCallback(() => {
-    const previousIndex = (carouselIndex - 1 + carouselImages.length) % carouselImages.length;
-    setCarouselIndex(previousIndex);
-    resumeAutoplay();
-  }, [carouselImages.length, carouselIndex]);
-
-  const resumeAutoplay = () => {
-    setIsCarouselAutoplaying(true);
-  };
-
-  useEffect(() => {
-    const images = eventsArray.filter((event) => event.event_poster).map((event) => event.event_poster);
-    setCarouselImages(images);
-    setCarouselIndex(0);
-  }, [eventsArray]);
-
-  useEffect(() => {
-    const selectedIndex = carouselImages.findIndex((carouselImage) => carouselImage === selectedImage);
-
-    if (selectedIndex !== -1) {
-      setCarouselIndex(selectedIndex);
-      setIsCarouselAutoplaying(false);
-    }
-  }, [selectedImage, carouselImages]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (isCarouselAutoplaying) {
-        handleCarouselNext();
+      console.log(index)
+      if (index !== -1) {
+        carouselRef.current.goToSlide(index);
       }
-    }, 3000);
+    }
+  };
 
-    return () => clearTimeout(timer);
-  }, [carouselIndex, isCarouselAutoplaying, handleCarouselNext]);
+  const handleBackClick = () => {
+    carouselRef.current.previous();
+  };
+
+  const handleForwardClick = () => {
+    carouselRef.current.next();
+  };
+
+  const handlePlayPauseClick = () => {
+    setAutoPlay(!autoPlay);
+  };
+
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 1,
+      slidesToSlide: 1,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 1,
+      slidesToSlide: 1,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1,
+    },
+  };
+
+  const [autoPlay, setAutoPlay] = useState(true);
+
+
+
+  // Event Render Function To Get Images and Titles
+  const renderEventContent = (eventInfo) => {
+    console.log(filteredEvents, 'bhbyui')
+
+    return (
+      <div>
+        <p>{eventInfo.event.title}</p>
+        <img className="eventimage" src={eventInfo.event.url} />
+      </div>
+    )
+  }
+
+
 
   return (
-   <div> {showEvents ?  (<Box sx={{ height: '80vh', padding: '0vh 3vw' }}>
+    <div>
       <Divider textAlign="left" role="presentation" style={{ backgroundColor: '#ff8b25', height: '.2rem', alignItems: 'center', margin: '2rem 0' }}>
-                <h1 style={{display: 'inline', backgroundColor: 'white' }}>Events</h1>
-            </Divider>
-   <Box sx={{ display: 'inline-flex', width: '56.1%', justifyContent: 'center', my: 2, margin: '1% 0' }}>
-     {yearlyView ? (
-       <IconButton onClick={toggleYearlyView}>
-         {/* <KeyboardArrowLeftSharpIcon/> */}
-       </IconButton>
-     ) : (
-       <>
-         <IconButton sx={{ padding: '0', fill: '##ed9904' }} onClick={navigateToPreviousYear}>
-           <KeyboardDoubleArrowLeftSharpIcon sx={{ fontSize: '2rem' }} />
-         </IconButton>
-         <IconButton sx={{ padding: '0', fill: '##ed9904' }} onClick={navigateBackward}>
-           <KeyboardArrowLeftSharpIcon sx={{ fontSize: '2rem' }} />
-         </IconButton>
-       </>
-     )}
-     <Typography sx={{ margin: '0' }} variant="h6" gutterBottom>
-       {yearlyView ? 'Select a Year' : format(currentMonth, 'MMMM yyyy')}
-     </Typography>
-     {yearlyView ? (
-       <IconButton onClick={toggleYearlyView}>
-         {/* <ArrowForward /> */}
-       </IconButton>
-     ) : (
-       <>
-         <IconButton sx={{ padding: '0', fill: '##ed9904' }} onClick={navigateForward}>
-           <KeyboardArrowRightSharpIcon sx={{ fontSize: '2rem' }} />
-         </IconButton>
-         <IconButton sx={{ padding: '0', fill: '##ed9904' }} onClick={navigateToNextYear}>
-           <KeyboardDoubleArrowRightSharpIcon sx={{ fontSize: '2rem' }} />
-         </IconButton>
-       </>
-     )}
-   </Box>
-   {/* <Typography sx={{display: 'inline-flex', fontWeight: '500', fontSize: '1.00rem'}}>
-     Book your next event with NOSA 
-     <Link href="#" onClick={handleBookingLinkClick} >
-        HERE
-     </Link>
-   </Typography> */}
-   <Box sx={{ display: 'flex', flexWrap: 'wrap', "& .outer-container": { padding: 0, borderRadius: 0, height: 'fit-content' } }}>
-     <Box sx={{ flex: '2 0 66.66%', height: '80vh' }} className="outer-container">{renderCalendar()} </Box>
-     <Box sx={{ flex: '1 0 33.33%',textAlign: 'center', height: '25.2rem' }}>
-       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '25.2rem', backgroundImage: 'url(https://p1.pxfuel.com/preview/782/525/96/paint-painting-image-design.jpg)', padding: '3%', borderRadius: '5px' }}>
-         {carouselImages.length > 0 ? (
-           <img src={carouselImages[carouselIndex]} alt={`Event ${carouselIndex}`} style={{ width: '70%', borderRadius: '5px' }} />
-         ) : (
-           <Typography variant="subtitle1">No images available</Typography>
-         )}
-       </Box>
-       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-       </Box>
-       <Box sx={{
-         display: 'flex', alignItems: 'center', justifyContent: 'space-evenly', width: '100%',
-         margin: '0', marginBottom: '2rem', padding: '.3rem 1.5rem'
-       }}>
+        <h1 style={{ display: 'inline', backgroundColor: 'white' }}>Events</h1>
+      </Divider>
+      {showEvents ?
+        <div>
+          <div className="demo-app-main" style={{ width: '50vw' }}>
+            <FullCalendar
+              plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+              headerToolbar={{
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth',
+              }}
+              initialView="dayGridMonth"
+              editable={true}
+              selectable={true}
+              selectMirror={true}
+              dayMaxEvents={true}
+              // weekends={weekendsVisible}
+              // select={handleDateSelect}
+              eventContent={renderEventContent}
+              eventClick={handleEventClick}
+              events={events}
+              contentHeight='35vw'
+            />
+          </div>
+          <div>
+            <Carousel
+              responsive={responsive}
+              autoPlay={autoPlay}
+              ref={carouselRef}
+              renderButtonGroupOutside={true}
+              customButtonGroup={<CustomButtonGroup
+                handleBackClick={handleBackClick}
+                handleForwardClick={handleForwardClick}
+                handlePlayPauseClick={handlePlayPauseClick}
+                autoPlay={autoPlay}
+              />}
+            >
+              {filteredEvents.map((event) => (
+                <div key={event.id}>
+                  <img src={event.url} alt={event.title} />
+                </div>
+              ))}
+            </Carousel>
+          </div>
+        </div>
+        : (<PE eventArr={eventsArray} setShowEvents={setShowEvents} />)}
+      <button onClick={handleShowEvents}>Previous Events</button>    </div >
 
-         <IconButton onClick={handleCarouselPrevious}>
-           <KeyboardDoubleArrowLeftSharpIcon sx={{ marginLeft: '5rem' }} />
-         </IconButton>
-         {renderCarouselIndicators()}
-         <IconButton onClick={handleCarouselNext}>
-           <KeyboardDoubleArrowRightSharpIcon sx={{ marginRight: '5rem' }} />
-         </IconButton>
-       </Box>
-     </Box>
-   </Box>
-       <button onClick={handleShowEvents}>Previous Events</button>
-   <Dialog open={isModalOpen} onClose={() => setIsModalOpen(false)}>
-     <DialogTitle>No event scheduled</DialogTitle>
-     <DialogContent>
-       <Typography variant="body1">Want to book an event with NOSA? Click <Link href="#" onClick={handleBookingLinkClick} >
-         HERE
-       </Link></Typography>
-     </DialogContent>
-     <DialogActions>
-       <Button onClick={() => setIsModalOpen(false)}>Close</Button>
-     </DialogActions>
-   </Dialog>
- </Box>) : <PE eventArr={eventsArray} setShowEvents={setShowEvents}/> }
-    
+  );
+
+};
+
+const CustomButtonGroup = ({
+  handleBackClick,
+  handleForwardClick,
+  handlePlayPauseClick,
+  autoPlay,
+}) => {
+  return (
+    <div className="carousel-button-group">
+      <button onClick={handleBackClick}>&lt;</button>
+      <button onClick={handleForwardClick}>&gt;</button>
+      <button onClick={handlePlayPauseClick}>
+        {autoPlay ? "Pause" : "Play"}
+      </button>
     </div>
   );
 };
+
+
 
 export default Calendar;
