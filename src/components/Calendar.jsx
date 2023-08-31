@@ -7,12 +7,15 @@ import interactionPlugin from "@fullcalendar/interaction";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { makeStyles, useTheme } from "@mui/styles";
+import PE from "./PE";
+import Divider from "@mui/material/Divider";
+
 
 const Calendar = () => {
+  const [showEvents, setShowEvents] = useState(true);
 
   const [events] = useState([
-    // Your events array here
-     {
+    {
       // id: createEventId(),
       title: 'oopu',
       url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFpOzQngfIf_n6iFqscREDpdEyIyobvhN-Tg&usqp=CAU',
@@ -20,17 +23,17 @@ const Calendar = () => {
       end: '2023-08-06',
       allDay: true,
       // backgroundColor: bckgrndClr[currentEvents.length]
-      backgroundColor:'blueGrey'
+      backgroundColor: 'blueGrey'
     },
     {
       // id: createEventId(),
       title: 'tgvtee',
-      url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQpAkYjJsapdf0njIpv_qtjQsk5B6yvJqSIw&usqp=CAU' ,
+      url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQpAkYjJsapdf0njIpv_qtjQsk5B6yvJqSIw&usqp=CAU',
       start: '2023-08-10',
       end: '2023-08-014',
       allDay: true,
       // backgroundColor: bckgrndClr[currentEvents.length]
-      backgroundColor: '#ba68c8' 
+      backgroundColor: '#ba68c8'
     },
     {
       // id: createEventId(),
@@ -40,7 +43,7 @@ const Calendar = () => {
       end: '2023-08-25',
       allDay: true,
       // backgroundColor: bckgrndClr[currentEvents.length]
-      backgroundColor: '#f48fb1' 
+      backgroundColor: '#f48fb1'
     },
     {
       // id: createEventId(),
@@ -50,12 +53,18 @@ const Calendar = () => {
       end: '2023-08-017',
       allDay: true,
       // backgroundColor: bckgrndClr[currentEvents.length]
-      backgroundColor: '#4a148c'  
+      backgroundColor: '#4a148c'
     }
-  
-  
+
+
   ]);
-  
+
+  const handleShowEvents = () => {
+    console.log("clicking")
+    setShowEvents(false)
+  }
+
+
   const currentDate = new Date().toDateString();
   const filteredEvents = events.filter((event) => {
     console.log([events], 'uyjf')
@@ -113,20 +122,24 @@ const Calendar = () => {
 
 
 
- // Event Render Function To Get Images and Titles
- const renderEventContent = (eventInfo) => {
-  console.log(filteredEvents, 'bhbyui')
+  // Event Render Function To Get Images and Titles
+  const renderEventContent = (eventInfo) => {
+    console.log(filteredEvents, 'bhbyui')
+
+    return (
+      <div>
+        <p>{eventInfo.event.title}</p>
+        <img className="eventimage" src={eventInfo.event.url} />
+      </div>
+    )
+  }
+
+  {/* <div> {showEvents ? (calendar code) : (<PE eventArr={eventsArray} setShowEvents={setShowEvents}/>) } */ }
+
 
   return (
-    <div>
-    <p>{eventInfo.event.title}</p>
-    <img className="eventimage" src={eventInfo.event.url} />
-    </div>
-  )
-}
-
-  return (
-    <div>
+    <div> {showEvents ? 
+      <div>
       <div className="demo-app-main" style={{width: '50vw'}}>
         <FullCalendar
           plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
@@ -168,8 +181,12 @@ const Calendar = () => {
           ))}
         </Carousel>
       </div>
-    </div>
+      </div>
+      : (<PE eventArr={eventsArray} setShowEvents={setShowEvents} />)}
+    </div >
+
   );
+
 };
 
 const CustomButtonGroup = ({

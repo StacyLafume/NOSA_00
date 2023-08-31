@@ -117,4 +117,88 @@ const PastEvents = () => {
     );
 };
 
-export default PastEvents
+  const handleSearch = (e) => {
+    const searchTerm = e.target.value;
+    setSearchTerm(searchTerm);
+
+    const filteredData = eventData.filter(
+      (item) => item.title.toLowerCase().includes(searchTerm.toLowerCase()) //||
+      // item.date.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredData(filteredData);
+  };
+
+  return (
+    <div style={{height: "100vh"}}>
+      <Divider
+        textAlign="center"
+        role="presentation"
+        style={{
+          backgroundColor: "#ff8b25",
+          height: ".2rem",
+          alignItems: "center",
+          margin: "2rem 0",
+        }}
+      >
+        <h1
+          style={{
+            fontSize: "3.5rem",
+            display: "inline",
+            backgroundColor: "white",
+          }}
+        >
+          Past Events
+        </h1>
+      </Divider>
+      <Container sx={{ width: "80vw", marginTop: "10vh" }} maxWidth="xl">
+        <FormControl
+          fullWidth
+          sx={{ m: 1, padding: "0 7rem", marginBottom: "5vh" }}
+        >
+          <InputLabel
+            sx={{ paddingLeft: "9.4rem" }}
+            htmlFor="outlined-adornment-amount"
+          >
+            Search
+          </InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-amount"
+            startAdornment={
+              <InputAdornment position="start">Event Name</InputAdornment>
+            }
+            label="Search"
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+        </FormControl>
+        <ImageList
+          sx={{ width: "100%", height: "auto" }}
+          cols={5}
+          rowHeight={"auto"}
+          gap={50}
+        >
+          {filteredData.map((item) => (
+            <ImageListItem key={item.img}>
+              <img
+                src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+                srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                alt={item.title}
+                loading="lazy"
+              />
+              <ImageListItemBar
+                sx={{ paddingLeft: ".1vw" }}
+                title={item.title}
+                subtitle={
+                  <span style={{ paddingLeft: ".3vw" }}>by: {item.author}</span>
+                }
+                position="below"
+              />
+            </ImageListItem>
+          ))}
+        </ImageList>
+      </Container>
+    </div>
+  );
+};
+
+export default PastEvents;

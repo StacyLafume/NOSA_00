@@ -130,7 +130,7 @@ const ContactForm = () => {
                       label="First Name"
                       value={formData.firstName}
                       onChange={handleChange}
-                       
+                      fullWidth 
                       margin="normal"
                       error={!!errors.firstName}
                       helperText={errors.firstName}
@@ -143,7 +143,7 @@ const ContactForm = () => {
                       label="Last Name"
                       value={formData.lastName}
                       onChange={handleChange}
-                       
+                      fullWidth
                       margin="normal"
                       error={!!errors.lastName}
                       helperText={errors.lastName}
@@ -157,18 +157,19 @@ const ContactForm = () => {
                   type="email"
                   value={formData.email}
                   onChange={handleChange}
-                   
+                  fullWidth
                   margin="normal"
                   error={!!errors.email}
                   helperText={errors.email}
                 />
-                <FormControl   className={classes.formControl}>
+                <FormControl  fullWidth className={classes.formControl}>
                   <InputLabel>Subject</InputLabel>
                   <Select
                     required
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
+                 
                   >
                     <MenuItem value="general">General Inquiry</MenuItem>
                     <MenuItem value="support">Technical Support</MenuItem>
@@ -183,7 +184,7 @@ const ContactForm = () => {
                   rows={4}
                   value={formData.message}
                   onChange={handleChange}
-                   
+                   fullWidth
                   margin="normal"
                 />
                 <SendButton type="submit" variant="contained" color="primary"/>

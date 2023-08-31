@@ -3,8 +3,8 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "src/content/images"
-public_folder: "src/content/images"
+media_folder: "public/content/images"
+public_folder: "public/content/images"
 
 collections:
   - name: "artist_of_the_month"
@@ -12,13 +12,32 @@ collections:
     folder: "src/content/artistOfTheMonth"
     create: true
     fields:
-      - { label: "Name", name: "name", widget: "string" }
-      - { label: "Thumbnail", name: "thumbnail", widget: "image" }
+      - { label: "Artist Name", name: "artist_name", widget: "string", required: true  }
+      - { label: "Exhibition Name", name: "exhibition_name", widget: "string", required: true  }
       - { label: "Headshot", name: "headshot", widget: "image" }
-      - { label: "Artist Statement", name: "artist_statement", widget: "text" }
-      - { label: "Exhibit Statement", name: "exhibition_statement", widget: "text" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Main Artwork", name: "main_artwork", widget: "image" }
-      - { label: "Artwork", name: "artwork", widget: "image" }
+      - { label: "Artist Statement", name: "artist_statement", widget: "text", required: true  }
+      - { label: "Exhibit Statement", name: "exhibition_statement", widget: "text", required: true  }
+      - { label: "Exhibition Date", name: "exhibition_date", widget: "datetime", required: true  }
+      - { label: "Exhibition Poster", name: "exhibition_poster", widget: "image" }
+      - { label: "Exhibition Pieces", name: "exhibition_pieces",  widget: "list", fields: [
+          { name: "image", label: "Image Link", widget: "string", required: true },
+          { name: "image_title", label: "Image Title", widget: "string", required: true },
+          { name: "image_description", label: "Image Description", widget: "text", required: true },
+        ]}
+
+  - name: "Events"
+    label: "Events"
+    folder: "src/content/event"
+    create: true
+    fields:
+      - { label: "Event Name", name: "event_name", widget: "string", required: true }
+      - { label: "Event Poster", name: "event_poster", widget: "string", required: true }
+      - { label: "Event Link", name: "event_link", widget: "string",  required: true }
+      - { label: "Event Start Date", name: "event_start_date", widget: "datetime", required: true}
+      - { label: "Event End Date", name: "event_end_date", widget: "datetime", required: true}
+      - { label: 'Color', name: 'event_color', widget: 'color' }
+      - { label: "Event pictures", name: "event_pictures",  widget: "list", fields: [
+          {label: "Image Link", name: "image", widget: "string", required: true },
+        ]}
 
 

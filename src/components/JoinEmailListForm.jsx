@@ -3,6 +3,8 @@ import { TextField, Button, Grid, Box, Typography} from "@mui/material";
 import { makeStyles } from '@mui/styles';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import { DonateButton } from "./Buttons"
+import Jump from 'react-reveal/Jump';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -64,7 +66,7 @@ const JoinEmailListForm = () => {
         
         <form onSubmit={handleSubmit}>
           <Grid container alignItems="center"> {/* Set alignItems to center */}
-          <Typography className={classes.title}align={"center"} variant={"h3"}><MailOutlineIcon fontSize={"30px"}/> Join our mailing list</Typography>
+          <Typography className={classes.title}align={"center"} variant={"h4"}> Join our mailing list <Jump><MailOutlineIcon /></Jump></Typography>
             <Grid item xs={12}>
               <TextField
                 required
@@ -72,7 +74,7 @@ const JoinEmailListForm = () => {
                 label=""
                 value={email}
                 onChange={handleEmailChange}
-                 
+                fullWidth
                 margin="normal"
                 className={classes.inputField}
               />
@@ -82,7 +84,7 @@ const JoinEmailListForm = () => {
                 type="submit"
                 variant="contained"
                 color="primary"
-                 
+              
                 className={classes.submitButton}
               >
                 Join

@@ -64,6 +64,8 @@ const Footer = () => {
               <Grid height={"25vh"} item>
                 <List>
                   <LinkScroll
+      isDynamic={true}
+
                     to="#"
                     spy={true}
                     smooth={true}
@@ -73,6 +75,8 @@ const Footer = () => {
                     <ListItem style={{ textDecoration: "underline"}}>Home</ListItem>
                   </LinkScroll>
                   <LinkScroll
+      isDynamic={true}
+
                     to="/ourmission"
                     spy={true}
                     smooth={true}
@@ -82,6 +86,8 @@ const Footer = () => {
                     <ListItem style={{ textDecoration: "underline"}}>Our Mission</ListItem>
                   </LinkScroll>
                   <LinkScroll
+      isDynamic={true}
+
                     to="/aboutus"
                     spy={true}
                     smooth={true}
@@ -91,6 +97,8 @@ const Footer = () => {
                     <ListItem style={{ textDecoration: "underline"}}>About Us</ListItem>
                   </LinkScroll>
                   <LinkScroll
+      isDynamic={true}
+
                     to="/events"
                     spy={true}
                     smooth={true}
@@ -100,6 +108,8 @@ const Footer = () => {
                     <ListItem style={{ textDecoration: "underline"}}>Events</ListItem>
                   </LinkScroll>
                   <LinkScroll
+      isDynamic={true}
+
                     to="/artistofthemonth"
                     spy={true}
                     smooth={true}
@@ -109,6 +119,8 @@ const Footer = () => {
                     <ListItem style={{ textDecoration: "underline"}}>Artist Of The Month</ListItem>
                   </LinkScroll>
                   <LinkScroll
+      isDynamic={true}
+
                     to="/pastexhibitions"
                     spy={true}
                     smooth={true}
@@ -118,6 +130,8 @@ const Footer = () => {
                     <ListItem style={{ textDecoration: "underline"}}>Past Exhibitions</ListItem>
                   </LinkScroll>
                   <LinkScroll
+      isDynamic={true}
+
                     to="/services"
                     spy={true}
                     smooth={true}

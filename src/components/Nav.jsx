@@ -82,7 +82,6 @@ const Nav = () => {
   const handleScroll = () => {
     if (window.scrollY >= 199) {
       setNavColor(true);
-
     } else {
       setNavColor(false);
     }
@@ -116,7 +115,14 @@ const Nav = () => {
       onClose={handleMenuClose}
       style={{ backgroundColor: "transparent !important" }}
     >
-      <LinkScroll to="/" spy={true} smooth={true} offset={50} duration={500}>
+      <LinkScroll
+        isDynamic={true}
+        to="/"
+        spy={true}
+        smooth={true}
+        offset={-50}
+        duration={500}
+      >
         <MenuItem
           onClick={() => {
             handleMenuClose();
@@ -127,10 +133,11 @@ const Nav = () => {
         </MenuItem>
       </LinkScroll>
       <LinkScroll
+        isDynamic={true}
         to="/ourmission"
         spy={true}
         smooth={true}
-        offset={50}
+        offset={-50}
         duration={500}
       >
         <MenuItem
@@ -143,10 +150,11 @@ const Nav = () => {
         </MenuItem>
       </LinkScroll>
       <LinkScroll
+        isDynamic={true}
         to="/aboutus"
         spy={true}
         smooth={true}
-        offset={50}
+        offset={-50}
         duration={500}
       >
         <MenuItem
@@ -159,10 +167,11 @@ const Nav = () => {
         </MenuItem>
       </LinkScroll>
       <LinkScroll
+        isDynamic={true}
         to="/events"
         spy={true}
         smooth={true}
-        offset={50}
+        offset={-50}
         duration={500}
       >
         <MenuItem
@@ -175,10 +184,11 @@ const Nav = () => {
         </MenuItem>
       </LinkScroll>
       <LinkScroll
+        isDynamic={true}
         to="/artistofthemonth"
         spy={true}
         smooth={true}
-        offset={5000000000}
+        offset={-50}
         duration={500}
       >
         <MenuItem
@@ -191,26 +201,11 @@ const Nav = () => {
         </MenuItem>
       </LinkScroll>
       <LinkScroll
-        to="/pastexhibitions"
-        spy={true}
-        smooth={true}
-        offset={50}
-        duration={500}
-      >
-        <MenuItem
-          onClick={() => {
-            handleMenuClose();
-            setValue("6");
-          }}
-        >
-          Past Exhibitions
-        </MenuItem>
-      </LinkScroll>
-      <LinkScroll
+        isDynamic={true}
         to="/services"
         spy={true}
         smooth={true}
-        offset={50}
+        offset={-50}
         duration={500}
       >
         <MenuItem
@@ -223,10 +218,11 @@ const Nav = () => {
         </MenuItem>
       </LinkScroll>
       <LinkScroll
+        isDynamic={true}
         to="/contactus"
         spy={true}
         smooth={true}
-        offset={50}
+        offset={-50}
         duration={500}
       >
         <MenuItem
@@ -260,14 +256,23 @@ const Nav = () => {
           >
             <img
               width={"12%"}
-              height={'auto'}
-              src={navColor ? require("../images/Nosa_Logo_black.png") : require("../images/Nosa_Logo_white.png")}
+              height={"auto"}
+              src={
+                navColor
+                  ? require("../images/Nosa_Logo_black.png")
+                  : require("../images/Nosa_Logo_white.png")
+              }
               alt=""
               style={{ marginTop: "35px" }}
             />
           </Box>
           <LinearProgress
-            style={{ zIndex: "-3", bottom: "60px", color: "orange", marginTop: '1.8rem' }}
+            style={{
+              zIndex: "-3",
+              bottom: "60px",
+              color: "#ff8b25",
+              marginTop: "1.8rem",
+            }}
             determinate
             value={100}
             thickness={3}
@@ -295,131 +300,124 @@ const Nav = () => {
                     sx={{ backgroundColor: 'transparent' }}
                   >
                     <LinkScroll
+                      isDynamic={true}
                       to="/"
                       spy={true}
                       smooth={true}
-                      offset={50}
+                      offset={-50}
                       duration={500}
                     >
                       {/* <LinkRouter to="/"> */}
-                        <Tab
-                          className={
-                            navColor ? classes.colorFill : classes.noColorFill
-                          }
-                          label="Home"
-                        />
+                      <Tab
+                        className={
+                          navColor ? classes.colorFill : classes.noColorFill
+                        }
+                        label="Home"
+                      />
                       {/* </LinkRouter> */}
                     </LinkScroll>
                     <LinkScroll
-                      to="/ourmission"
-                      spy={true}
-                      smooth={true}
-                      offset={50}
-                      duration={500}
-                    >
-                      {/* <LinkRouter to="/ourmission"> */}
-                        <Tab
-                          className={
-                            navColor ? classes.colorFill : classes.noColorFill
-                          }
-                          label="Our Mission"
-                        />
-                      {/* </LinkRouter> */}
-                    </LinkScroll>
-                    <LinkScroll
+                      isDynamic={true}
                       to="/aboutus"
                       spy={true}
                       smooth={true}
-                      offset={50}
+                      offset={-50}
                       duration={500}
                     >
                       {/* <LinkRouter to="/aboutus"> */}
-                        <Tab
-                          className={
-                            navColor ? classes.colorFill : classes.noColorFill
-                          }
-                          label="About Us"
-                        />
+                      <Tab
+                        className={
+                          navColor ? classes.colorFill : classes.noColorFill
+                        }
+                        label="About Us"
+                      />
                       {/* </LinkRouter> */}
                     </LinkScroll>
                     <LinkScroll
+                      isDynamic={true}
+                      to="/ourmission"
+                      spy={true}
+                      smooth={true}
+                      offset={-50}
+                      duration={500}
+                    >
+                      {/* <LinkRouter to="/ourmission"> */}
+                      <Tab
+                        className={
+                          navColor ? classes.colorFill : classes.noColorFill
+                        }
+                        label="Our Mission"
+                      />
+                      {/* </LinkRouter> */}
+                    </LinkScroll>
+                    
+                    <LinkScroll
+                      isDynamic={true}
                       to="/events"
                       spy={true}
                       smooth={true}
-                      offset={50}
+                      offset={-50}
                       duration={500}
                     >
                       {/* <LinkRouter to="/events"> */}
-                        <Tab
-                          className={
-                            navColor ? classes.colorFill : classes.noColorFill
-                          }
-                          label="Events"
-                        />
+                      <Tab
+                        className={
+                          navColor ? classes.colorFill : classes.noColorFill
+                        }
+                        label="Events"
+                      />
                       {/* </LinkRouter> */}
                     </LinkScroll>
                     <LinkScroll
+                      isDynamic={true}
                       to="/artistofthemonth"
                       spy={true}
                       smooth={true}
-                      offset={50}
+                      ooffset={-50}
                       duration={500}
                     >
                       {/* <LinkRouter to="/artistofthemonth"> */}
-                        <Tab
-                          className={
-                            navColor ? classes.colorFill : classes.noColorFill
-                          }
-                          label="Artist Of The Month"
-                        />
+                      <Tab
+                        className={
+                          navColor ? classes.colorFill : classes.noColorFill
+                        }
+                        label="Artist Of The Month"
+                      />
                       {/* </LinkRouter> */}
                     </LinkScroll>
+
                     <LinkScroll
-                      to="/pastexhibitions"
-                      spy={true}
-                      smooth={true}
-                      offset={50}
-                      duration={500}
-                    >
-                      {/* <LinkRouter to="/pastexhibitions"> */}
-                        <Tab
-                          className={
-                            navColor ? classes.colorFill : classes.noColorFill
-                          }
-                          label="Past Exhibitions"
-                        />
-                      {/* </LinkRouter> */}
-                    </LinkScroll>
-                    <LinkScroll
+                      isDynamic={true}
                       to="/services"
                       spy={true}
                       smooth={true}
-                      offset={50}
+                      offset={-50}
                       duration={500}
                     >
                       {/* <LinkRouter to="/services"> */}
-                        <Tab
-                          className={
-                            navColor ? classes.colorFill : classes.noColorFill
-                          }
-                          label="Services"
-                        />
+                      <Tab
+                        className={
+                          navColor ? classes.colorFill : classes.noColorFill
+                        }
+                        label="Services"
+                      />
                       {/* </LinkRouter> */}
                     </LinkScroll>
                     <LinkScroll
+                      isDynamic={true}
                       to="/contactus"
                       spy={true}
                       smooth={true}
-                      offset={50}
+                      offset={10}
                       duration={500}
                     >
                       {/* <LinkRouter to="/contactus"> */}
-                        <Tab
-                          className={
-                            navColor ? classes.colorFill : classes.noColorFill
-                          }
-                          label="Contact Us"
-                        />
+                      <Tab
+                        className={
+                          navColor ? classes.colorFill : classes.noColorFill
+                        }
+                        label="Contact Us"
+                      />
                       {/* </LinkRouter> */}
                     </LinkScroll>
                   </Tabs>

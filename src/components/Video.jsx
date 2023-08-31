@@ -13,7 +13,7 @@ import { CssVarsProvider as JoyCssVarsProvider } from "@mui/joy/styles";
 
 const Video = ({
   videoHeight,
-  videoSrc = "https://www.shutterstock.com/shutterstock/videos/1059669308/preview/stock-footage-luxurious-pale-gold-glitter-moving-in-orange-and-black-background-feels-sophisticated-and-retro.webm",
+  videoSrc = "https://assets.mixkit.co/videos/preview/mixkit-abstract-red-fabric-flowing-282-large.mp4",
 }) => {
   const materialTheme = materialExtendTheme();
 
