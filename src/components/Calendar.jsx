@@ -2,16 +2,14 @@ import React, { useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { makeStyles, useTheme } from "@mui/styles";
 import PE from "./PE";
 import Divider from "@mui/material/Divider";
 
 
-const Calendar = () => {
+const Calendar = ({ eventsArray }) => {
   const [showEvents, setShowEvents] = useState(true);
 
   const [events] = useState([
@@ -134,56 +132,59 @@ const Calendar = () => {
     )
   }
 
-  {/* <div> {showEvents ? (calendar code) : (<PE eventArr={eventsArray} setShowEvents={setShowEvents}/>) } */ }
 
 
   return (
-    <div> {showEvents ? 
-      <div>
-      <div className="demo-app-main" style={{width: '50vw'}}>
-        <FullCalendar
-          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-          headerToolbar={{
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth',
-          }}
-          initialView="dayGridMonth"
-          editable={true}
-          selectable={true}
-          selectMirror={true}
-          dayMaxEvents={true}
-          // weekends={weekendsVisible}
-          // select={handleDateSelect}
-          eventContent={renderEventContent}
-          eventClick={handleEventClick}
-          events={events}
-          contentHeight='35vw'
-        />
-      </div>
-      <div>
-      <Carousel
-          responsive={responsive}
-          autoPlay={autoPlay}
-          ref={carouselRef}
-          renderButtonGroupOutside={true}
-          customButtonGroup={<CustomButtonGroup
-            handleBackClick={handleBackClick}
-            handleForwardClick={handleForwardClick}
-            handlePlayPauseClick={handlePlayPauseClick}
-            autoPlay={autoPlay}
-            />}
-        >
-          {filteredEvents.map((event) => (
-            <div key={event.id}>
-              <img src={event.url} alt={event.title} />
-            </div>
-          ))}
-        </Carousel>
-      </div>
-      </div>
-      : (<PE eventArr={eventsArray} setShowEvents={setShowEvents} />)}
-    </div >
+    <div>
+      <Divider textAlign="left" role="presentation" style={{ backgroundColor: '#ff8b25', height: '.2rem', alignItems: 'center', margin: '2rem 0' }}>
+        <h1 style={{ display: 'inline', backgroundColor: 'white' }}>Events</h1>
+      </Divider>
+      {showEvents ?
+        <div>
+          <div className="demo-app-main" style={{ width: '50vw' }}>
+            <FullCalendar
+              plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+              headerToolbar={{
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth',
+              }}
+              initialView="dayGridMonth"
+              editable={true}
+              selectable={true}
+              selectMirror={true}
+              dayMaxEvents={true}
+              // weekends={weekendsVisible}
+              // select={handleDateSelect}
+              eventContent={renderEventContent}
+              eventClick={handleEventClick}
+              events={events}
+              contentHeight='35vw'
+            />
+          </div>
+          <div>
+            <Carousel
+              responsive={responsive}
+              autoPlay={autoPlay}
+              ref={carouselRef}
+              renderButtonGroupOutside={true}
+              customButtonGroup={<CustomButtonGroup
+                handleBackClick={handleBackClick}
+                handleForwardClick={handleForwardClick}
+                handlePlayPauseClick={handlePlayPauseClick}
+                autoPlay={autoPlay}
+              />}
+            >
+              {filteredEvents.map((event) => (
+                <div key={event.id}>
+                  <img src={event.url} alt={event.title} />
+                </div>
+              ))}
+            </Carousel>
+          </div>
+        </div>
+        : (<PE eventArr={eventsArray} setShowEvents={setShowEvents} />)}
+      <button onClick={handleShowEvents}>Previous Events</button>    </div >
 
   );
 
