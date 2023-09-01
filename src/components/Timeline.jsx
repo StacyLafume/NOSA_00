@@ -7,46 +7,23 @@ import "react-vertical-timeline-component/style.min.css";
 
 import { makeStyles, useTheme } from "@mui/styles";
 
-
-const useStyles = makeStyles({
-  gradientAnimation: {
-    width: '100px',
-    height: '100px',
-    background: 'linear-gradient(-45deg, #f06, #0f6, #06f, #f06)',
-    backgroundSize: '400% 400%',
-    animation: '$gradient 10s ease infinite',
-  },
-  '@keyframes gradient': {
-    '0%': {
-      backgroundPosition: '0% 50%',
-    },
-    '50%': {
-      backgroundPosition: '100% 50%',
-    },
-    '100%': {
-      backgroundPosition: '0% 50%',
-    },
-  }
-});
-
-
+const useStyles = makeStyles({});
 
 const Timeline = () => {
-  const classes = useStyles()
+  const classes = useStyles();
   let workIconStyles = { background: "#ff8b25" };
   let schoolIconStyles = { background: "#ff8b25" };
 
   return (
     <div
       style={{
-        backgroundColor: "#FAD961",
-        backgroundImage: "linear-gradient(135deg, #FAD961 0%, #ffaf00 50%, #F76B1C 100%)"    
-       
+        backgroundImage:
+          "linear-gradient(331deg,rgb(255 255 255) 50%, rgb(247, 107, 28) 0%)",
+        height: "120vh",
       }}
-
-      //  className={classes.gradientAnimation}
     >
-      <VerticalTimeline>
+      <VerticalTimeline 
+>
         {[
           {
             id: 1,
@@ -57,20 +34,21 @@ const Timeline = () => {
             date: "",
             icon: "",
           },
+         
           {
-            id: 1,
-            title: "What We Believe",
+            id: 2,
+            title: "What We Do",
             description:
-              "Art is not just something to be consumed, but a powerful tool for bringing people together, fostering creativity, and building social capital. We offer a unique blend of art and commerce, providing a platform for artists and small businesses to connect with each other and with the public.",
+              "NOSA is a community-driven initiative that connects local artists with the public, fosters creativity, and supports small businesses in Boston.",
 
             date: "",
             icon: "",
           },
           {
-            id: 2,
-            title: "What we do",
+            id: 1,
+            title: "What We Believe",
             description:
-              "NOSA is a community-driven initiative that connects local artists with the public, fosters creativity, and supports small businesses in Boston.",
+              "Art is not just something to be consumed, but a powerful tool for bringing people together, fostering creativity, and building social capital. We offer a unique blend of art and commerce, providing a platform for artists and small businesses to connect with each other and with the public.",
 
             date: "",
             icon: "",
@@ -89,6 +67,9 @@ const Timeline = () => {
               dateClassName="date"
               iconStyle={isWorkIcon ? workIconStyles : schoolIconStyles}
               icon={<div />}
+              style={{ margin: "0 rem" }}
+              contentStyle={{ boxShadow: " 0px 0px 20px 0px #a38a7d" }}
+              
             >
               <h3 className="vertical-timeline-element-title">
                 {element.title}

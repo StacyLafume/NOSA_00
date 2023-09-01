@@ -90,7 +90,8 @@ const processEventMarkdownFile = (filePath) => {
             event_start_date: data.event_start_date,
             event_end_date: data.event_end_date,
             event_pictures: data.event_pictures,
-            event_color: data.event_color
+            event_color: data.event_color,
+            event_description: data.event_description
         };
     
         return event;

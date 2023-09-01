@@ -8,10 +8,7 @@ import { makeStyles } from '@mui/styles';
 
 
 const useStyles = makeStyles((theme) => ({
-    donate: {
-      width: "100%",
-      height: "6vh",
-    }
+   
   }));
 
 
@@ -27,14 +24,14 @@ const  SendButton = () => {
 
 }
 
-const DonateButton = () => {
+const DonateButton = ({color}) => {
     const classes = useStyles();
 
 
     return (
-        <Stack className={classes.donate}  direction="column" spacing={2} mt={2}>
-            <Button  variant="contained" endIcon={<FavoriteIcon/>}>
-                Donate
+        <Stack  >
+            <Button  variant="contained" style={ {backgroundColor:`${color}`} }endIcon={<FavoriteIcon/>}>
+                Donate here
             </Button>
         </Stack>
     )

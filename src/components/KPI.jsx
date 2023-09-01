@@ -8,12 +8,14 @@ const useStyles = makeStyles((theme) => ({
   kpiContainer: {
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
     minHeight: "300px",
     position: "relative",
     overflow: "hidden",
-    width: "100%",
-    flexWrap: "nowrap"
+    width: "62vw !important",
+    flexWrap: "nowrap",
+    padding:"0rem 0rem 3rem 0rem",
+    height: "fit-content",
+
   },
   kpiContent: {
     position: "relative",
@@ -23,12 +25,9 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center", // Center items vertically
     alignItems: "center", // Center items horizontally
-    padding: theme.spacing(5), // Adjust the padding as needed to center the numbers
   },
   buttonWrapper: {
-    color: "f1993e",
     marginTop: theme.spacing(2),
-    flexWrap: "no-wrap",
     padding:"1%"
   },
   circle: {
@@ -37,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
     height: "119px !important", 
     top: "104px",
     right: "32px",
-    transform: "rotate(-90deg)",
   }
 }));
 
@@ -69,27 +67,27 @@ const KPI = ({ numbers, interval }) => {
   }, [numbers, counts, interval]);
 
   return (
-    <Container className={classes.kpiContainer} maxWidth={false}>
+    <Container className={classes.kpiContainer} >
       <Grid
         container
         spacing={2}
         justifyContent="center"
         alignItems="center"
-        style={{flexWrap:"nowrap"}}
+        style={{flexWrap:"nowrap", flexDirection:"row", marginTop:"-16px", width:"calc(100% + 16px)", marginLeft:"-16px",justifyContent:"center",alignItems:"center"}}
         sx={{}}
       >
         {numbers.map((targetNumber, index) => (
-          <Grid item xs={4} key={index}>
+          <Grid style={{padding:"0rem"}} item xs={4} key={index}>
             <Box textAlign="center" className={classes.kpiContent}>
             <CircularProgress className={classes.circle} variant="determinate" thickness={1} sx={{color:"#ff8b25",}} value={100} />
-              <Typography variant="h3" fontWeight="thin">
+              <Typography variant="h3" fontWeight="thin" style={{fontSize:"3rem", lineHeight:"1.167", margin:"0", }}>
                 {targetNumber}
               </Typography>
               <div className={classes.buttonWrapper}>
-                <Grid item sx={{width:"6rem", position:"relative", top:"40px"}} variant="contained">
-                {index === 0 ? "Ticket sales" : index === 1 ? "Ticked Events" :  index === 2 ? "Art Sales" : "Members"}
+                <Typography item sx={{width:"6rem", position:"relative", top:"40px", margin:"0rem"}} variant="contained">
+                {index === 0 ? "Ticket sales" : index === 1 ? "Ticketed Events" :  index === 2 ? "Art Sales" : "Members"}
 
-                </Grid>
+                </Typography>
               </div>
             </Box>
           </Grid>
