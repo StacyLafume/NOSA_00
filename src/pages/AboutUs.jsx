@@ -10,10 +10,10 @@ const AboutUs = () => {
       <div id="/aboutus" style={{ height: "134vh" }}>
         <h1
           style={{
-            fontSize: "3.5rem",
             paddingLeft: "6.1rem",
-            marginTop: "2rem",
-            height: "4.3rem",
+            height: "3.8rem",
+            display:"flex",
+            alignItems:"flex-start"
           }}
         >
           About Us
@@ -29,16 +29,14 @@ const AboutUs = () => {
             width: "100vw",
             display: "inline-block",
             paddingRight: "3rem",
-            marginBottom: "2rem",
           }}
         >
           Building A Vibrant And Inclusive Art Community In Boston
         </span>
         <div
           style={{
-            marginTop: "3rem",
-            borderTop: "thick solid",
-            borderBottom: "thick solid",
+            marginTop: "1rem",
+            height:"116vh"
           }}
         >
           <Timeline />
