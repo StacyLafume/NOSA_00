@@ -10,7 +10,7 @@ const OurMission = () => {
     <Box
       sx={{ flexGrow: 1 }}
       id="/ourmission"
-      style={{ height: "100vh", backgroundColor: "black", overflow: "hidden" }}
+      style={{ height: "110vh", backgroundColor: "black", overflow: "hidden" }}
     >
       <Grid
         container
@@ -31,25 +31,26 @@ const OurMission = () => {
             textAlign="center"
             role="presentation"
             style={{
-              backgroundColor: "#ff8b25",
-              height: ".2rem",
+              backgroundColor: "white",
+              height: ".05rem",
               alignItems: "center",
               margin: "2rem 0",
             }}
           >
-            <h1
+            <Typography
               style={{
-                fontSize: "3.5rem",
+                fontSize: "2.6rem",
+                fontWeight:"400",
                 display: "inline",
                 backgroundColor: "black",
                 padding: "10%",
-                color: "#ff8b25",
+                color: "white",
                 position: "relative",
                 right: "2rem",
               }}
             >
               Our Mission
-            </h1>
+            </Typography>
           </Divider>
         </Grid>
         <Grid
@@ -62,7 +63,7 @@ const OurMission = () => {
           <Typography
             sx={{
               fontSize: "2rem",
-              color: "#ff8b25",
+              color: "white",
               fontWeight: "300 !important",
               textAlign: "left",
               width:"50%",
@@ -98,14 +99,14 @@ const OurMission = () => {
                 flexWrap: "nowrap",
                 justifyContent: "space-between",
                 alignItems: "center",
-                color: "#ff8b25",
+                color: "#ffff",
                 backgroundColor: "black",
-                borderTop:"thin solid #ff8c25"
+                borderTop:"thin solid white"
               }}
               xs={8}
             >
               <Grid >
-                <Typography style={{ fontSize: "1.2rem", fontWeight:"400", width:"100%", }}>
+                <Typography style={{ lineHeight: "2.5rem", wordSpacing:"6px",fontSize: ".9rem", fontWeight:"400", width:"100%", }}>
                   Boston's communities have been hit hard by the pandemic, and
                   small businesses and artists have been particularly impacted.
                   Many artists struggle to find affordable space to showcase
@@ -134,7 +135,7 @@ const OurMission = () => {
                   backgroundRepeat: "no-repeat",
                   height: "30vh",
                   width: "100%",
-                  borderTop: "thin solid #ff8b25",
+                  borderTop: "thin solid white",
                 }}
               ></Grid>
             </Grid>
@@ -170,10 +171,10 @@ const OurMission = () => {
                 display: "flex",
                 alignItems: "flex-start",
                 justifyContent: "flex-start",
-                color: "#ff8b25",
+                color: "white",
                 backgroundColor: "black",
                 padding: "0",
-                borderBottom: "thin solid #ff8b25",
+                borderBottom: "thin solid white",
                 width: "80vw",
                 flexDirection:"row"
               }}

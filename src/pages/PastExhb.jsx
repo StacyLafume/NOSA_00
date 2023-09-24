@@ -36,8 +36,8 @@ const PastExhb = ({ artistData }) => {
 
     const filteredData = artistData?.filter(
       (item) =>
-        item.exhibition_name.toLowerCase().includes(searchTerm.toLowerCase()) //||
-      // item.date.toLowerCase().includes(searchTerm.toLowerCase())
+        item.exhibition_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+       new Date(item.exhibition_date).toDateString().toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredData(filteredData);
   };
@@ -75,7 +75,7 @@ const PastExhb = ({ artistData }) => {
                 backgroundColor: "white",
               }}
             >
-              Pervious Exhibitions
+              Previous Exhibitions
             </h1>
           </Divider>
           <Container sx={{ width: "80vw", marginTop: "10vh" }} maxWidth="xl">
@@ -93,7 +93,7 @@ const PastExhb = ({ artistData }) => {
                 id="outlined-adornment-amount"
                 startAdornment={
                   <InputAdornment position="start">
-                    Exhibitions Name
+                    Exhibition Name
                   </InputAdornment>
                 }
                 label="Search"

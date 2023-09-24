@@ -6,11 +6,21 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
 function MediaCard({ artistData }) {
-  // isplay: flex;
-  //   flex-direction: row;
-  //   /* align-content: stretch; */
-  //   justify-content: space-between;
-  //   align-items: center;
+  const month = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
   return (
     <Card
       sx={{
@@ -18,9 +28,9 @@ function MediaCard({ artistData }) {
         height: "20vh",
         width: "100%",
         flexDirection: "row",
-        justifyContent: "space-evenly",
+        justifyContent: "flex-end",
         alignContent: "space-around",
-        
+        backgroundColor: "#fee",
       }}
     >
       <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -33,7 +43,16 @@ function MediaCard({ artistData }) {
             color="text.secondary"
             component="div"
           >
-            event / exhibition explanation
+            {` ${
+              month[new Date(artistData.exhibition_date).getMonth()]
+            } ${new Date(artistData.exhibition_date).getFullYear()}`}
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            color="text.secondary"
+            component="div"
+          >
+            {` ${artistData.exhibition_statement}`}
           </Typography>
         </CardContent>
       </Box>
