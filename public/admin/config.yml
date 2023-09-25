@@ -42,9 +42,9 @@ collections:
         ]}
 
 
-- name: "Banner"
-    label: "Banner"
-    folder: "src/content/banner"
-    create: true
-    fields:
-      - { label: "Banner Text", name: "banner_text", widget: "string", required: true }
+  - name: "Banner"
+      label: "Banner"
+      folder: "src/content/banner"
+      create: true
+      fields:
+        - { label: "Banner Text", name: "banner_text", widget: "string", required: true }
