@@ -6,12 +6,14 @@ const Banner = ({bannerText}) => {
     const text =  bannerText[0].banner_text
     console.log(bannerText[0].banner_text, 'text')
     return (
-        <Marquee style={{ gradient: true, height: "6vh", backgroundColor: 'black'}}>
-        <div style={{ width: '100vw', color: "white"}}>
+        <Marquee style={{ gradient: true, height: "6vh", backgroundColor: 'black'}} speed={100} pauseOnHover={true} pauseOnClick={true} autoFill={true}>
+        <div style={{ width: 'auto', color: "white"}}>
             <p>
-               {text}      
+               {" ✨ 🎉 Complete Website coming soon 🎉 ✨ "}      
             </p>
+           
         </div>
+    
     </Marquee>
     )
 }

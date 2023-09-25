@@ -71,15 +71,10 @@ const App = () => {
         main: '#ff6e40',
       },
     },
-
-
     typography: {
       fontFamily: ["Blinker", 'Ropa Sans'].join(","),
       fontSize: ".8rem",
     }
-
-
-
   })
 
 
@@ -88,20 +83,20 @@ const App = () => {
       <CssBaseline defaultMode="dark" />
       <div id="/"/>
       <Nav />
-      <Video  videoHeight={"100vh"} />
       <Banner bannerText={BannerText}/>
+      <Video  videoHeight={"100vh"} />
        <AboutUs />
-      <OurMission />
+      {/* <OurMission /> */}
      
-      <Events eventArr={EventsJson}/>
+      {/* <Events eventArr={EventsJson}/> */}
       {/* Check if artistOfTheMonthData exists before rendering the component */}
-      {ArtistOfTheMonthJson.length > 0 && (
+      {/* {ArtistOfTheMonthJson.length > 0 && (
         <ArtistOfTheMonth pastArtistOfTheMonthData={ArtistOfTheMonthJson} artistsOfTheMonthData={ArtistOfTheMonthJson} artistOfTheMonthData={ArtistOfTheMonthJson[0]} />
-      )}
-      <ApplyNow/>
-      <Services services={services} />
-      <ContactUs />
-      <Footer />
+      )} */}
+      {/* <ApplyNow/> */}
+      {/* <Services services={services} /> */}
+      {/* <ContactUs /> */}
+      {/* <Footer /> */}
     </ThemeProvider>
   )
 }

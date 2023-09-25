@@ -11,9 +11,7 @@ const useStyles = makeStyles({});
 
 const Timeline = ({ timelineData }) => {
   const classes = useStyles();
-  let workIconStyles = { background: "#ff8b25" };
-  let schoolIconStyles = { background: "#ff8b25" };
-
+  
   return (
     <div
       style={{
@@ -25,11 +23,6 @@ const Timeline = ({ timelineData }) => {
     >
       <VerticalTimeline>
         {timelineData.map((element) => {
-          let isWorkIcon = element.icon === "work";
-          let showButton =
-            element.buttonText !== undefined &&
-            element.buttonText !== null &&
-            element.buttonText !== "";
 
           return (
             <VerticalTimelineElement
@@ -37,7 +30,7 @@ const Timeline = ({ timelineData }) => {
               date={element.date}
               dateClassName="date"
               iconStyle={{ background: "black",
-              color: "yellow",}}
+              }}
               icon={<div />}
               style={{ margin: "0 rem" }}
               contentStyle={{ boxShadow: " 0px 0px 20px 0px #a38a7d" }}
@@ -49,16 +42,7 @@ const Timeline = ({ timelineData }) => {
                 {element.location}
               </h5>
               <p id="description">{element.description}</p>
-              {showButton && (
-                <a
-                  className={`button ${
-                    isWorkIcon ? "workButton" : "schoolButton"
-                  }`}
-                  href="/"
-                >
-                  {element.buttonText}
-                </a>
-              )}
+              
             </VerticalTimelineElement>
           );
         })}

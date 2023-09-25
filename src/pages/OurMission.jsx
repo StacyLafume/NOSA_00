@@ -2,8 +2,25 @@ import * as React from "react";
 import Divider from "@mui/material/Divider";
 import { Box, Grid, Typography } from "@mui/material";
 import KPI from "../components/KPI";
-import { DonateButton } from "../components/Buttons"
+import { DonateButton } from "../components/Buttons";
+import { makeStyles } from "@mui/styles";
 
+const useStyles = makeStyles((theme) => ({
+  responsive: {
+    [theme.breakpoints.up("sm")]: {
+
+    },
+    [theme.breakpoints.up("md")]: {
+
+    },
+    [theme.breakpoints.up("lg")]: {
+
+    },
+    [theme.breakpoints.up("xl")]: {
+      
+    },
+  },
+}));
 
 const OurMission = () => {
   return (
@@ -25,7 +42,7 @@ const OurMission = () => {
         }}
         spacing={2}
       >
-        <Grid xs={12} style={{ height: "10vh", marginBottom:"2rem" }}>
+        <Grid xs={12} style={{ height: "10vh", marginBottom: "2rem" }}>
           {" "}
           <Divider
             textAlign="center"
@@ -40,7 +57,7 @@ const OurMission = () => {
             <Typography
               style={{
                 fontSize: "2.6rem",
-                fontWeight:"400",
+                fontWeight: "400",
                 display: "inline",
                 backgroundColor: "black",
                 padding: "10%",
@@ -56,7 +73,7 @@ const OurMission = () => {
         <Grid
           container
           style={{
-            placeContent:"center"
+            placeContent: "center",
           }}
           spacing={2}
         >
@@ -66,14 +83,28 @@ const OurMission = () => {
               color: "white",
               fontWeight: "300 !important",
               textAlign: "left",
-              width:"50%",
+              width: "50%",
               margin: "0",
-              fontFamily:"Blinker",
-              width:"60%"
+              fontFamily: "Blinker",
+              width: "60%",
             }}
           >
-            {"NOSA enables artists to showcase their work, connect with each other, and engage with the public."}
-            <span style={{position:"relative", left:"37rem", bottom:"2.68rem", display:"flex", }}><DonateButton color={"#ff8b25"} style={{ width:"fit-content", width:"12vw !important" }}/></span>
+            {
+              "NOSA enables artists to showcase their work, connect with each other, and engage with the public."
+            }
+            <span
+              style={{
+                position: "relative",
+                left: "37rem",
+                bottom: "2.68rem",
+                display: "flex",
+              }}
+            >
+              <DonateButton
+                color={"#ff8b25"}
+                style={{ width: "fit-content", width: "12vw !important" }}
+              />
+            </span>
           </Typography>
         </Grid>
         <Grid
@@ -81,7 +112,7 @@ const OurMission = () => {
             display: "flex",
             alignItems: "center",
             flexDirection: "row",
-            width:"100vw",
+            width: "100vw",
             padding: "0% 4%",
             justifyContent: "space-between",
             flexWrap: "wrap",
@@ -101,12 +132,20 @@ const OurMission = () => {
                 alignItems: "center",
                 color: "#ffff",
                 backgroundColor: "black",
-                borderTop:"thin solid white"
+                borderTop: "thin solid white",
               }}
               xs={8}
             >
-              <Grid >
-                <Typography style={{ lineHeight: "2.5rem", wordSpacing:"6px",fontSize: ".9rem", fontWeight:"400", width:"100%", }}>
+              <Grid>
+                <Typography
+                  style={{
+                    lineHeight: "2.5rem",
+                    wordSpacing: "6px",
+                    fontSize: ".9rem",
+                    fontWeight: "400",
+                    width: "100%",
+                  }}
+                >
                   Boston's communities have been hit hard by the pandemic, and
                   small businesses and artists have been particularly impacted.
                   Many artists struggle to find affordable space to showcase
@@ -140,7 +179,14 @@ const OurMission = () => {
               ></Grid>
             </Grid>
           </div>
-          <div style={{ display: "flex", flexDirection: "row-reverse", marginTop:"1rem", width:"100%"}}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row-reverse",
+              marginTop: "1rem",
+              width: "100%",
+            }}
+          >
             <Grid
               style={{
                 height: "fit-content",
@@ -160,9 +206,7 @@ const OurMission = () => {
                   height: "30vh",
                   width: "100%",
                 }}
-              >
-           
-              </Grid>
+              ></Grid>
             </Grid>
             <Grid
               style={{
@@ -176,7 +220,7 @@ const OurMission = () => {
                 padding: "0",
                 borderBottom: "thin solid white",
                 width: "80vw",
-                flexDirection:"row"
+                flexDirection: "row",
               }}
               Grid
               xs={8}

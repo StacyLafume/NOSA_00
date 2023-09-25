@@ -22,24 +22,34 @@ import {
 import { CssVarsProvider as JoyCssVarsProvider } from "@mui/joy/styles";
 
 const useStyles = makeStyles((theme) => ({
+  responsive: {
+    [theme.breakpoints.up("sm")]: {},
+    [theme.breakpoints.up("md")]: {},
+    [theme.breakpoints.up("lg")]: {},
+    [theme.breakpoints.up("xl")]: {},
+  },
   colorFill: {
     backgroundColor: "#d9d9d9 !important",
     color: "black !important",
     fontWeight: "500 !important",
-    fontSize:".781rem !important",
-    fontFamily:'Blinker !important'
-    },
+    fontSize: ".781rem !important",
+    fontFamily: "Blinker !important",
+  },
   noColorFill: {
     backgroundColor: "transparent !important",
     color: "white !important",
     fontWeight: "500 !important",
-    fontFamily:'Blinker  !important'
+    fontFamily: "Blinker  !important",
   },
   appBar: {
     height: "fitContent",
     [theme.breakpoints.down("sm")]: {
       height: "64px",
     },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "2rem"
+    },
+    
     display: "flex",
     justifyContent: "space-evenly",
     boxShadow: "none !important",
@@ -55,7 +65,6 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
     [theme.breakpoints.up("md")]: {
-      display: "none !important" ,
     },
     [theme.breakpoints.up("lg")]: {
       display: "none !important",
@@ -63,7 +72,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("xl")]: {
       display: "none !important",
     },
-    
   },
   vanishBox: {
     display: "none !important",
@@ -172,6 +180,8 @@ const Nav = () => {
             handleMenuClose();
             setValue("2");
           }}
+          sx={{ display: { sm: "none", xs: "none" } }}
+
         >
           Our Mission
         </MenuItem>
@@ -189,6 +199,8 @@ const Nav = () => {
             handleMenuClose();
             setValue("4");
           }}
+          sx={{ display: { sm: "none", xs: "none" } }}
+
         >
           Events
         </MenuItem>
@@ -206,6 +218,8 @@ const Nav = () => {
             handleMenuClose();
             setValue("5");
           }}
+          sx={{ display: { sm: "none", xs: "none" } }}
+
         >
           Artist Of The Month
         </MenuItem>
@@ -224,6 +238,8 @@ const Nav = () => {
             handleMenuClose();
             setValue("7");
           }}
+          sx={{ display: { sm: "none", xs: "none" } }}
+
         >
           Apply Now
         </MenuItem>
@@ -242,6 +258,8 @@ const Nav = () => {
             handleMenuClose();
             setValue("7");
           }}
+          sx={{ display: { sm: "none", xs: "none" } }}
+
         >
           Services
         </MenuItem>
@@ -259,6 +277,8 @@ const Nav = () => {
             handleMenuClose();
             setValue("8");
           }}
+          sx={{ display: { sm: "none", xs: "none" } }}
+
         >
           Contact Us
         </MenuItem>
@@ -327,13 +347,13 @@ const Nav = () => {
               }}
             >
               <TabContext value={value}>
-                <Box className={isSmallScreen ? classes.tabsContainer : ""}>
+                <Box>
                   <Tabs
-                   centered
+                    centered
                     onChange={handleChange}
                     indicatorColor="secondary"
                     aria-label="lab API tabs example"
-                    sx={{ backgroundColor: "transparent",}}
+                    sx={{ backgroundColor: "transparent" }}
                   >
                     <LinkScroll
                       isDynamic={true}
@@ -349,6 +369,9 @@ const Nav = () => {
                           navColor ? classes.colorFill : classes.noColorFill
                         }
                         label="Home"
+                        
+                        sx={{ display: { sm: "none", xs: "none", lg: "inline-block", xl: "inline-block" } }}
+
                       />
                       {/* </LinkRouter> */}
                     </LinkScroll>
@@ -366,6 +389,7 @@ const Nav = () => {
                           navColor ? classes.colorFill : classes.noColorFill
                         }
                         label="About Us"
+                        sx={{ display: { sm: "none", xs: "none", lg: "inline-block", xl: "inline-block" } }}
                       />
                       {/* </LinkRouter> */}
                     </LinkScroll>
@@ -383,6 +407,8 @@ const Nav = () => {
                           navColor ? classes.colorFill : classes.noColorFill
                         }
                         label="Our Mission"
+                        sx={{ display: { sm: "none", xs: "none" } }}
+
                       />
                       {/* </LinkRouter> */}
                     </LinkScroll>
@@ -401,6 +427,8 @@ const Nav = () => {
                           navColor ? classes.colorFill : classes.noColorFill
                         }
                         label="Events"
+                        sx={{ display: { sm: "none", xs: "none" } }}
+
                       />
                       {/* </LinkRouter> */}
                     </LinkScroll>
@@ -418,6 +446,8 @@ const Nav = () => {
                           navColor ? classes.colorFill : classes.noColorFill
                         }
                         label="Artist Of The Month"
+                        sx={{ display: { sm: "none", xs: "none" } }}
+
                       />
                       {/* </LinkRouter> */}
                     </LinkScroll>
@@ -435,6 +465,8 @@ const Nav = () => {
                           navColor ? classes.colorFill : classes.noColorFill
                         }
                         label="Apply Now"
+                        sx={{ display: { sm: "none", xs: "none"} }}
+
                       />
                       {/* </LinkRouter> */}
                     </LinkScroll>
@@ -453,6 +485,8 @@ const Nav = () => {
                           navColor ? classes.colorFill : classes.noColorFill
                         }
                         label="Services"
+                        sx={{ display: { sm: "none", xs: "none" } }}
+
                       />
                       {/* </LinkRouter> */}
                     </LinkScroll>
@@ -470,6 +504,8 @@ const Nav = () => {
                           navColor ? classes.colorFill : classes.noColorFill
                         }
                         label="Contact Us"
+                        sx={{ display: { sm: "none", xs: "none", } }}
+
                       />
                       {/* </LinkRouter> */}
                     </LinkScroll>
