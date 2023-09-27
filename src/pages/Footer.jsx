@@ -5,7 +5,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import { Link as LinkScroll } from "react-scroll/modules";
 import { Box, Link, Typography } from "@mui/material";
-import InstagramIcon from '@mui/icons-material/Instagram';
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 const CustomDivider = styled("div")(({ theme }) => ({
   width: 0,
@@ -52,29 +52,32 @@ const Footer = () => {
                 height={"25vh"}
                 item
               >
-                <Typography variant={"h6"}>
+                <img src="https://cdn-az.allevents.in/events5/banners/d4425956a5f0d65bfacf7dedb1031dde91a7fe828b1b7ba632b4f65dc970718e-rimg-w1200-h800-gmir.jpg?v=1693230844" />
+
+                {/* <Typography variant={"h6"}>
                   We invite you to join the NOSA community and help us build a
                   more vibrant, inclusive, and creative Boston. Follow us on
                   social media, or attend one of our events to learn more about
                   how you can be a part of this exciting initiative.
-                </Typography>
+                </Typography> */}
               </Grid>
             </Grid>
             <Grid item xs={2} sm={4} md={4}>
               <Grid height={"25vh"} item>
                 <List>
                   <LinkScroll
-      isDynamic={true}
-
+                    isDynamic={true}
                     to="#"
                     spy={true}
                     smooth={true}
                     offset={50}
                     duration={500}
                   >
-                    <ListItem style={{ textDecoration: "underline"}}>Home</ListItem>
+                    <ListItem style={{ textDecoration: "underline" }}>
+                      Home
+                    </ListItem>
                   </LinkScroll>
-                  <LinkScroll
+                  {/* <LinkScroll
       isDynamic={true}
 
                     to="/ourmission"
@@ -84,74 +87,91 @@ const Footer = () => {
                     duration={500}
                   >
                     <ListItem style={{ textDecoration: "underline"}}>Our Mission</ListItem>
-                  </LinkScroll>
+                  </LinkScroll> */}
                   <LinkScroll
-      isDynamic={true}
-
+                    isDynamic={true}
                     to="/aboutus"
                     spy={true}
                     smooth={true}
                     offset={50}
                     duration={500}
                   >
-                    <ListItem style={{ textDecoration: "underline"}}>About Us</ListItem>
+                    <ListItem style={{ textDecoration: "underline" }}>
+                      About Us
+                    </ListItem>
                   </LinkScroll>
-                  <LinkScroll
-      isDynamic={true}
-
+                  {/* <LinkScroll
+                    isDynamic={true}
                     to="/events"
                     spy={true}
                     smooth={true}
                     offset={50}
                     duration={500}
                   >
-                    <ListItem style={{ textDecoration: "underline"}}>Events</ListItem>
-                  </LinkScroll>
-                  <LinkScroll
-      isDynamic={true}
-
+                    <ListItem style={{ textDecoration: "underline" }}>
+                      Events
+                    </ListItem>
+                  </LinkScroll> */}
+                  {/* <LinkScroll
+                    isDynamic={true}
                     to="/artistofthemonth"
                     spy={true}
                     smooth={true}
                     offset={5000000000}
                     duration={500}
                   >
-                    <ListItem style={{ textDecoration: "underline"}}>Artist Of The Month</ListItem>
-                  </LinkScroll>
-                  <LinkScroll
-      isDynamic={true}
-
+                    <ListItem style={{ textDecoration: "underline" }}>
+                      Artist Of The Month
+                    </ListItem>
+                  </LinkScroll> */}
+                  {/* <LinkScroll
+                    isDynamic={true}
                     to="/pastexhibitions"
                     spy={true}
                     smooth={true}
                     offset={50}
                     duration={500}
                   >
-                    <ListItem style={{ textDecoration: "underline"}}>Past Exhibitions</ListItem>
+                    <ListItem style={{ textDecoration: "underline" }}>
+                      Past Exhibitions
+                    </ListItem>
+                  </LinkScroll> */}
+                  <LinkScroll
+                    isDynamic={true}
+                    to="/getInvolved"
+                    spy={true}
+                    smooth={true}
+                    offset={50}
+                    duration={500}
+                  >
+                    <ListItem style={{ textDecoration: "underline" }}>
+                      Get Involved
+                    </ListItem>
                   </LinkScroll>
                   <LinkScroll
-      isDynamic={true}
-
+                    isDynamic={true}
                     to="/services"
                     spy={true}
                     smooth={true}
                     offset={50}
                     duration={500}
                   >
-                    <ListItem style={{ textDecoration: "underline"}}>Services</ListItem>
+                    <ListItem style={{ textDecoration: "underline" }}>
+                      Services
+                    </ListItem>
                   </LinkScroll>
                 </List>
-                
               </Grid>
             </Grid>
-            <Grid item xs={2} sm={4} md={4}>
+            {/* <Grid item xs={2} sm={4} md={4}>
               <Grid height={"25vh"} item>
-                <Typography variant={"h2"}>Follow us on Instagram  <InstagramIcon fontSize={"large"}/></Typography>
-               
+                <Typography variant={"h2"}>
+                  Follow us on Instagram <InstagramIcon fontSize={"large"} />
+                </Typography>
               </Grid>
-            </Grid>
+            </Grid> */}
           </Grid>
-        </Grid>
+        </Grid> 
         <CustomDivider />
         <Grid item xs={3}>
           <Box>

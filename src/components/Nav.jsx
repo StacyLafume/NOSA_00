@@ -227,7 +227,7 @@ const Nav = () => {
 
       <LinkScroll
         isDynamic={true}
-        to="/applyNow"
+        to="getInvolved"
         spy={true}
         smooth={true}
         offset={-50}
@@ -241,7 +241,7 @@ const Nav = () => {
           sx={{ display: { sm: "none", xs: "none" } }}
 
         >
-          Apply Now
+          Get Involved
         </MenuItem>
       </LinkScroll>
 
@@ -453,7 +453,7 @@ const Nav = () => {
                     </LinkScroll>
                     <LinkScroll
                       isDynamic={true}
-                      to="/applyNow"
+                      to="/getInvolved"
                       spy={true}
                       smooth={true}
                       ooffset={-50}
@@ -464,8 +464,8 @@ const Nav = () => {
                         className={
                           navColor ? classes.colorFill : classes.noColorFill
                         }
-                        label="Apply Now"
-                        sx={{ display: { sm: "none", xs: "none"} }}
+                        label="Get Involved"
+                        sx={{ display: { sm: "none", xs: "none", lg: "inline-block", xl: "inline-block" } }}
 
                       />
                       {/* </LinkRouter> */}
@@ -485,7 +485,7 @@ const Nav = () => {
                           navColor ? classes.colorFill : classes.noColorFill
                         }
                         label="Services"
-                        sx={{ display: { sm: "none", xs: "none" } }}
+                        sx={{ display: { sm: "none", xs: "none", lg: "inline-block", xl: "inline-block" } }}
 
                       />
                       {/* </LinkRouter> */}

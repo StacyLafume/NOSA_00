@@ -41,10 +41,19 @@ collections:
           {label: "Image Link", name: "image", widget: "string", required: true },
         ]}
 
-
   - name: "Banner"
     label: "Banner"
     folder: "src/content/banner"
     create: true
     fields:
         - { label: "Banner Text", name: "banner_text", widget: "string", required: true }
+
+  - name: "Links"
+    label: "Links"
+    folder: "src/content/links"
+    create: true
+    fields:
+      - { label: "Link Title", name: "link_title", widget: "string", required: true }
+      - { label: "Link", name: "link", widget: "string",  required: true }
+      - { label: 'Color', name: 'link_color', widget: 'color' }
+      - { label: 'Link Description', name: 'link_description', widget: 'string' }

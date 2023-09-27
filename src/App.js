@@ -19,32 +19,29 @@ import CursorOverlay from './components/CursorOverlay';
 import PE from './components/PE';
 import EventsJson from './content/event/event.json';
 import BannerText from './content/banner/bannerText.json'
-import ApplyNow from './pages/ApplyNow';
+import GetInvolved from './pages/GetInvolved';
 import Banner from './components/Banner';
+import LinksJson from './content/links/links.json';
+
 
 const App = () => {
 
   const services = [{ 
-    title: "Photo Shoot", 
-    video: "https://www.shutterstock.com/shutterstock/videos/1031450246/preview/stock-footage-backstage-of-the-photo-shoot-make-up-artist-applies-makeup-on-beautiful-black-model-in-a-moment.webm",
-    price: "$100.00"
+    title: "Content Creators & Social media", 
+    video:require('./images/content_creator.jpeg'),
+    description: ['Photographers / Shoots: Blank spaces for photo, video, webinar & live shoots', 'Podcast: Studio space for audio and video recordings'],
   },
   {
-    title: "Podcasts",
-    video: "https://www.shutterstock.com/shutterstock/videos/1072038289/preview/stock-footage-three-diverse-female-radio-hosts-wearing-headphones-talking-on-microphone-for-radio-podcast.webm",
-    price: "$200.00"
+    title: "Co-Working Space",
+    video: require('./images/coworking_space.jpeg'),
+    description: ["Conference Room"," Podcast Room ", "TV & Whiteboard"],
   },
   {
-    title: "Events",
-    video: "https://www.shutterstock.com/shutterstock/videos/1055170904/preview/stock-footage-waiter-is-pouring-champagne-pour-the-champagne-into-a-glass-bartender-pouring-champagne-into.webm",
-    price: "$300.00"
+    title: "Inquiring Individuals",
+    video: require('./images/event.jpeg'),
+    description: ["Intimate seated social gatherings for up to 20 people. Non Negotiable on capacity * Same event rental Fees apply*"],
+    
   },
-  {
-    title: "Co Working Space",
-    video: "https://www.shutterstock.com/shutterstock/videos/1057496554/preview/stock-footage--d-rendering-of-comfortable-co-working-space.webm",
-    price: "$400.00"
-  },
-
 
   ];
 
@@ -83,9 +80,12 @@ const App = () => {
       <CssBaseline defaultMode="dark" />
       <div id="/"/>
       <Nav />
-      <Banner bannerText={BannerText}/>
       <Video  videoHeight={"100vh"} />
+      <Banner bannerText={BannerText}/>
+
        <AboutUs />
+       <Banner bannerText={BannerText}/>
+
       {/* <OurMission /> */}
      
       {/* <Events eventArr={EventsJson}/> */}
@@ -93,10 +93,11 @@ const App = () => {
       {/* {ArtistOfTheMonthJson.length > 0 && (
         <ArtistOfTheMonth pastArtistOfTheMonthData={ArtistOfTheMonthJson} artistsOfTheMonthData={ArtistOfTheMonthJson} artistOfTheMonthData={ArtistOfTheMonthJson[0]} />
       )} */}
-      {/* <ApplyNow/> */}
-      {/* <Services services={services} /> */}
+      <GetInvolved linksData={LinksJson}/>
+      <Services services={services} />
       {/* <ContactUs /> */}
-      {/* <Footer /> */}
+      <Banner bannerText={BannerText}/>
+      <Footer />
     </ThemeProvider>
   )
 }
