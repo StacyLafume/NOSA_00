@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   title: {
-    fontWeight : "200 !important",
+    fontWeight : "400 !important",
     margin: "auto !important"
   },
   donate: {
@@ -54,7 +54,7 @@ const JoinEmailListForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission logic here (e.g., submit the email to the server)
-    console.log('Email submitted:', email);
+    //console.log('Email submitted:', email);
     // Reset the form after submission
     setEmail('');
   };
@@ -63,10 +63,10 @@ const JoinEmailListForm = () => {
     <div className={classes.formContainer}>
       
       <Box className={classes.formWrapper}>
-        
         <form onSubmit={handleSubmit}>
           <Grid container alignItems="center"> {/* Set alignItems to center */}
-          <Typography className={classes.title}align={"center"} variant={"h4"}> Join our mailing list <Jump><MailOutlineIcon /></Jump></Typography>
+          <p>We invite you to join the NOSA community and help us build a more vibrant, inclusive, and creative Boston. Follow us on social media, or attend one of our events to learn more about how you can be a part of this exciting initiative.</p>
+
             <Grid item xs={12}>
               <TextField
                 required
@@ -87,7 +87,8 @@ const JoinEmailListForm = () => {
               
                 className={classes.submitButton}
               >
-                Join
+                          <Typography className={classes.title}align={"center"} variant={"h4"}> Join our mailing list {"  "}<MailOutlineIcon /></Typography>
+
               </Button>
               <DonateButton className={classes.donate}/>
             </Grid>

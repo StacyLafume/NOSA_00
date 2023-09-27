@@ -60,7 +60,7 @@ const Calendar = ({ eventsArray }) => {
   ]);
 
   const handleShowEvents = () => {
-    console.log("clicking")
+    // console.log("clicking")
     setShowEvents(false)
   }
 

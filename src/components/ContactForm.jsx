@@ -10,7 +10,7 @@ import {
   Box,
   Container,
 } from "@mui/material";
-import {SendButton} from "./Buttons"
+import { SendButton } from "./Buttons";
 
 import { makeStyles } from "@mui/styles";
 import JoinEmailListForm from "./JoinEmailListForm";
@@ -97,7 +97,7 @@ const ContactForm = () => {
     }
 
     // Handle form submission logic here (e.g., send the form data to a server)
-    console.log(formData);
+    // console.log(formData);
 
     // Reset the form after submission (if desired)
     setFormData({
@@ -115,12 +115,17 @@ const ContactForm = () => {
       <Grid container spacing={1} className={classes.gridContainer}>
         <Grid item xs={7} className={classes.contactFormSection}>
           <Box sx={{ height: "100%" }}>
+            <h2
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+                justifyContent: "center",
+              }}
+            >
+              ContactUs
+            </h2>
             <div className={classes.formContainer}>
-              {/* <img
-                src="https://secure.meetupstatic.com/photos/event/8/2/2/d/clean_511833325.webp"
-                alt="Join Our Email List"
-                className={classes.image}
-              /> */}
               <form onSubmit={handleSubmit}>
                 <Grid container spacing={2}>
                   <Grid item xs={6}>
@@ -130,7 +135,7 @@ const ContactForm = () => {
                       label="First Name"
                       value={formData.firstName}
                       onChange={handleChange}
-                      fullWidth 
+                      fullWidth
                       margin="normal"
                       error={!!errors.firstName}
                       helperText={errors.firstName}
@@ -162,14 +167,13 @@ const ContactForm = () => {
                   error={!!errors.email}
                   helperText={errors.email}
                 />
-                <FormControl  fullWidth className={classes.formControl}>
+                <FormControl fullWidth className={classes.formControl}>
                   <InputLabel>Subject</InputLabel>
                   <Select
                     required
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                 
                   >
                     <MenuItem value="general">General Inquiry</MenuItem>
                     <MenuItem value="support">Technical Support</MenuItem>
@@ -184,12 +188,10 @@ const ContactForm = () => {
                   rows={4}
                   value={formData.message}
                   onChange={handleChange}
-                   fullWidth
+                  fullWidth
                   margin="normal"
                 />
-                <SendButton type="submit" variant="contained" color="primary"/>
-                  
-               
+                <SendButton type="submit" variant="contained" color="primary" />
               </form>
             </div>
           </Box>
@@ -198,7 +200,6 @@ const ContactForm = () => {
           <Box style={{ minHeight: "53vh" }}>
             <div className={classes.flexContainer}>
               <JoinEmailListForm />
-           
             </div>
           </Box>
         </Grid>

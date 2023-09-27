@@ -58,8 +58,8 @@ const ArtistOfTheMonth = ({
   const showCurrentArtist = () => {
     setArtistData({ ...pastArtistOfTheMonthData[0] });
     setIsCurrentArtist(!isCurrentArtist);
-    console.log(isCurrentArtist);
-    console.log("I was clicked");
+    // console.log(isCurrentArtist);
+    // console.log("I was clicked");
   };
 
   const classes = useStyles();
@@ -100,7 +100,7 @@ const ArtistOfTheMonth = ({
             <div className="top-matter">
               <div className="title">
                 <h1 style={{ width: "32vw" }}>
-                  {console.log("artist_name", artistData, artistOfTheMonthData)}
+                  {/* {console.log("artist_name", artistData, artistOfTheMonthData)} */}
                   Artist of the Month <span>{`${artist_name}`}</span>
                 </h1>
               </div>
@@ -123,7 +123,7 @@ const ArtistOfTheMonth = ({
             </div>
 
             
-            {console.log("exhibition_poster", exhibition_poster)}
+            {/* {console.log("exhibition_poster", exhibition_poster)} */}
 
             
 
