@@ -1,5 +1,5 @@
 ---
-link_title: NOSA Artist of the Month Application 2024,
+link_title: NOSA Artist of the Month Application 2024
 link: https://docs.google.com/forms/d/e/1FAIpQLSetL53X_pWOUSK6ePHuP5efotASBI3NDjIDyxnOJZ8S5rN3vg/viewform,
 link_poster: https://www.cityofmethuen.net/ImageRepository/Document?documentId=829,
 link_color: pink,
