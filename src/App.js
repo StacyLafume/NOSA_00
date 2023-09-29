@@ -39,7 +39,7 @@ const App = () => {
   {
     title: "Inquiring Individuals",
     video: require('./images/event.jpeg'),
-    description: ["Intimate seated social gatherings for up to 20 people. Non Negotiable on capacity * Same event rental Fees apply*"],
+    description: ["Intimate seated social gatherings for up to 20 people."],
     
   },
 
@@ -80,7 +80,7 @@ const App = () => {
       <CssBaseline defaultMode="dark" />
       <div id="/"/>
       <Nav />
-      <Video  videoHeight={"100vh"} />
+      <Video videoSrc="https://res.cloudinary.com/dpguttfbn/video/upload/v1696010476/vecteezy_coming-soon-text-animation-on-a-black-background-with_28549904_664_fjrsci.3gp" videoHeight={"100vh"} />
       <Banner bannerText={BannerText}/>
 
        <AboutUs />
@@ -103,4 +103,3 @@ const App = () => {
 }
 
 export default App
-
