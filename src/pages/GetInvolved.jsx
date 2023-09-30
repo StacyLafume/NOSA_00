@@ -50,7 +50,8 @@ const GetInvolved = ({ linksData }) => {
           <VerticalTimeline>
             {linksData.map(
               ({ link_title, link, link_color, link_description }, index) => {
-                return (
+                return link_description.length == 0 ? null :
+                 (
                   <VerticalTimelineElement
                     key={link_color}
                     dateClassName="date"
@@ -68,7 +69,7 @@ const GetInvolved = ({ linksData }) => {
                     <p id="description">{link_description}</p>
                     {link_title === "NOSA Artist of the Month Application 2024" ? (
                       <>
-                      <a target="_blank" href={link}>
+                      <a target="_blank" href="https://forms.gle/QXC5qh97XiLeWgev9">
                         <button
                           style={{
                             padding: "0.5rem",
