@@ -74,6 +74,9 @@ const App = () => {
     }
   })
 
+  const removeBadData = (jsonData) => {
+    return jsonData.filter(entry => Object.values(entry).length !== 0)
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -93,7 +96,7 @@ const App = () => {
       {/* {ArtistOfTheMonthJson.length > 0 && (
         <ArtistOfTheMonth pastArtistOfTheMonthData={ArtistOfTheMonthJson} artistsOfTheMonthData={ArtistOfTheMonthJson} artistOfTheMonthData={ArtistOfTheMonthJson[0]} />
       )} */}
-      <GetInvolved linksData={LinksJson}/>
+      <GetInvolved linksData={removeBadData(LinksJson)}/>
       <Services services={services} />
       {/* <ContactUs /> */}
       <Banner bannerText={BannerText}/>

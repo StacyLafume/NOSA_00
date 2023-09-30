@@ -48,6 +48,7 @@ const GetInvolved = ({ linksData }) => {
           }}
         >
           <VerticalTimeline>
+            {console.log(linksData,"linksData")}
             {linksData.map(
               ({ link_title, link, link_color, link_description }, index) => {
                 return link_description == "" ? <></> :
