@@ -50,7 +50,7 @@ const GetInvolved = ({ linksData }) => {
           <VerticalTimeline>
             {linksData.map(
               ({ link_title, link, link_color, link_description }, index) => {
-                return link_description.length == 0 ? null :
+                return link_description == "" ? <></> :
                  (
                   <VerticalTimelineElement
                     key={link_color}
