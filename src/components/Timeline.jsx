@@ -18,11 +18,11 @@ const Timeline = ({ timelineData }) => {
         backgroundImage: `url(
           "https://drive.google.com/file/d/1VdYvOqQePlsXbZs2Ck1M2yWqirgFc8RO/view?usp=sharing"
         )`,
-        height: "120vh",
+        height: "100vh",
       }}
     >
       <VerticalTimeline>
-        {timelineData.map((element) => {
+        {timelineData.map((element, index) => {
 
           return (
             <VerticalTimelineElement
@@ -32,8 +32,10 @@ const Timeline = ({ timelineData }) => {
               iconStyle={{ background: "black",
               }}
               icon={<div />}
-              style={{ margin: "0 rem" }}
+              style={{ margin: "8vh 0vh" }}
               contentStyle={{ boxShadow: " 0px 0px 20px 0px #a38a7d" }}
+              position={index % 2 == 0 ? "right" : "left"}
+
             >
               <h3 className="vertical-timeline-element-title">
                 {element.title}

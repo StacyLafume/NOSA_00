@@ -6,6 +6,8 @@ import {
 } from "react-vertical-timeline-component";
 
 const GetInvolved = ({ linksData }) => {
+  const linksDataReversed = [...linksData].reverse()
+  console.log("linksData.reverse()", )
   return (
     <div
       style={{
@@ -48,8 +50,7 @@ const GetInvolved = ({ linksData }) => {
           }}
         >
           <VerticalTimeline>
-            {console.log(linksData,"linksData")}
-            {linksData.map(
+            {linksDataReversed.map(
               ({ link_title, link, link_color, link_description }, index) => {
                 return link_description == "" ? <></> :
                  (
@@ -58,8 +59,9 @@ const GetInvolved = ({ linksData }) => {
                     dateClassName="date"
                     iconStyle={{ background: "black" }}
                     icon={<div />}
-                    style={{ margin: "0 rem" }}
+                    style={{ margin: "10vh 0vh" }}
                     contentStyle={{ boxShadow: " 0px 0px 20px 0px #a38a7d" }}
+                    position={index % 2 !== 0 ? "right" : "left"}
                   >
                     <h3
                       style={{ fontWeight: "900" }}
