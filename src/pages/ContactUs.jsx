@@ -3,7 +3,7 @@ import ContactForm from "../components/ContactForm";
 
 const ContactUs = () => {
   return (
-    <div id="/contactus">
+    <div id="/contactus" style={{height: "60vh"}}>
      
       <ContactForm />
     
