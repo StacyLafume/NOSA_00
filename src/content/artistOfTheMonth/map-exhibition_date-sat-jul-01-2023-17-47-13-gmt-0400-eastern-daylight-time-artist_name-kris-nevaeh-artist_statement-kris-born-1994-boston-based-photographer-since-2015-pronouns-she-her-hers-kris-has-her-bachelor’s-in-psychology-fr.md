@@ -1,6 +1,6 @@
 ---
 artist_name: Kris Nevaeh
-exhibition_name: N MY SKIN
+exhibition_name: IN MY SKIN
 headshot: https://res.cloudinary.com/dsjizcvxm/image/upload/v1696366281/Artist%20of%20the%20month/july2023/9_mgdakm.jpg
 artist_statement: >
   Kris, Born 1994, Boston based photographer since 2015. Pronouns She/Her/Hers.
