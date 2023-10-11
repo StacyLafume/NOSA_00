@@ -1,0 +1,25 @@
+.image-gallery-content .image-gallery-slide .image-gallery-image{
+    display: none;
+}
+
+.image-gallery-thumbnails-wrapper {
+    position: relative;
+    MARGIN: 0REM 2REM 0REM 4REM;
+}
+
+.image-gallery-right-nav {
+    right: -50px;
+    TOP: 3REM;
+    COLOR: #e56017;
+}
+
+.image-gallery-left-nav {
+    left: 0;
+    TOP: 3REM;
+    COLOR: #e56017;
+}
+
+.image-gallery-play-button {
+    left: 0;
+    display: none;
+}

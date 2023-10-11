@@ -9,6 +9,8 @@ import { useState } from "react";
 import PastExhb from "./PastExhb";
 import { makeStyles } from "@mui/styles";
 import "../monthlyArtist.css";
+import ArtistOfTheMonthImageGallery from "../components/ArtistOfTheMonthImageGallery";
+import { Link as LinkScroll } from "react-scroll";
 
 const useStyles = makeStyles((theme) => ({
   hideMe: {
@@ -21,7 +23,6 @@ const ArtistOfTheMonth = ({
   artistsOfTheMonthData,
   isPastArtistOfTheMonth = false,
   pastArtistOfTheMonthData,
-
   backgroundColor,
 }) => {
   // const ArtistOfTheMonth = ({ name, artistStatement, exhibition }) => {
@@ -58,8 +59,6 @@ const ArtistOfTheMonth = ({
   const showCurrentArtist = () => {
     setArtistData({ ...pastArtistOfTheMonthData[0] });
     setIsCurrentArtist(!isCurrentArtist);
-    // console.log(isCurrentArtist);
-    // console.log("I was clicked");
   };
 
   const classes = useStyles();
@@ -87,7 +86,7 @@ const ArtistOfTheMonth = ({
         <div>
           <div
             style={{
-              marginTop: "10vh",
+              // marginTop: "10vh",
               height: "95vh",
               backgroundImage: `url(${exhibition_poster})`,
               backgroundRepeat: "no-repeat",
@@ -113,19 +112,20 @@ const ArtistOfTheMonth = ({
               </div>
             </div>
           </div>
+        <Container sx={{ width: "95vw" }}>
+              <ArtistOfTheMonthImageGallery images={exhibition_pieces} />
+            </Container>
           <div class="article-container">
+         
             <div>
               <h2>About the Artist</h2>
               <p>{artist_statement}</p>
-              <img src={headshot} />
-                  <h2>About {exhibition_name}</h2>
+              <img src={headshot} height="100%" />
+              <h2>About {exhibition_name}</h2>
               <p>{exhibition_statement}</p>
             </div>
 
-            
             {/* {console.log("exhibition_poster", exhibition_poster)} */}
-
-            
 
             <Grid
               container
@@ -148,29 +148,29 @@ const ArtistOfTheMonth = ({
                 >
                   {artist_name}
                 </h2> */}
-                {isCurrentArtist ? (
+                {!isCurrentArtist ? (
                   <Button onClick={showCurrentArtist}> Current Artist </Button>
                 ) : (
                   ""
                 )}
               </Grid>
-
             </Grid>
-            <Container sx={{ width: "40vw" }}>
-              <SGridWCarousel images={exhibition_pieces} />
-            </Container>
-            {isPastArtistOfTheMonth ? (
+          
+            <LinkScroll
+              isDynamic={true}
+              to="previousExhb"
+              spy={true}
+              smooth={true}
+              offset={10}
+              duration={500}
+            >
               <Button onClick={getPastExhibitions}>
                 {" "}
-                Back to pervious exhibitions
+                previous exhibitions
               </Button>
-            ) : (
-              <Button onClick={getPastExhibitions}>
-                {" "}
-                pervious exhibitions
-              </Button>
-            )}
+            </LinkScroll>
           </div>
+         
         </div>
       )}
     </div>

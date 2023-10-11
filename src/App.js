@@ -75,7 +75,10 @@ const App = () => {
   })
 
   const removeBadData = (jsonData) => {
-    return jsonData.filter(entry => Object.values(entry).length !== 0)
+    return jsonData.filter(entry => {
+      const artistName = entry.artist_name;
+      return artistName !== "No Artist Name given" && Object.values(entry).length !== 0;
+    });
   }
 
   return (
@@ -93,9 +96,9 @@ const App = () => {
      
       {/* <Events eventArr={EventsJson}/> */}
       {/* Check if artistOfTheMonthData exists before rendering the component */}
-      {ArtistOfTheMonthJson.length > 0 && (
+      {/* {ArtistOfTheMonthJson.length > 0 && (
         <ArtistOfTheMonth pastArtistOfTheMonthData={removeBadData(ArtistOfTheMonthJson)} artistsOfTheMonthData={removeBadData(ArtistOfTheMonthJson)} artistOfTheMonthData={ArtistOfTheMonthJson[0]} />
-      )}
+      )} */}
       <GetInvolved linksData={removeBadData(LinksJson)}/>
       <Services services={services} />
       {/* <ContactUs /> */}

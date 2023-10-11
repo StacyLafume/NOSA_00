@@ -108,8 +108,8 @@ a {
 
 /* Article Container */
 .article-container {
-  padding: 4em 2em;
-  column-count: 5;
+  padding: 2em 2em;
+  column-count: 3;
   column-width: 360px;
   column-gap: 36px;
   column-fill: balance;

@@ -1,9 +1,9 @@
 import { React, useState } from "react";
 import MediaCard from "../components/MediaCard";
 import ArtistOfTheMonth from "./ArtistOfTheMonth";
-
+import Button from "@mui/material/Button";
 import { makeStyles } from "@mui/styles";
-
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import {
   Container,
   FormControl,
@@ -29,7 +29,6 @@ const PastExhb = ({ artistData }) => {
   const [showPreivousExhb, setShowPreivousExhb] = useState(false);
   const [selectedArtistData, setSelectedArtistData] = useState({});
 
-
   const handleSearch = (e) => {
     const searchTerm = e.target.value;
     setSearchTerm(searchTerm);
@@ -37,7 +36,10 @@ const PastExhb = ({ artistData }) => {
     const filteredData = artistData?.filter(
       (item) =>
         item.exhibition_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-       new Date(item.exhibition_date).toDateString().toLowerCase().includes(searchTerm.toLowerCase())
+        new Date(item.exhibition_date)
+          .toDateString()
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
     );
     setFilteredData(filteredData);
   };
@@ -57,7 +59,7 @@ const PastExhb = ({ artistData }) => {
           artistOfTheMonthData={selectedArtistData}
         />
       ) : (
-        <div>
+        <div id='previousExhb' style={{ height: "100vh" }}>
           <Divider
             textAlign="center"
             role="presentation"
@@ -78,6 +80,12 @@ const PastExhb = ({ artistData }) => {
               Previous Exhibitions
             </h1>
           </Divider>
+          <Button  style={{ color: "#ff8b25", margin:"4vh" }} onClick={() => getPastArtistOfTheMonth(artistData[0])}>
+          <ArrowBackIosIcon/>
+            {" "}
+            Back to Current Artist
+          </Button>
+
           <Container sx={{ width: "80vw", marginTop: "10vh" }} maxWidth="xl">
             <FormControl
               fullWidth
@@ -101,9 +109,13 @@ const PastExhb = ({ artistData }) => {
                 onChange={handleSearch}
               />
             </FormControl>
+
             <ImageList>
               {filteredData?.map((item) => (
-                <ImageListItem onClick={() => getPastArtistOfTheMonth(item)}>
+                <ImageListItem
+                  onClick={() => getPastArtistOfTheMonth(item)}
+                  style={{ padding: "20px" }}
+                >
                   <MediaCard artistData={item} />
                 </ImageListItem>
               ))}
