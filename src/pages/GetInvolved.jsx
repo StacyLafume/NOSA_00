@@ -7,7 +7,7 @@ import {
 
 const GetInvolved = ({ linksData }) => {
   const linksDataReversed = [...linksData].reverse()
-  console.log("linksData.reverse()", )
+  // console.log("linksData.reverse()", )
   return (
     <div
       style={{

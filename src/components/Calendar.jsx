@@ -71,7 +71,7 @@ const Calendar = ({ eventsArray }) => {
   const filteredEvents = events
   .map((event) => {
     const eventDate = new Date(event.start)
-    console.log(eventDate);
+    // console.log(eventDate);
     if ((eventDate >= currentDate)) {
       return {original: event.url, description: `${event.title} ${event.start}` };
     }
@@ -79,7 +79,7 @@ const Calendar = ({ eventsArray }) => {
   })
   .filter((event) => event !== null);
 
-  console.log('filteredEvents', filteredEvents)
+  // console.log('filteredEvents', filteredEvents)
 
   const renderItem = (item) => {
     return (
