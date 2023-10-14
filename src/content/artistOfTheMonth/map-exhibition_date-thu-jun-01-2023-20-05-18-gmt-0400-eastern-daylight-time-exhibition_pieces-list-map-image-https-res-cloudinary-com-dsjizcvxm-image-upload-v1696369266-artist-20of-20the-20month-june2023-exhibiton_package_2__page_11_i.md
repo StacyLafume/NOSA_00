@@ -65,9 +65,6 @@ exhibition_pieces:
     image_title: "15"
     image_description: "15"
   - image: https://res.cloudinary.com/dsjizcvxm/image/upload/v1696367971/Artist%20of%20the%20month/june2023/Exhibiton_Package_2__Page_04_Image_0003_fgrdlf.jpg
-    image_title: "16"
-    image_description: "16"
-  - image: https://res.cloudinary.com/dsjizcvxm/image/upload/v1696367971/Artist%20of%20the%20month/june2023/Exhibiton_Package_2__Page_04_Image_0003_fgrdlf.jpg
     image_title: "17"
     image_description: "17"
   - image: https://res.cloudinary.com/dsjizcvxm/image/upload/v1696367970/Artist%20of%20the%20month/june2023/Exhibiton_Package_2__Page_04_Image_0002_q1fl59.jpg
