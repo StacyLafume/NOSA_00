@@ -49,15 +49,6 @@ exhibition_pieces:
   - image: https://res.cloudinary.com/dsjizcvxm/image/upload/v1696367987/Artist%20of%20the%20month/june2023/Exhibiton_Package_2__Page_08_Image_0002_xm5l7u.jpg
     image_title: "7"
     image_description: "7"
-  - image: https://res.cloudinary.com/dsjizcvxm/image/upload/v1696368077/Artist%20of%20the%20month/june2023/Exhibiton_Package_2__Page_09_Image_0001_qq2hct.jpg
-    image_title: "8"
-    image_description: "8"
-  - image: https://res.cloudinary.com/dsjizcvxm/image/upload/v1696367987/Artist%20of%20the%20month/june2023/Exhibiton_Package_2__Page_08_Image_0002_xm5l7u.jpg
-    image_title: "9"
-    image_description: "9"
-  - image: https://res.cloudinary.com/dsjizcvxm/image/upload/v1696367985/Artist%20of%20the%20month/june2023/Exhibiton_Package_2__Page_08_Image_0001_q9mn4a.jpg
-    image_title: "10"
-    image_description: "10"
   - image: https://res.cloudinary.com/dsjizcvxm/image/upload/v1696367981/Artist%20of%20the%20month/june2023/Exhibiton_Package_2__Page_07_Image_0001_gu1rtq.jpg
     image_title: "11"
     image_description: "11"
@@ -73,9 +64,6 @@ exhibition_pieces:
   - image: https://res.cloudinary.com/dsjizcvxm/image/upload/v1696367973/Artist%20of%20the%20month/june2023/Exhibiton_Package_2__Page_05_Image_0001_zy218l.jpg
     image_title: "15"
     image_description: "15"
-  - image: https://res.cloudinary.com/dsjizcvxm/image/upload/v1696367971/Artist%20of%20the%20month/june2023/Exhibiton_Package_2__Page_04_Image_0003_fgrdlf.jpg
-    image_title: "16"
-    image_description: "16"
   - image: https://res.cloudinary.com/dsjizcvxm/image/upload/v1696367971/Artist%20of%20the%20month/june2023/Exhibiton_Package_2__Page_04_Image_0003_fgrdlf.jpg
     image_title: "17"
     image_description: "17"
