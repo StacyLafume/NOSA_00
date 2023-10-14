@@ -96,9 +96,9 @@ const App = () => {
      
       {/* <Events eventArr={EventsJson}/> */}
       {/* Check if artistOfTheMonthData exists before rendering the component */}
-      {/* {ArtistOfTheMonthJson.length > 0 && (
+      {ArtistOfTheMonthJson.length > 0 && (
         <ArtistOfTheMonth pastArtistOfTheMonthData={removeBadData(ArtistOfTheMonthJson)} artistsOfTheMonthData={removeBadData(ArtistOfTheMonthJson)} artistOfTheMonthData={ArtistOfTheMonthJson[0]} />
-      )} */}
+      )}
       <GetInvolved linksData={removeBadData(LinksJson)}/>
       <Services services={services} />
       {/* <ContactUs /> */}

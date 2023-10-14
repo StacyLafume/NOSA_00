@@ -446,7 +446,7 @@ const Nav = () => {
                           navColor ? classes.colorFill : classes.noColorFill
                         }
                         label="Artist Of The Month"
-                        sx={{ display: { sm: "none", xs: "none" } }}
+                        sx={{ display: { sm: "none", xs: "none", lg: "inline-block", xl: "inline-block" } }}
 
                       />
                       {/* </LinkRouter> */}
