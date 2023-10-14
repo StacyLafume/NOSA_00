@@ -35,7 +35,6 @@
 
 .image-gallery-slide .image-gallery-description {
     background: rgba(0, 0, 0, 0.4);
-    bottom: 70px;
     color: #fff;
     left: 45%; 
     bottom: 93%;
@@ -45,4 +44,9 @@
     white-space: normal;
     justify-content: center;
     align-items: center;
+}
+
+.image-gallery-fullscreen-button {
+    right: 0;
+    color: #e56017;
 }

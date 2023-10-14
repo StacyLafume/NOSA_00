@@ -11,8 +11,6 @@ import DialogTitle from "@mui/material/DialogTitle";
 const ArtistOfTheMonthImageGallery = ({ images }) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
 
-  console.log("images",images )
-
   const handleThumbnailClick = (event, index) => {
     //console.log('Thumbnail clicked:', index);
     setIsFullScreen(true);
@@ -23,21 +21,31 @@ const ArtistOfTheMonthImageGallery = ({ images }) => {
   };
 
   const formattedImages = images.map((el) => {
-    return { original: el.image, thumbnail: el.image, originalTitle: "we are young!", description:el.image_title || "" };
+    return {
+      original: el.image,
+      thumbnail: el.image,
+      originalTitle: el.image_description,
+      description: el.image_title || "",
+    };
   });
 
   return (
     <div>
       {isFullScreen ? (
         <div className="fullscreen-overlay">
-           
           <Dialog
             open={isFullScreen}
             onClose={handleFullscreenExit}
             aria-describedby="alert-dialog-slide-description"
-            
           >
-            <ImageGallery  style={{color: "black"}} items={formattedImages} originalTitle={true} showNav={false} showFullscreenButton={false}/>
+            <ImageGallery
+              autoPlay={true}
+              items={formattedImages}
+              originalTitle={true}
+              showNav={false}
+              showFullscreenButton={true}
+              slideInterval={9000}
+            />
             <button onClick={handleFullscreenExit}>Exit Fullscreen</button>
           </Dialog>
         </div>
@@ -53,6 +61,10 @@ const ArtistOfTheMonthImageGallery = ({ images }) => {
           <ImageGallery
             items={formattedImages}
             onThumbnailClick={handleThumbnailClick}
+            showFullscreenButton={false}
+            autoPlay={true}
+            slideInterval={6000}
+
           />
         </div>
       )}
