@@ -101,7 +101,7 @@ const App = () => {
       )}
       <GetInvolved linksData={removeBadData(LinksJson)}/>
       <Services services={services} />
-      {/* <ContactUs /> */}
+      <ContactUs />
       <Banner bannerText={BannerText}/>
       <Footer />
     </ThemeProvider>

@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { TextField, Button, Grid, Box, Typography} from "@mui/material";
-import { makeStyles } from '@mui/styles';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import { DonateButton } from "./Buttons"
-import Jump from 'react-reveal/Jump';
-
-
+import { TextField, Button, Grid, Box, Typography } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import { DonateButton } from "./Buttons";
+import Jump from "react-reveal/Jump";
 
 const useStyles = makeStyles((theme) => ({
   formContainer: {
@@ -18,34 +16,33 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-evenly",
   },
   formWrapper: {
-    width: '100%',
+    width: "100%",
   },
   inputField: {
-    height: '56px',
-    alignItems: 'center',
-    justifyContent: 'center',
+    height: "56px",
+    alignItems: "center",
+    justifyContent: "center",
     margin: 0,
-
   },
   submitButton: {
     height: "3vh",
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
   title: {
-    fontWeight : "400 !important",
-    margin: "auto !important"
+    fontWeight: "400 !important",
+    margin: "auto !important",
   },
   donate: {
     width: "100%",
     height: "6vh",
-  }
+  },
 }));
 
 const JoinEmailListForm = () => {
   const classes = useStyles();
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -56,17 +53,22 @@ const JoinEmailListForm = () => {
     // Handle form submission logic here (e.g., submit the email to the server)
     //console.log('Email submitted:', email);
     // Reset the form after submission
-    setEmail('');
+    setEmail("");
   };
 
   return (
     <div className={classes.formContainer}>
-      
       <Box className={classes.formWrapper}>
         <form onSubmit={handleSubmit}>
-          <Grid container alignItems="center"> {/* Set alignItems to center */}
-          <p>We invite you to join the NOSA community and help us build a more vibrant, inclusive, and creative Boston. Follow us on social media, or attend one of our events to learn more about how you can be a part of this exciting initiative.</p>
-
+          <Grid container alignItems="center">
+            {" "}
+            {/* Set alignItems to center */}
+            <p>
+              We invite you to join the NOSA community and help us build a more
+              vibrant, inclusive, and creative Boston. Follow us on social
+              media, or attend one of our events to learn more about how you can
+              be a part of this exciting initiative.
+            </p>
             <Grid item xs={12}>
               <TextField
                 required
@@ -84,13 +86,19 @@ const JoinEmailListForm = () => {
                 type="submit"
                 variant="contained"
                 color="primary"
-              
                 className={classes.submitButton}
               >
-                          <Typography className={classes.title}align={"center"} variant={"h4"}> Join our mailing list {"  "}<MailOutlineIcon /></Typography>
-
+                <Typography
+                  className={classes.title}
+                  align={"center"}
+                  variant={"h4"}
+                >
+                  {" "}
+                  Join our mailing list {"  "}
+                  <MailOutlineIcon />
+                </Typography>
               </Button>
-              <DonateButton className={classes.donate}/>
+              <DonateButton className={classes.donate} />
             </Grid>
           </Grid>
         </form>

@@ -168,17 +168,18 @@ const ContactForm = () => {
                   helperText={errors.email}
                 />
                 <FormControl fullWidth className={classes.formControl}>
-                  <InputLabel>Subject</InputLabel>
-                  <Select
-                    required
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                  >
-                    <MenuItem value="general">General Inquiry</MenuItem>
-                    <MenuItem value="support">Technical Support</MenuItem>
-                    <MenuItem value="feedback">Feedback</MenuItem>
-                  </Select>
+                  <TextField
+                  required
+                  name="subject"
+                  label="Subject"
+                  type="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  fullWidth
+                  margin="normal"
+                  error={!!errors.subject}
+                  helperText={errors.subject}
+                />
                 </FormControl>
                 <TextField
                   required
