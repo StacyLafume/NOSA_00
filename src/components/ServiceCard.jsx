@@ -32,7 +32,7 @@ const ServiceCard = ({ service }) => {
           variant="plain"
           orientation="horizontal"
           sx={{
-            textAlign: "center",
+            textAlign: "left",
             borderRadius: 0,
           }}
         >
@@ -45,58 +45,52 @@ const ServiceCard = ({ service }) => {
               sx={{
                 flex: "1",
                 borderRadius: 0,
+                backgroundImage: `url("${service.video}")`,
+                backgroundSize: "cover",
+                backgroundPosition: "left center",
               }}
-            >
-              {/* <Typography fontSize="xl5" fontWeight="xl" textColor="#fff">
-                {service}
-              </Typography> */}
-              <Video videoHeight={500} videoSrc={service.video} />
-            </CardOverflow>
+            ></CardOverflow>
             <CardContent
               sx={{
                 flex: "1",
                 gap: 1.5,
                 minWidth: 200,
                 justifyContent: "space-around",
+                fontFamily: "blinker",
               }}
             >
               {/* Your pricing card content */}
               <Card size="lg" variant="outlined">
-                <Typography level="h2" fontSize="xl3">
+                <Typography level="h2" fontSize="xl3" fontFamily="Blinker">
                   {service.title}
                 </Typography>
                 <Divider inset="none" />
-                <List size="sm" sx={{ mx: "calc(-1 * var(--ListItem-paddingX))" }}>
-                  <ListItem>
-                    <ListItemDecorator>
-                      <Check />
-                    </ListItemDecorator>
-                    Virtual Credit Cards
-                  </ListItem>
-                  <ListItem>
-                    <ListItemDecorator>
-                      <Check />
-                    </ListItemDecorator>
-                    Financial Analytics
-                  </ListItem>
-                  <ListItem>
-                    <ListItemDecorator>
-                      <Check />
-                    </ListItemDecorator>
-                    Checking Account
-                  </ListItem>
-                  <ListItem>
-                    <ListItemDecorator>
-                      <Check />
-                    </ListItemDecorator>
-                    API Integration
-                  </ListItem>
+                <List
+                  size="sm"
+                  sx={{ mx: "calc(-1 * var(--ListItem-paddingX))" }}
+                >
+                  {service.description.map((point, index, array) => (
+                    <ListItem >
+                      <ListItemDecorator style={{minWidth: '15rem !important'}} >
+                        <Check style={{ margin: "9px" }} />
+                        <br />
+                        {point}
+                      </ListItemDecorator>
+                    </ListItem>
+                  ))}
                 </List>
                 <Divider inset="none" />
                 <CardActions>
-                  <Typography level="h5" sx={{ mr: "auto" }}>
-                    {service.price}{" "}
-                  </Typography>
+                  <Typography
+                    fontFamily="Blinker"
+                    level="h5"
+                    sx={{ mr: "auto" }}
+                  ></Typography>
+                  <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSfBQp_bVNShz0Rhm9_wGe3pqPS8xzFsR1Fb_SkSY6rguW3ivg/viewform"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                   <Button
                     variant="soft"
                     color="neutral"
@@ -104,6 +98,7 @@ const ServiceCard = ({ service }) => {
                   >
                     Book now
                   </Button>
+                  </a>
                 </CardActions>
               </Card>
             </CardContent>

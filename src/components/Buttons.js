@@ -15,11 +15,11 @@ const useStyles = makeStyles((theme) => ({
 const  SendButton = () => {
 
     return (
-        <Stack direction="row" spacing={2}>
-            <Button variant="contained" endIcon={<SendIcon />}>
+        
+            <Button  type="submit" variant="contained" endIcon={<SendIcon />}>
                 Send
             </Button>
-        </Stack>
+        
     )
 
 }
@@ -29,10 +29,12 @@ const DonateButton = ({color}) => {
 
 
     return (
-        <Stack  >
+        <Stack>
+            <a href="https://donate.stripe.com/test_14k4indnng4I5KU9AA" target="_blank">
             <Button  variant="contained" style={ {backgroundColor:`${color}`} }endIcon={<FavoriteIcon/>}>
                 Donate here
             </Button>
+            </a>
         </Stack>
     )
 

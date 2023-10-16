@@ -103,18 +103,61 @@ const processEventMarkdownFile = (filePath) => {
 
 const processBannerMarkdownFile = (filePath) => {
   try {
-    const markdownContent = fs.readFileSync(filePath, 'utf-8');
-    const data = grayMatter(markdownContent).data;
+      const markdownContent = fs.readFileSync(filePath, 'utf-8');
+      const data = grayMatter(markdownContent).data;
 
-    const banner = {
-      banner_text: data.banner_text,
-    };
+      const banner = {
+          banner_text: data.banner_text,
+      };
+  
+      return banner;
+    } catch (error) {
+      console.error('Error reading Markdown file:', error);
+      return null;
+    }
+};
 
-    return banner;
-  } catch (error) {
-    console.error('Error reading Markdown file:', error);
-    return null;
-  }
+const processLinkMarkdownFile = (filePath) => {
+  try {
+      const markdownContent = fs.readFileSync(filePath, 'utf-8');
+      const data = grayMatter(markdownContent).data;
+
+      const link = {
+        link_title: data.link_title,
+        link: data.link,
+        link_color: data.link_color,
+        link_description: data.link_description
+      };
+  
+      return link;
+    } catch (error) {
+      console.error('Error reading Markdown file:', error);
+      return null;
+    }
+};
+const getSortedLinkList = () => {
+  const dirPath = path.join(__dirname, '../src/content/links');
+  const files = fs.readdirSync(dirPath);
+  const linkList = [];
+
+  files.forEach((file) => {
+    const filePath = path.join(dirPath, file);
+    const linksData = processLinkMarkdownFile(filePath);
+
+    if (linksData) {
+        if (linksData.link_title === 'No link given') {
+            console.error("No link given") 
+          }else{
+            linkList.push(linksData);
+          }
+    }
+  });
+
+  const sortedList = linkList.sort((a, b) => (a.id < b.id ? 1 : -1));
+  // TODO: make sure to only push {} object
+  let data = JSON.stringify(sortedList)
+  fs.writeFileSync("src/content/links/links.json", data)
+  return sortedList;
 };
 
 const getSortedBannerList = () => {
@@ -127,11 +170,11 @@ const getSortedBannerList = () => {
     const bannerData = processBannerMarkdownFile(filePath);
 
     if (bannerData) {
-      if (bannerData.banner_text === 'No banner text given') {
-        console.error("No banner text given")
-      } else {
-        bannerList.push(bannerData);
-      }
+        if (bannerData.banner_text === 'No banner text given') {
+            console.error("No banner text given") 
+          }else{
+            bannerList.push(bannerData);
+          }
     }
   });
 
@@ -141,8 +184,6 @@ const getSortedBannerList = () => {
   fs.writeFileSync("src/content/banner/bannerText.json", data)
   return sortedList;
 };
-
-
 
 const getSortedArtistList = () => {
   const dirPath = path.join(__dirname, '../src/content/artistOfTheMonth');
@@ -196,5 +237,8 @@ const getSortedEventsList = () => {
 
 const sortedArtistList = getSortedArtistList();
 const sortedEventList = getSortedEventsList();
-const sortedBannerList = getSortedBannerList()
-module.exports = { sortedArtistList: sortedArtistList, sortedEventList: sortedEventList, sortedBannerList: sortedBannerList };
+const sortedBannerList = getSortedBannerList();
+const sortedLinkList = getSortedLinkList ();
+// console.log("sortedLinkList", sortedLinkList)
+// console.log("getSortedBannerList" , sortedBannerList)
+module.exports = {sortedArtistList: sortedArtistList, sortedEventList:sortedEventList, sortedBannerList:sortedBannerList, sortedLinkList: sortedLinkList};

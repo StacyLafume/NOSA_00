@@ -1,18 +1,20 @@
 import React from 'react'
 import Marquee from "react-fast-marquee";
-import BannerText from '../content/banner/bannerText.json'
-import { Typography } from '@mui/material';
+
 
 const Banner = ({bannerText}) => {
+    const text =  bannerText[0].banner_text
+    // console.log(bannerText[0].banner_text, 'text')
     return (
-        <Marquee style={{ gradient: true, }}>
-            <div style={{ backgroundColor: 'red' }}>
-                <p>
-                {bannerText.banner_Text}                
-                </p>
-            </div>
-        </Marquee>
-
+        <Marquee style={{ gradient: true, height: "6vh", backgroundColor: 'black'}} speed={75} pauseOnHover={true} pauseOnClick={true} autoFill={true}>
+        <div style={{ width: 'auto', color: "white"}}>
+            <p>
+               {"  ✨ Complete Website Coming Soon ✨  "}      
+            </p>
+           
+        </div>
+    
+    </Marquee>
     )
 }
 

@@ -17,9 +17,11 @@ import DemoApp from './components/DemoApp';
 import { styled } from '@mui/material/styles';
 import CursorOverlay from './components/CursorOverlay';
 import PE from './components/PE';
-import EventsJson from './content/event/event.json'
-import Banner from './components/Banner'
-import bannerTextJson from './content/banner/bannerText.json'
+import EventsJson from './content/event/event.json';
+import BannerText from './content/banner/bannerText.json'
+import GetInvolved from './pages/GetInvolved';
+import Banner from './components/Banner';
+import LinksJson from './content/links/links.json';
 
 
 const App = () => {
@@ -27,26 +29,21 @@ const App = () => {
 
   
   const services = [{ 
-    title: "Photo Shoot", 
-    video: "https://www.shutterstock.com/shutterstock/videos/1031450246/preview/stock-footage-backstage-of-the-photo-shoot-make-up-artist-applies-makeup-on-beautiful-black-model-in-a-moment.webm",
-    price: "$100.00"
+    title: "Content Creators & Social media", 
+    video:require('./images/content_creator.jpeg'),
+    description: ['Photographers / Shoots: Blank spaces for photo, video, webinar & live shoots', 'Podcast: Studio space for audio and video recordings'],
   },
   {
-    title: "Podcasts",
-    video: "https://www.shutterstock.com/shutterstock/videos/1072038289/preview/stock-footage-three-diverse-female-radio-hosts-wearing-headphones-talking-on-microphone-for-radio-podcast.webm",
-    price: "$200.00"
+    title: "Co-Working Space",
+    video: require('./images/coworking_space.jpeg'),
+    description: ["Conference Room"," Podcast Room ", "TV & Whiteboard"],
   },
   {
-    title: "Events",
-    video: "https://www.shutterstock.com/shutterstock/videos/1055170904/preview/stock-footage-waiter-is-pouring-champagne-pour-the-champagne-into-a-glass-bartender-pouring-champagne-into.webm",
-    price: "$300.00"
+    title: "Inquiring Individuals",
+    video: require('./images/event.jpeg'),
+    description: ["Intimate seated social gatherings for up to 20 people."],
+    
   },
-  {
-    title: "Co Working Space",
-    video: "https://www.shutterstock.com/shutterstock/videos/1057496554/preview/stock-footage--d-rendering-of-comfortable-co-working-space.webm",
-    price: "$400.00"
-  },
-
 
   ];
 
@@ -73,40 +70,44 @@ const App = () => {
         main: '#ff6e40',
       },
     },
-
-
     typography: {
-      fontFamily: ["Blinker", 'Ropa Sans'].join(",")
+      fontFamily: ["Blinker", 'Ropa Sans'].join(","),
+      fontSize: ".8rem",
     }
-
-
-
   })
 
+  const removeBadData = (jsonData) => {
+    return jsonData.filter(entry => {
+      const artistName = entry.artist_name;
+      return artistName !== "No Artist Name given" && Object.values(entry).length !== 0;
+    });
+  }
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline defaultMode="dark" />
       <div id="/"/>
       <Nav />
-      <Video  videoHeight={"100vh"} />
-      <Banner bannerText={bannerTextJson[0]} />
+      <Video videoSrc="https://res.cloudinary.com/dpguttfbn/video/upload/v1696010476/vecteezy_coming-soon-text-animation-on-a-black-background-with_28549904_664_fjrsci.3gp" videoHeight={"100vh"} />
+      <Banner bannerText={BannerText}/>
+
        <AboutUs />
+       <Banner bannerText={BannerText}/>
+
       <OurMission />
      
-      <Events eventArr={EventsJson}/>
+      {/* <Events eventArr={EventsJson}/> */}
       {/* Check if artistOfTheMonthData exists before rendering the component */}
       {ArtistOfTheMonthJson.length > 0 && (
-        <ArtistOfTheMonth pastArtistOfTheMonthData={ArtistOfTheMonthJson} artistsOfTheMonthData={ArtistOfTheMonthJson} artistOfTheMonthData={ArtistOfTheMonthJson[0]} />
+        <ArtistOfTheMonth pastArtistOfTheMonthData={removeBadData(ArtistOfTheMonthJson)} artistsOfTheMonthData={removeBadData(ArtistOfTheMonthJson)} artistOfTheMonthData={ArtistOfTheMonthJson[0]} />
       )}
-      {/*  <ArtistOfTheMonth name='Kris' monthYear='June 2023' headshot='https://images.pexels.com/photos/3031397/pexels-photo-3031397.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' mainArtwork='https://cdn.pixabay.com/photo/2022/09/19/22/34/black-woman-7466559_1280.jpg'/> */}
+      <GetInvolved linksData={removeBadData(LinksJson)}/>
       <Services services={services} />
       <ContactUs />
+      <Banner bannerText={BannerText}/>
       <Footer />
-      <CursorOverlay/>
     </ThemeProvider>
   )
 }
 
 export default App
-

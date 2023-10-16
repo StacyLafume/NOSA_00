@@ -22,21 +22,34 @@ import {
 import { CssVarsProvider as JoyCssVarsProvider } from "@mui/joy/styles";
 
 const useStyles = makeStyles((theme) => ({
+  responsive: {
+    [theme.breakpoints.up("sm")]: {},
+    [theme.breakpoints.up("md")]: {},
+    [theme.breakpoints.up("lg")]: {},
+    [theme.breakpoints.up("xl")]: {},
+  },
   colorFill: {
     backgroundColor: "#d9d9d9 !important",
     color: "black !important",
-    fontWeight: "900 !important",
+    fontWeight: "500 !important",
+    fontSize: ".781rem !important",
+    fontFamily: "Blinker !important",
   },
   noColorFill: {
     backgroundColor: "transparent !important",
     color: "white !important",
-    fontWeight: "900 !important",
+    fontWeight: "500 !important",
+    fontFamily: "Blinker  !important",
   },
   appBar: {
     height: "fitContent",
     [theme.breakpoints.down("sm")]: {
       height: "64px",
     },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "2rem"
+    },
+    
     display: "flex",
     justifyContent: "space-evenly",
     boxShadow: "none !important",
@@ -52,17 +65,21 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
     [theme.breakpoints.up("md")]: {
-      display: "none",
+    },
+    [theme.breakpoints.up("lg")]: {
+      display: "none !important",
+    },
+    [theme.breakpoints.up("xl")]: {
+      display: "none !important",
     },
   },
   vanishBox: {
-    display: 'none !important',
-    height: 'fit-content'
+    display: "none !important",
+    height: "fit-content",
   },
   noLineVanish: {
-    display: 'inline-block'
-  }
-
+    display: "inline-block",
+  },
 }));
 
 const Nav = () => {
@@ -132,23 +149,7 @@ const Nav = () => {
           Home
         </MenuItem>
       </LinkScroll>
-      <LinkScroll
-        isDynamic={true}
-        to="/ourmission"
-        spy={true}
-        smooth={true}
-        offset={-50}
-        duration={500}
-      >
-        <MenuItem
-          onClick={() => {
-            handleMenuClose();
-            setValue("2");
-          }}
-        >
-          Our Mission
-        </MenuItem>
-      </LinkScroll>
+
       <LinkScroll
         isDynamic={true}
         to="/aboutus"
@@ -168,6 +169,23 @@ const Nav = () => {
       </LinkScroll>
       <LinkScroll
         isDynamic={true}
+        to="/ourmission"
+        spy={true}
+        smooth={true}
+        offset={-50}
+        duration={500}
+      >
+        <MenuItem
+          onClick={() => {
+            handleMenuClose();
+            setValue("2");
+          }}
+        >
+          Our Mission
+        </MenuItem>
+      </LinkScroll>
+      <LinkScroll
+        isDynamic={true}
         to="/events"
         spy={true}
         smooth={true}
@@ -179,6 +197,8 @@ const Nav = () => {
             handleMenuClose();
             setValue("4");
           }}
+          sx={{ display: { sm: "none", xs: "none" } }}
+
         >
           Events
         </MenuItem>
@@ -196,10 +216,31 @@ const Nav = () => {
             handleMenuClose();
             setValue("5");
           }}
+
         >
           Artist Of The Month
         </MenuItem>
       </LinkScroll>
+
+      <LinkScroll
+        isDynamic={true}
+        to="getInvolved"
+        spy={true}
+        smooth={true}
+        offset={-50}
+        duration={500}
+      >
+        <MenuItem
+          onClick={() => {
+            handleMenuClose();
+            setValue("7");
+          }}
+
+        >
+          Get Involved
+        </MenuItem>
+      </LinkScroll>
+
       <LinkScroll
         isDynamic={true}
         to="/services"
@@ -213,6 +254,7 @@ const Nav = () => {
             handleMenuClose();
             setValue("7");
           }}
+
         >
           Services
         </MenuItem>
@@ -230,6 +272,7 @@ const Nav = () => {
             handleMenuClose();
             setValue("8");
           }}
+
         >
           Contact Us
         </MenuItem>
@@ -241,13 +284,14 @@ const Nav = () => {
     <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
       <JoyCssVarsProvider>
         <AppBar
-          className={`${classes.appBar} ${navColor ? classes.colorFill : classes.noColorFill
-            }`}
+          className={`${classes.appBar} ${
+            navColor ? classes.colorFill : classes.noColorFill
+          }`}
         >
           <Box
             sx={{
               width: "100%",
-              height: 'fit-content',
+              height: "fit-content",
               // backgroundColor: "transparent",
               mx: 3,
               // display: "flex",
@@ -268,17 +312,17 @@ const Nav = () => {
           </Box>
           <LinearProgress
             style={{
-              zIndex: "-3",
-              bottom: "60px",
-              color: "#ff8b25",
+              bottom: "40px",
+              color: "#ffff",
               marginTop: "1.8rem",
             }}
             determinate
             value={100}
-            thickness={3}
+            thickness={1}
             className={navColor ? classes.vanishBox : null}
           />
-          <Toolbar style={{ backgroundColor: navColor ? "#D9D9D9" : "transparent" }}
+          <Toolbar
+            style={{ backgroundColor: navColor ? "#D9D9D9" : "transparent" }}
           >
             <IconButton
               edge="start"
@@ -289,15 +333,21 @@ const Nav = () => {
             >
               <MenuIcon />
             </IconButton>
-            <Box sx={{ width: "100%", typography: "body1", backgroundColor: navColor ? "#D9D9D9" : "transparent" }}>
+            <Box
+              sx={{
+                width: "100%",
+                typography: "body1",
+                backgroundColor: navColor ? "#D9D9D9" : "transparent",
+              }}
+            >
               <TabContext value={value}>
-                <Box className={isSmallScreen ? classes.tabsContainer : ""}>
+                <Box>
                   <Tabs
                     centered
                     onChange={handleChange}
                     indicatorColor="secondary"
                     aria-label="lab API tabs example"
-                    sx={{ backgroundColor: 'transparent' }}
+                    sx={{ backgroundColor: "transparent" }}
                   >
                     <LinkScroll
                       isDynamic={true}
@@ -313,6 +363,9 @@ const Nav = () => {
                           navColor ? classes.colorFill : classes.noColorFill
                         }
                         label="Home"
+                        
+                        sx={{ display: { sm: "none", xs: "none", lg: "inline-block", xl: "inline-block" } }}
+
                       />
                       {/* </LinkRouter> */}
                     </LinkScroll>
@@ -330,6 +383,7 @@ const Nav = () => {
                           navColor ? classes.colorFill : classes.noColorFill
                         }
                         label="About Us"
+                        sx={{ display: { sm: "none", xs: "none", lg: "inline-block", xl: "inline-block" } }}
                       />
                       {/* </LinkRouter> */}
                     </LinkScroll>
@@ -347,10 +401,12 @@ const Nav = () => {
                           navColor ? classes.colorFill : classes.noColorFill
                         }
                         label="Our Mission"
+                        sx={{ display: { sm: "none", xs: "none", lg: "inline-block", xl: "inline-block" } }}
+
                       />
                       {/* </LinkRouter> */}
                     </LinkScroll>
-                    
+
                     <LinkScroll
                       isDynamic={true}
                       to="/events"
@@ -365,6 +421,8 @@ const Nav = () => {
                           navColor ? classes.colorFill : classes.noColorFill
                         }
                         label="Events"
+                        sx={{ display: { sm: "none", xs: "none" } }}
+
                       />
                       {/* </LinkRouter> */}
                     </LinkScroll>
@@ -382,6 +440,27 @@ const Nav = () => {
                           navColor ? classes.colorFill : classes.noColorFill
                         }
                         label="Artist Of The Month"
+                        sx={{ display: { sm: "none", xs: "none", lg: "inline-block", xl: "inline-block" } }}
+
+                      />
+                      {/* </LinkRouter> */}
+                    </LinkScroll>
+                    <LinkScroll
+                      isDynamic={true}
+                      to="/getInvolved"
+                      spy={true}
+                      smooth={true}
+                      ooffset={-50}
+                      duration={500}
+                    >
+                      {/* <LinkRouter to="/artistofthemonth"> */}
+                      <Tab
+                        className={
+                          navColor ? classes.colorFill : classes.noColorFill
+                        }
+                        label="Get Involved"
+                        sx={{ display: { sm: "none", xs: "none", lg: "inline-block", xl: "inline-block" } }}
+
                       />
                       {/* </LinkRouter> */}
                     </LinkScroll>
@@ -400,6 +479,8 @@ const Nav = () => {
                           navColor ? classes.colorFill : classes.noColorFill
                         }
                         label="Services"
+                        sx={{ display: { sm: "none", xs: "none", lg: "inline-block", xl: "inline-block" } }}
+
                       />
                       {/* </LinkRouter> */}
                     </LinkScroll>
@@ -417,6 +498,8 @@ const Nav = () => {
                           navColor ? classes.colorFill : classes.noColorFill
                         }
                         label="Contact Us"
+                        sx={{ display: { sm: "none", xs: "none", lg: "inline-block", xl: "inline-block" } }}
+
                       />
                       {/* </LinkRouter> */}
                     </LinkScroll>

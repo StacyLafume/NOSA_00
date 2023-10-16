@@ -15,6 +15,7 @@ import Masonry from "@mui/lab/Masonry";
 
 
 const PE = ({ eventArr , setShowEvents}) => {
+ // console.log("eventArr", eventArr);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState(eventArr);
   const [showPreivousEvents, setShowPreivousEvents] = useState(true);

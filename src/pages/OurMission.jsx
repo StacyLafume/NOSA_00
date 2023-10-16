@@ -2,15 +2,32 @@ import * as React from "react";
 import Divider from "@mui/material/Divider";
 import { Box, Grid, Typography } from "@mui/material";
 import KPI from "../components/KPI";
-import { DonateButton } from "../components/Buttons"
+import { DonateButton } from "../components/Buttons";
+import { makeStyles } from "@mui/styles";
 
+const useStyles = makeStyles((theme) => ({
+  responsive: {
+    [theme.breakpoints.up("sm")]: {
+
+    },
+    [theme.breakpoints.up("md")]: {
+
+    },
+    [theme.breakpoints.up("lg")]: {
+
+    },
+    [theme.breakpoints.up("xl")]: {
+      
+    },
+  },
+}));
 
 const OurMission = () => {
   return (
     <Box
       sx={{ flexGrow: 1 }}
       id="/ourmission"
-      style={{ height: "100vh", backgroundColor: "black", overflow: "hidden" }}
+      style={{ height: "110vh", backgroundColor: "black", overflow: "hidden" }}
     >
       <Grid
         container
@@ -25,54 +42,69 @@ const OurMission = () => {
         }}
         spacing={2}
       >
-        <Grid xs={12} style={{ height: "10vh", marginBottom:"2rem" }}>
+        <Grid xs={12} style={{ height: "10vh", marginBottom: "2rem" }}>
           {" "}
           <Divider
             textAlign="center"
             role="presentation"
             style={{
-              backgroundColor: "#ff8b25",
-              height: ".2rem",
+              backgroundColor: "white",
+              height: ".05rem",
               alignItems: "center",
               margin: "2rem 0",
             }}
           >
-            <h1
+            <Typography
               style={{
-                fontSize: "3.5rem",
+                fontSize: "2.6rem",
+                fontWeight: "400",
                 display: "inline",
                 backgroundColor: "black",
                 padding: "10%",
-                color: "#ff8b25",
+                color: "white",
                 position: "relative",
                 right: "2rem",
               }}
             >
               Our Mission
-            </h1>
+            </Typography>
           </Divider>
         </Grid>
         <Grid
           container
           style={{
-            placeContent:"center"
+            placeContent: "center",
           }}
           spacing={2}
         >
           <Typography
             sx={{
               fontSize: "2rem",
-              color: "#ff8b25",
+              color: "white",
               fontWeight: "300 !important",
               textAlign: "left",
-              width:"50%",
+              width: "50%",
               margin: "0",
-              fontFamily:"Blinker",
-              width:"60%"
+              fontFamily: "Blinker",
+              width: "60%",
             }}
           >
-            {"NOSA enables artists to showcase their work, connect with each other, and engage with the public."}
-            <span style={{position:"relative", left:"37rem", bottom:"2.68rem", display:"flex", }}><DonateButton color={"#ff8b25"} style={{ width:"fit-content", width:"12vw !important" }}/></span>
+            {
+              "NOSA enables artists to showcase their work, connect with each other, and engage with the public."
+            }
+            <span
+              style={{
+                position: "relative",
+                left: "37rem",
+                bottom: "2.68rem",
+                display: "flex",
+              }}
+            >
+              <DonateButton
+                color={"#ff8b25"}
+                style={{ width: "fit-content", width: "12vw !important" }}
+              />
+            </span>
           </Typography>
         </Grid>
         <Grid
@@ -80,7 +112,7 @@ const OurMission = () => {
             display: "flex",
             alignItems: "center",
             flexDirection: "row",
-            width:"100vw",
+            width: "100vw",
             padding: "0% 4%",
             justifyContent: "space-between",
             flexWrap: "wrap",
@@ -98,14 +130,22 @@ const OurMission = () => {
                 flexWrap: "nowrap",
                 justifyContent: "space-between",
                 alignItems: "center",
-                color: "#ff8b25",
+                color: "#ffff",
                 backgroundColor: "black",
-                borderTop:"thin solid #ff8c25"
+                borderTop: "thin solid white",
               }}
               xs={8}
             >
-              <Grid >
-                <Typography style={{ fontSize: "1.2rem", fontWeight:"400", width:"100%", }}>
+              <Grid>
+                <Typography
+                  style={{
+                    lineHeight: "2.5rem",
+                    wordSpacing: "6px",
+                    fontSize: ".9rem",
+                    fontWeight: "400",
+                    width: "100%",
+                  }}
+                >
                   Boston's communities have been hit hard by the pandemic, and
                   small businesses and artists have been particularly impacted.
                   Many artists struggle to find affordable space to showcase
@@ -134,12 +174,19 @@ const OurMission = () => {
                   backgroundRepeat: "no-repeat",
                   height: "30vh",
                   width: "100%",
-                  borderTop: "thin solid #ff8b25",
+                  borderTop: "thin solid white",
                 }}
               ></Grid>
             </Grid>
           </div>
-          <div style={{ display: "flex", flexDirection: "row-reverse", marginTop:"1rem", width:"100%"}}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row-reverse",
+              marginTop: "1rem",
+              width: "100%",
+            }}
+          >
             <Grid
               style={{
                 height: "fit-content",
@@ -159,9 +206,7 @@ const OurMission = () => {
                   height: "30vh",
                   width: "100%",
                 }}
-              >
-           
-              </Grid>
+              ></Grid>
             </Grid>
             <Grid
               style={{
@@ -170,12 +215,12 @@ const OurMission = () => {
                 display: "flex",
                 alignItems: "flex-start",
                 justifyContent: "flex-start",
-                color: "#ff8b25",
+                color: "white",
                 backgroundColor: "black",
                 padding: "0",
-                borderBottom: "thin solid #ff8b25",
+                borderBottom: "thin solid white",
                 width: "80vw",
-                flexDirection:"row"
+                flexDirection: "row",
               }}
               Grid
               xs={8}
