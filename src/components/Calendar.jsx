@@ -19,8 +19,18 @@ const Calendar = ({ eventsArray }) => {
       // id: createEventId(),
       title: 'oopu',
       url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFpOzQngfIf_n6iFqscREDpdEyIyobvhN-Tg&usqp=CAU',
-      start: '2023-08-05',
-      end: '2023-08-06',
+      start: '2023-10-05',
+      end: '2023-10-06',
+      allDay: true,
+      // backgroundColor: bckgrndClr[currentEvents.length]
+      backgroundColor: 'blueGrey'
+    },
+    {
+      // id: createEventId(),
+      title: 'oopu',
+      url: 'https://groupgordon.com/wp-content/uploads/2022/04/Messe_Luzern_Corporate_Event.jpg',
+      start: '2023-10-05',
+      end: '2023-10-06',
       allDay: true,
       // backgroundColor: bckgrndClr[currentEvents.length]
       backgroundColor: 'blueGrey'
@@ -39,8 +49,8 @@ const Calendar = ({ eventsArray }) => {
       // id: createEventId(),
       title: 'Poster',
       url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToJ-HiMNel632ByosDFjL1GoTvg4lEEmrNuw&usqp=CAU',
-      start: '2023-09-19',
-      end: '2023-09-25',
+      start: '2023-10-19',
+      end: '2023-10-25',
       allDay: true,
       // backgroundColor: bckgrndClr[currentEvents.length]
       backgroundColor: '#ff8b26'
@@ -49,71 +59,92 @@ const Calendar = ({ eventsArray }) => {
       // id: createEventId(),
       title: 'Poster',
       url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrezgexVz__u7RKtJQU4_iw2Jp5l9cunKVOD9L-d4FYF71OaP7KXOXDEYoeNk6CHMSQd4&usqp=CAU",
-      start: '2023-09-02',
-      end: '2023-09-01',
+      start: '2023-10-02',
+      end: '2023-10-01',
       allDay: true,
       // backgroundColor: bckgrndClr[currentEvents.length]
       backgroundColor: '#ff8b26'
-    }
+    },
+    {
+      // id: createEventId(),
+      title: 'Poster',
+      url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrezgexVz__u7RKtJQU4_iw2Jp5l9cunKVOD9L-d4FYF71OaP7KXOXDEYoeNk6CHMSQd4&usqp=CAU",
+      start: '2023-10-02',
+      end: '2023-10-01',
+      allDay: true,
+      // backgroundColor: bckgrndClr[currentEvents.length]
+      backgroundColor: '#ff8b26'
+    },
+    {
+      // id: createEventId(),
+      title: 'Poster',
+      url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrezgexVz__u7RKtJQU4_iw2Jp5l9cunKVOD9L-d4FYF71OaP7KXOXDEYoeNk6CHMSQd4&usqp=CAU",
+      start: '2023-10-02',
+      end: '2023-10-01',
+      allDay: true,
+      // backgroundColor: bckgrndClr[currentEvents.length]
+      backgroundColor: '#ff8b26'
+    },
+    
 
 
   ]);
 
   const handleShowEvents = () => {
-    console.log("clicking")
+    // console.log("clicking")
     setShowEvents(false)
   }
 
+  let eventStarts = events.map(el => el.start)
+  let dateCount = {}
+  let multEventDate = []
+  eventStarts.forEach(el => {
+    dateCount[el] ? dateCount[el]++ : dateCount[el] = 1
+  })
 
-  
+  for (const key in dateCount) {
+    if (dateCount[key] > 1) {
+      multEventDate.push(key)
+    }
+  }
+
   const currentDate = new Date()
 
   const filteredEvents = events
-  .map((event) => {
-    const eventDate = new Date(event.start)
-    console.log(eventDate);
-    if ((eventDate >= currentDate)) {
-      return {original: event.url, description: `${event.title} ${event.start}` };
-    }
-    return null; // This line can be omitted
-  })
-  .filter((event) => event !== null);
+    .map((event) => {
+      // console.log('dateCount', dateCount)
+      const eventDate = new Date(event.start)
+      // console.log(eventDate);
+      if ((eventDate >= currentDate)) {
+        return { original: event.url, description: `${event.title} ${event.start}` };
+      }
+      return null; // This line can be omitted
+    })
+    .filter((event) => event !== null);
 
-  console.log('filteredEvents', filteredEvents)
+  // console.log('filteredEvents', filteredEvents)
 
   const renderItem = (item) => {
     return (
-      <div style={{objectFit: 'cover'}} className='image-gallery-image'>
-        <img  style={{maxHeight: '55vh', width: '19rem'}} src={item.original} alt={item.description} />
-        <div className='image-gallery-description' style={{padding: '1vh', position: 'inherit', background: 'black'}}>{item.description}</div>
+      <div style={{ objectFit: 'cover' }} className='image-gallery-image'>
+        <img style={{ maxHeight: '55vh', width: '19rem' }} src={item.original} alt={item.description} />
+        <div className='image-gallery-description' style={{ padding: '1vh', position: 'inherit', background: 'black' }}>{item.description}</div>
       </div>
     );
-  }  // const [filteredEvents, setFilteredEvents] = useState([]);
+  }  
 
-  // const handleEventClick = (clickInfo) => {
-  //   const eventDate = new Date(clickInfo.event.start).toDateString();
-  //   if (eventDate >= currentDate) {
-  //     const index = filteredEvents.findIndex(
-  //       (event) => event.url === clickInfo.event.url
-  //     );
-  //     console.log(index)
-  //     if (index !== -1) {
-  //       carouselRef.current.goToSlide(index);
-  //     }
-  //   }
-  // };
-
-  // const handleBackClick = () => {
-  //   carouselRef.current.previous();
-  // };
-
-  // const handleForwardClick = () => {
-  //   carouselRef.current.next();
-  // };
-
-  // const handlePlayPauseClick = () => {
-  //   setAutoPlay(!autoPlay);
-  // };
+  const handleEventClick = (clickInfo) => {
+    const eventDate = new Date(clickInfo.event.start).toDateString();
+    if (eventDate >= currentDate) {
+      const index = filteredEvents.findIndex(
+        (event) => event.url === clickInfo.event.url
+      );
+      // console.log(index)
+      if (index !== -1) {
+        carouselRef.current.goToSlide(index);
+      }
+    }
+  };
 
   const responsive = {
     desktop: {
@@ -135,21 +166,25 @@ const Calendar = ({ eventsArray }) => {
 
   const [autoPlay, setAutoPlay] = useState(true);
 
-
+  // $( "#calendar" ).fullCalendar(function() {  
+  //   dayRender: function (date, cell) {
+  //       if ( !dateHasEvent(date) )
+  //           cell.css("background-color", "red");
+  //       else if ( dateHasEvent(date) )
+  //           cell.css("background-color", "yellow");
+  //   }
+  // });
 
   // Event Render Function To Get Images and Titles
   const renderEventContent = (eventInfo) => {
-    // console.log(filteredEvents, 'bhbyui')
-
+    const isMultEvent = multEventDate.includes(eventInfo.event.start.toISOString().substring(0,10));
     return (
       <div>
-        <p>{eventInfo.event.title}</p>
-        {/* <img className="eventimage" src={eventInfo.event.url} /> */}
+          <p>{eventInfo.event.title}</p>
+          {/* <img className="eventimage" src={eventInfo.event.url} alt={eventInfo.event.title} /> */}
       </div>
-    )
-  }
-
-
+    );
+  };
 
   return (
     <div>
@@ -157,9 +192,11 @@ const Calendar = ({ eventsArray }) => {
         <h1 style={{ display: 'inline', backgroundColor: 'white' }}>Events</h1>
       </Divider>
       {showEvents ?
-        <div style={{display: 'flex', justifyContent: "space-between",
-        padding: '0 4rem', alignItems: 'center'}}>
-          <div className="demo-app-main" style={{ width: '50vw' }}>
+        <div style={{
+          display: 'flex', justifyContent: "space-between",
+          padding: '0 4rem', alignItems: 'center', marginTop: '6vh'
+        }}>
+          <div className="demo-app-main" style={{ width: '50vw'}}>
             <FullCalendar
               plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
               headerToolbar={{
@@ -171,42 +208,24 @@ const Calendar = ({ eventsArray }) => {
               editable={true}
               selectable={true}
               selectMirror={true}
-              dayMaxEvents={5}
+              dayMaxEvents={2}
               // weekends={weekendsVisible}
               // select={handleDateSelect}
               eventContent={renderEventContent}
-              // eventClick={handleEventClick}
+              eventClick={handleEventClick}
               events={events}
-              contentHeight='35vw'
-              
+              // contentHeight='auto'
+              // aspectRatio={1.35}
             />
           </div>
-          <div style={{placeSelf: 'center'}}>
-            {/* <Carousel
-              responsive={responsive}
-              autoPlay={autoPlay}
-              ref={carouselRef}
-              renderButtonGroupOutside={true}
-              customButtonGroup={<CustomButtonGroup
-                handleBackClick={handleBackClick}
-                handleForwardClick={handleForwardClick}
-                handlePlayPauseClick={handlePlayPauseClick}
-                autoPlay={autoPlay}
-              />}
-            >
-              {filteredEvents.map((event) => (
-                <div key={event.id}>
-                  <img src={event.url} alt={event.title} />
-                </div>
-              ))}
-            </Carousel> */}
-            <ImageGallery items={filteredEvents} renderItem={renderItem} showIndex={true} showBullets={true} autoPlay={true} slideInterval={5000} /> 
+          <div style={{ placeSelf: 'center' }}>
+            <ImageGallery items={filteredEvents} renderItem={renderItem} showIndex={true} showBullets={true} autoPlay={true} slideInterval={5000} />
             {/* fllscrn and play and- marg-bot- 5vh svg l/r smething */}
-          <button onClick={handleShowEvents}>Previous Events</button>    
+            <button onClick={handleShowEvents}>Previous Events</button>
           </div>
         </div>
         : (<PE eventArr={eventsArray} setShowEvents={setShowEvents} />)}
-      </div >
+    </div >
 
   );
 
@@ -228,7 +247,8 @@ const Calendar = ({ eventsArray }) => {
 //     </div>
 //   );
 // };
+ 
 
-
+{/* <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"  */}
 
 export default Calendar;

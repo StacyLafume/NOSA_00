@@ -97,7 +97,6 @@ const ContactForm = () => {
     }
 
     // Handle form submission logic here (e.g., send the form data to a server)
-    console.log(formData);
 
     // Reset the form after submission (if desired)
     setFormData({

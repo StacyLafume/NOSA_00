@@ -63,8 +63,6 @@ const ArtistOfTheMonth = ({
   const showCurrentArtist = () => {
     setArtistData({ ...pastArtistOfTheMonthData[0] });
     setIsCurrentArtist(!isCurrentArtist)
-    console.log(isCurrentArtist)
-    console.log("I was clicked")
   };
 
   const classes = useStyles();

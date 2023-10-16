@@ -46,8 +46,6 @@ const PastExhb = ({ artistData }) => {
     setShowPreivousExhb(true);
     setSelectedArtistData(showData);
   };
-  console.log("artistData", artistData )
-
   return (
     <>
       {showPreivousExhb ? (

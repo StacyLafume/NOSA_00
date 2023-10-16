@@ -18,9 +18,14 @@ import { styled } from '@mui/material/styles';
 import CursorOverlay from './components/CursorOverlay';
 import PE from './components/PE';
 import EventsJson from './content/event/event.json'
+import Banner from './components/Banner'
+import bannerTextJson from './content/banner/bannerText.json'
+
 
 const App = () => {
 
+
+  
   const services = [{ 
     title: "Photo Shoot", 
     video: "https://www.shutterstock.com/shutterstock/videos/1031450246/preview/stock-footage-backstage-of-the-photo-shoot-make-up-artist-applies-makeup-on-beautiful-black-model-in-a-moment.webm",
@@ -85,6 +90,7 @@ const App = () => {
       <div id="/"/>
       <Nav />
       <Video  videoHeight={"100vh"} />
+      <Banner bannerText={bannerTextJson[0]} />
        <AboutUs />
       <OurMission />
      

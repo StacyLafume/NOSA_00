@@ -54,7 +54,6 @@ const JoinEmailListForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission logic here (e.g., submit the email to the server)
-    console.log('Email submitted:', email);
     // Reset the form after submission
     setEmail('');
   };
