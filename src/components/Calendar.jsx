@@ -212,7 +212,7 @@ const Calendar = ({ eventsArray }) => {
               // weekends={weekendsVisible}
               // select={handleDateSelect}
               eventContent={renderEventContent}
-              eventClick={handleEventClick}
+              // eventClick={handleEventClick}
               events={events}
               // contentHeight='auto'
               // aspectRatio={1.35}
