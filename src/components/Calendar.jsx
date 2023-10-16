@@ -133,18 +133,18 @@ const Calendar = ({ eventsArray }) => {
     );
   }  
 
-  const handleEventClick = (clickInfo) => {
-    const eventDate = new Date(clickInfo.event.start).toDateString();
-    if (eventDate >= currentDate) {
-      const index = filteredEvents.findIndex(
-        (event) => event.url === clickInfo.event.url
-      );
-      // console.log(index)
-      if (index !== -1) {
-        carouselRef.current.goToSlide(index);
-      }
-    }
-  };
+  // const handleEventClick = (clickInfo) => {
+  //   const eventDate = new Date(clickInfo.event.start).toDateString();
+  //   if (eventDate >= currentDate) {
+  //     const index = filteredEvents.findIndex(
+  //       (event) => event.url === clickInfo.event.url
+  //     );
+  //     // console.log(index)
+  //     if (index !== -1) {
+  //       carouselRef.current.goToSlide(index);
+  //     }
+  //   }
+  // };
 
   const responsive = {
     desktop: {
