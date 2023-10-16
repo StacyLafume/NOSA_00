@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import {
   TextField,
-  Button,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
   Grid,
   Box,
   Container,
@@ -34,13 +29,6 @@ const useStyles = makeStyles((theme) => ({
   flexContainer: {
     display: "flex",
   },
-  // image: {
-  //   width: '100%',
-  //   height: '57%',
-  //   marginBottom: theme.spacing(2),
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  // },
 }));
 
 const ContactForm = () => {
@@ -75,7 +63,6 @@ const ContactForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     // Validate form fields
     const newErrors = {};
     if (!formData.firstName) {
@@ -123,7 +110,7 @@ const ContactForm = () => {
                 justifyContent: "center",
               }}
             >
-              ContactUs
+              Contact Us
             </h2>
             <div className={classes.formContainer}>
               <form onSubmit={handleSubmit}>
@@ -167,7 +154,6 @@ const ContactForm = () => {
                   error={!!errors.email}
                   helperText={errors.email}
                 />
-                <FormControl fullWidth className={classes.formControl}>
                   <TextField
                   required
                   name="subject"
@@ -180,7 +166,6 @@ const ContactForm = () => {
                   error={!!errors.subject}
                   helperText={errors.subject}
                 />
-                </FormControl>
                 <TextField
                   required
                   name="message"
@@ -192,7 +177,7 @@ const ContactForm = () => {
                   fullWidth
                   margin="normal"
                 />
-                <SendButton type="submit" variant="contained" color="primary" />
+                <SendButton variant="contained" color="primary" />
               </form>
             </div>
           </Box>

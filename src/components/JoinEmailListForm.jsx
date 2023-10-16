@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { TextField, Button, Grid, Box, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import { DonateButton } from "./Buttons";
-import Jump from "react-reveal/Jump";
 
 const useStyles = makeStyles((theme) => ({
   formContainer: {
@@ -87,6 +85,12 @@ const JoinEmailListForm = () => {
                 variant="contained"
                 color="primary"
                 className={classes.submitButton}
+                style={{
+                  padding: "1rem",
+                  display: "inline-flex",
+                  flexDirection: "column",
+                  marginTop:"1rem"
+                }}
               >
                 <Typography
                   className={classes.title}
@@ -98,7 +102,6 @@ const JoinEmailListForm = () => {
                   <MailOutlineIcon />
                 </Typography>
               </Button>
-              <DonateButton className={classes.donate} />
             </Grid>
           </Grid>
         </form>

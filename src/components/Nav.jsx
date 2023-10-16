@@ -180,8 +180,6 @@ const Nav = () => {
             handleMenuClose();
             setValue("2");
           }}
-          sx={{ display: { sm: "none", xs: "none" } }}
-
         >
           Our Mission
         </MenuItem>
@@ -218,7 +216,6 @@ const Nav = () => {
             handleMenuClose();
             setValue("5");
           }}
-          sx={{ display: { sm: "none", xs: "none" } }}
 
         >
           Artist Of The Month
@@ -238,7 +235,6 @@ const Nav = () => {
             handleMenuClose();
             setValue("7");
           }}
-          sx={{ display: { sm: "none", xs: "none" } }}
 
         >
           Get Involved
@@ -258,7 +254,6 @@ const Nav = () => {
             handleMenuClose();
             setValue("7");
           }}
-          sx={{ display: { sm: "none", xs: "none" } }}
 
         >
           Services
@@ -277,7 +272,6 @@ const Nav = () => {
             handleMenuClose();
             setValue("8");
           }}
-          sx={{ display: { sm: "none", xs: "none" } }}
 
         >
           Contact Us
@@ -407,7 +401,7 @@ const Nav = () => {
                           navColor ? classes.colorFill : classes.noColorFill
                         }
                         label="Our Mission"
-                        sx={{ display: { sm: "none", xs: "none" } }}
+                        sx={{ display: { sm: "none", xs: "none", lg: "inline-block", xl: "inline-block" } }}
 
                       />
                       {/* </LinkRouter> */}
@@ -504,7 +498,7 @@ const Nav = () => {
                           navColor ? classes.colorFill : classes.noColorFill
                         }
                         label="Contact Us"
-                        sx={{ display: { sm: "none", xs: "none", } }}
+                        sx={{ display: { sm: "none", xs: "none", lg: "inline-block", xl: "inline-block" } }}
 
                       />
                       {/* </LinkRouter> */}

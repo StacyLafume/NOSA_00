@@ -69,7 +69,7 @@ const ServiceCard = ({ service }) => {
                   size="sm"
                   sx={{ mx: "calc(-1 * var(--ListItem-paddingX))" }}
                 >
-                  {service.description.map((point) => (
+                  {service.description.map((point, index, array) => (
                     <ListItem >
                       <ListItemDecorator style={{minWidth: '15rem !important'}} >
                         <Check style={{ margin: "9px" }} />

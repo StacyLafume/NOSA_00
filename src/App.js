@@ -92,7 +92,7 @@ const App = () => {
        <AboutUs />
        <Banner bannerText={BannerText}/>
 
-      {/* <OurMission /> */}
+      <OurMission />
      
       {/* <Events eventArr={EventsJson}/> */}
       {/* Check if artistOfTheMonthData exists before rendering the component */}
@@ -101,7 +101,7 @@ const App = () => {
       )}
       <GetInvolved linksData={removeBadData(LinksJson)}/>
       <Services services={services} />
-      {/* <ContactUs /> */}
+      <ContactUs />
       <Banner bannerText={BannerText}/>
       <Footer />
     </ThemeProvider>

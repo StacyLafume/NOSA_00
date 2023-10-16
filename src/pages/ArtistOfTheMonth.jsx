@@ -11,6 +11,7 @@ import { makeStyles } from "@mui/styles";
 import "../monthlyArtist.css";
 import ArtistOfTheMonthImageGallery from "../components/ArtistOfTheMonthImageGallery";
 import { Link as LinkScroll } from "react-scroll";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const useStyles = makeStyles((theme) => ({
   hideMe: {
@@ -112,11 +113,10 @@ const ArtistOfTheMonth = ({
               </div>
             </div>
           </div>
-        <Container sx={{ width: "95vw" }}>
-              <ArtistOfTheMonthImageGallery images={exhibition_pieces} />
-            </Container>
+          <Container sx={{ width: "95vw" }}>
+            <ArtistOfTheMonthImageGallery images={exhibition_pieces} />
+          </Container>
           <div class="article-container">
-         
             <div>
               <h2>About the Artist</h2>
               <p>{artist_statement}</p>
@@ -155,22 +155,25 @@ const ArtistOfTheMonth = ({
                 )}
               </Grid>
             </Grid>
-          
+
             <LinkScroll
               isDynamic={true}
-              to="previousExhb"
+              to="/artistofthemonth"
               spy={true}
               smooth={true}
               offset={10}
               duration={500}
             >
-              <Button onClick={getPastExhibitions}>
+              <Button
+                style={{ color: "#e56017", backgroundColor: "white" }}
+                onClick={getPastExhibitions}
+              >
                 {" "}
                 previous exhibitions
+                <ArrowForwardIosIcon/>
               </Button>
             </LinkScroll>
           </div>
-         
         </div>
       )}
     </div>

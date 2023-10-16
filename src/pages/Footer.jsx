@@ -5,6 +5,9 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import { Link as LinkScroll } from "react-scroll/modules";
 import { Box, Link, Typography } from "@mui/material";
+import { DonateButton } from "../components/Buttons";
+import Button from "@mui/material/Button";
+
 import InstagramIcon from "@mui/icons-material/Instagram";
 
 const CustomDivider = styled("div")(({ theme }) => ({
@@ -23,14 +26,6 @@ const Grid = styled(MuiGrid)(({ theme }) => ({
 }));
 
 const Footer = () => {
-  const content = (
-    <div>
-      {`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dignissim justo.
-       Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-       Sed malesuada lobortis pretium.`}
-    </div>
-  );
-
   return (
     <div>
       <Grid
@@ -53,13 +48,6 @@ const Footer = () => {
                 item
               >
                 <img src="https://cdn-az.allevents.in/events5/banners/d4425956a5f0d65bfacf7dedb1031dde91a7fe828b1b7ba632b4f65dc970718e-rimg-w1200-h800-gmir.jpg?v=1693230844" />
-
-                {/* <Typography variant={"h6"}>
-                  We invite you to join the NOSA community and help us build a
-                  more vibrant, inclusive, and creative Boston. Follow us on
-                  social media, or attend one of our events to learn more about
-                  how you can be a part of this exciting initiative.
-                </Typography> */}
               </Grid>
             </Grid>
             <Grid item xs={2} sm={4} md={4}>
@@ -77,17 +65,18 @@ const Footer = () => {
                       Home
                     </ListItem>
                   </LinkScroll>
-                  {/* <LinkScroll
-      isDynamic={true}
-
+                  <LinkScroll
+                    isDynamic={true}
                     to="/ourmission"
                     spy={true}
                     smooth={true}
                     offset={50}
                     duration={500}
                   >
-                    <ListItem style={{ textDecoration: "underline"}}>Our Mission</ListItem>
-                  </LinkScroll> */}
+                    <ListItem style={{ textDecoration: "underline" }}>
+                      Our Mission
+                    </ListItem>
+                  </LinkScroll>
                   <LinkScroll
                     isDynamic={true}
                     to="/aboutus"
@@ -112,7 +101,7 @@ const Footer = () => {
                       Events
                     </ListItem>
                   </LinkScroll> */}
-                  {/* <LinkScroll
+                  <LinkScroll
                     isDynamic={true}
                     to="/artistofthemonth"
                     spy={true}
@@ -123,19 +112,8 @@ const Footer = () => {
                     <ListItem style={{ textDecoration: "underline" }}>
                       Artist Of The Month
                     </ListItem>
-                  </LinkScroll> */}
-                  {/* <LinkScroll
-                    isDynamic={true}
-                    to="/pastexhibitions"
-                    spy={true}
-                    smooth={true}
-                    offset={50}
-                    duration={500}
-                  >
-                    <ListItem style={{ textDecoration: "underline" }}>
-                      Past Exhibitions
-                    </ListItem>
-                  </LinkScroll> */}
+                  </LinkScroll>
+
                   <LinkScroll
                     isDynamic={true}
                     to="/getInvolved"
@@ -163,15 +141,34 @@ const Footer = () => {
                 </List>
               </Grid>
             </Grid>
-            {/* <Grid item xs={2} sm={4} md={4}>
+            <Grid item xs={2} sm={4} md={4}>
               <Grid height={"25vh"} item>
-                <Typography variant={"h2"}>
-                  Follow us on Instagram <InstagramIcon fontSize={"large"} />
-                </Typography>
+                <List>
+                  <ListItem>Sunday Closed</ListItem>
+                  <ListItem>Monday Closed</ListItem>
+                  <ListItem>Tuesday 4–6:30 PM</ListItem>
+                  <ListItem>Wednesday 6–8 PM</ListItem>
+                  <ListItem>Thursday 4–10 PM </ListItem>
+                  <ListItem>Friday 7 PM–12 AM</ListItem>
+                  <ListItem>Saturday Closed</ListItem>
+                </List>
+                <a href="https://www.instagram.com/nosaboston/">
+                  <Button
+                    style={{ wordSpacing: "3px", color: "white" }}
+                    variant={"p"}
+                  >
+                    Follow us on Instagram{" "}
+                    <InstagramIcon
+                      style={{ marginLeft: "4px" }}
+                      fontSize={"large"}
+                    />
+                  </Button>
+                </a>
+                <DonateButton style={{ marginLeft: "3px" }} color="#e56017" />
               </Grid>
-            </Grid> */}
+            </Grid>
           </Grid>
-        </Grid> 
+        </Grid>
         <CustomDivider />
         <Grid item xs={3}>
           <Box>
@@ -189,7 +186,7 @@ const Footer = () => {
               >
                 {"Copyright © "}
                 <Link color="inherit" href="#">
-                  NOSABOSTON
+                  NOSA Boston
                 </Link>{" "}
                 {new Date().getFullYear()}
                 {"."}

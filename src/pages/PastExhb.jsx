@@ -59,7 +59,7 @@ const PastExhb = ({ artistData }) => {
           artistOfTheMonthData={selectedArtistData}
         />
       ) : (
-        <div id='previousExhb' style={{ height: "100vh" }}>
+        <div id='/previousExhb' style={{ height: "100vh" }}>
           <Divider
             textAlign="center"
             role="presentation"
@@ -80,7 +80,7 @@ const PastExhb = ({ artistData }) => {
               Previous Exhibitions
             </h1>
           </Divider>
-          <Button  style={{ color: "#ff8b25", margin:"4vh" }} onClick={() => getPastArtistOfTheMonth(artistData[0])}>
+          <Button  style={{ color: "#e56017", margin:"4vh" }} onClick={() => getPastArtistOfTheMonth(artistData[0])}>
           <ArrowBackIosIcon/>
             {" "}
             Back to Current Artist
@@ -99,11 +99,7 @@ const PastExhb = ({ artistData }) => {
               </InputLabel>
               <OutlinedInput
                 id="outlined-adornment-amount"
-                startAdornment={
-                  <InputAdornment position="start">
-                    Exhibition Name
-                  </InputAdornment>
-                }
+                 placeholder= "Exhibition Name Or Date"
                 label="Search"
                 value={searchTerm}
                 onChange={handleSearch}
