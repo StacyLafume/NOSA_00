@@ -26,8 +26,6 @@ import LinksJson from './content/links/links.json';
 
 const App = () => {
 
-
-  
   const services = [{ 
     title: "Content Creators & Social media", 
     video:require('./images/content_creator.jpeg'),
