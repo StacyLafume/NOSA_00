@@ -5,7 +5,7 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 
-const GetInvolved = ({ linksData }) => {
+const GetInvolved = ({setShowNotTakingSubmissions, linksData }) => {
   const linksDataReversed = [...linksData].reverse()
   // console.log("linksData.reverse()", )
   return (
@@ -72,8 +72,9 @@ const GetInvolved = ({ linksData }) => {
                     <p id="description">{link_description}</p>
                     {link_title === "NOSA Artist of the Month Application 2024" ? (
                       <>
-                      <a target="_blank" href="https://forms.gle/QXC5qh97XiLeWgev9">
+                      {/* <a target="_blank" href="#"> */}
                         <button
+                        onClick={() => setShowNotTakingSubmissions(true)}
                           style={{
                             padding: "0.5rem",
                             width: "100%",
@@ -87,7 +88,7 @@ const GetInvolved = ({ linksData }) => {
                         >
                           Visual Artist
                         </button>
-                        <a target="_blank" href="https://forms.gle/QMEXiLQKmdLmmHfe7">
+                        
                         <button
                           style={{
                             padding: "0.5rem",
@@ -99,11 +100,11 @@ const GetInvolved = ({ linksData }) => {
                             display: "block",
                             backgroundColor: "rgb(37 173 255)",
                           }}
+                          onClick={() => setShowNotTakingSubmissions(true)}
                         >
                           Musical Artist
                         </button>
-                      </a>
-                      <a target="_blank" href="https://forms.gle/TUZ5ZbSvU4eCn25f6">
+                  
                         <button
                           style={{
                             padding: "0.5rem",
@@ -115,14 +116,14 @@ const GetInvolved = ({ linksData }) => {
                             display: "block",
                             backgroundColor: "#4caf50",
                           }}
+                          onClick={() => setShowNotTakingSubmissions(true)}
                         >
                           Fashion Artist
                         </button>
-                      </a>
-                      </a>
+                   
                       </>
                     ) : (
-                      <a target="_blank" href={link}>
+                      // <a target="_blank" href={link}>
                         <button
                           style={{
                             padding: "0.5rem",
@@ -134,10 +135,12 @@ const GetInvolved = ({ linksData }) => {
                             display: "block",
                             backgroundColor: "#ff8b25",
                           }}
+                          onClick={() => setShowNotTakingSubmissions(true)}
+
                         >
                           Go!
                         </button>
-                      </a>
+                      // </a>
                     )}
                   </VerticalTimelineElement>
                 );

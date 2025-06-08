@@ -22,6 +22,7 @@ import BannerText from './content/banner/bannerText.json'
 import GetInvolved from './pages/GetInvolved';
 import Banner from './components/Banner';
 import LinksJson from './content/links/links.json';
+import NotTakingSubmissions from './pages/NotTakingSubmissions';
 
 
 const App = () => {
@@ -81,6 +82,9 @@ const App = () => {
     });
   }
 
+  const [showNotTakingSubmissions, setShowNotTakingSubmissions] = useState(false);
+
+  if (showNotTakingSubmissions) return <NotTakingSubmissions setShowNotTakingSubmissions={setShowNotTakingSubmissions}  />;
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline defaultMode="dark" />
@@ -88,7 +92,7 @@ const App = () => {
       <Nav />
       <Video videoSrc="https://res.cloudinary.com/dpguttfbn/video/upload/v1696010476/vecteezy_coming-soon-text-animation-on-a-black-background-with_28549904_664_fjrsci.3gp" videoHeight={"100vh"} />
       <Banner bannerText={BannerText}/>
-
+      
        <AboutUs />
        <Banner bannerText={BannerText}/>
 
@@ -99,7 +103,7 @@ const App = () => {
       {ArtistOfTheMonthJson.length > 0 && (
         <ArtistOfTheMonth pastArtistOfTheMonthData={removeBadData(ArtistOfTheMonthJson)} artistsOfTheMonthData={removeBadData(ArtistOfTheMonthJson)} artistOfTheMonthData={ArtistOfTheMonthJson[0]} />
       )}
-      <GetInvolved linksData={removeBadData(LinksJson)}/>
+      <GetInvolved setShowNotTakingSubmissions={setShowNotTakingSubmissions} linksData={removeBadData(LinksJson)}/>
       <Services services={services} />
       <ContactUs />
       <Banner bannerText={BannerText}/>
