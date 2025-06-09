@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Container, Grid, Box, Button, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import CircularProgress from '@mui/material/CircularProgress';
-
+import CircularProgress from "@mui/material/CircularProgress";
+import CircleWithLabel from "../components/CircleWithLabel";
 
 const useStyles = makeStyles((theme) => ({
   kpiContainer: {
     display: "flex",
     justifyContent: "center",
-    minHeight: "300px",
-    position: "relative",
-    overflow: "hidden",
-    width: "62vw !important",
-    flexWrap: "nowrap",
-    padding:"0rem 0rem 3rem 0rem",
-    height: "fit-content",
-
+    flexWrap: "wrap", // allow wrapping on narrow screens
+    gap: theme.spacing(4), // consistent gutter
+    paddingBottom: theme.spacing(4),
   },
   kpiContent: {
     position: "relative",
@@ -28,15 +23,13 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonWrapper: {
     marginTop: theme.spacing(2),
-    padding:"1%"
+    padding: "1%",
   },
-  circle: {
-    width: "180px !important",
-    position: "relative",
-    height: "119px !important", 
-    top: "104px",
-    right: "32px",
-  }
+
+  label: {
+    marginTop: theme.spacing(2),
+    color: "white",
+  },
 }));
 
 const KPI = ({ numbers, interval }) => {
@@ -67,28 +60,35 @@ const KPI = ({ numbers, interval }) => {
   }, [numbers, counts, interval]);
 
   return (
-    <Container className={classes.kpiContainer} >
+    <Container className={classes.kpiContainer}>
       <Grid
         container
-        spacing={2}
+        spacing={3}
         justifyContent="center"
         alignItems="center"
-        style={{flexWrap:"nowrap", flexDirection:"row", marginTop:"-16px", width:"calc(100% + 16px)", marginLeft:"-16px",justifyContent:"center",alignItems:"center"}}
-        sx={{}}
+        wrap="wrap"
       >
         {numbers.map((targetNumber, index) => (
-          <Grid style={{padding:"0rem"}} item xs={4} key={index}>
+          <Grid
+            sx={{ mt: { xs: 6, md: 5 }, pt: { xs: 4, md: 4 } }}
+            item
+            xs={12}
+            sm={6}
+            md={3}
+            key={index}
+          >
             <Box textAlign="center" className={classes.kpiContent}>
-            <CircularProgress className={classes.circle} variant="determinate" thickness={1} sx={{color:"#ff8b25",}} value={100} />
-              <Typography variant="h3" fontWeight="thin" style={{fontSize:"3rem", lineHeight:"1.167", margin:"0", }}>
-                {targetNumber}
+              <CircleWithLabel
+                value={targetNumber}
+                size={window.innerWidth < 900 ? 120 : 180}
+              />
+              <Typography className={classes.label}>
+                {
+                  ["Ticket sales", "Ticketed Events", "Art Sales", "Members"][
+                    index
+                  ]
+                }
               </Typography>
-              <div className={classes.buttonWrapper}>
-                <Typography item sx={{width:"6rem", position:"relative", top:"40px", margin:"0rem"}} variant="contained">
-                {index === 0 ? "Ticket sales" : index === 1 ? "Ticketed Events" :  index === 2 ? "Art Sales" : "Members"}
-
-                </Typography>
-              </div>
             </Box>
           </Grid>
         ))}

@@ -1,6 +1,7 @@
 import React from "react";
 import Divider from "@mui/material/Divider";
 import Timeline from "../components/Timeline";
+import { Box, Typography, Container } from "@mui/material";
 
 const AboutUs = () => {
   const timelineData = [
@@ -34,47 +35,50 @@ const AboutUs = () => {
     },
   ];
   return (
-    <div>
-      <div id="/aboutus" style={{ height: "150vh" }}>
-        <h1
-          style={{
-            paddingLeft: "6.1rem",
-            height: "3.8rem",
-            display: "flex",
-            alignItems: "flex-start",
-          }}
-        >
-          About Us
-        </h1>
-        <Divider
-          variant="middle"
-          sx={{ backgroundColor: "#ff8b25", height: ".1rem", margin: "0" }}
-        />
-        <span
-          style={{
-            fontSize: "1.3rem",
-            textAlign: "end",
-            width: "100vw",
-            display: "inline-block",
-            paddingRight: "3rem",
-          }}
-        >
-          Building A Vibrant And Inclusive Art Community In Boston
-        </span>
-        <div
-          style={{
-            marginTop: "1rem",
-            height: "140vh",
-            backgroundImage:`url("https://res.cloudinary.com/dpguttfbn/image/upload/v1694991551/VICTORIA_22_1_zf3kof.jpg")`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundPosition: "25% 75%",
-          }}
-        >
-          <Timeline timelineData={timelineData}/>
-        </div>
-      </div>
-    </div>
+    <Box
+      id="/aboutus"
+      sx={{
+        pt: { xs: 4, sm: 6, md: 8 },
+        pb: { xs: 4, sm: 6, md: 8 },
+      }}
+    >
+      <Typography
+        variant="h1"
+        sx={{ mb: 2, pl: { xs: 0, sm: 4 }, fontWeight: 500 }}
+      >
+        About Us
+      </Typography>
+
+      <Divider
+        sx={{
+          backgroundColor: "#ff8b25",
+          height: 4,
+        }}
+      />
+      <Typography
+        sx={{
+          fontSize: { xs: "1.3rem", md: "1.5rem" },
+          textAlign: { xs: "center", md: "right" },
+          mb: { xs: 3, md: 4 },
+          pr: { xs: 0, md: 6 },
+        }}
+      >
+        Building a Vibrant And Inclusive Art Community In Boston
+      </Typography>
+
+      <Box
+        style={{
+          marginTop: "1rem",
+          backgroundImage: `url("https://res.cloudinary.com/dpguttfbn/image/upload/v1694991551/VICTORIA_22_1_zf3kof.jpg")`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "25% 75%",
+          padding: 0,
+        }}
+      >
+        <Timeline timelineData={timelineData} />
+      </Box>
+    </Box>
   );
 };
 

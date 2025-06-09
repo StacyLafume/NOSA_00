@@ -11,31 +11,27 @@ const useStyles = makeStyles({});
 
 const Timeline = ({ timelineData }) => {
   const classes = useStyles();
-  
+
   return (
     <div
       style={{
         backgroundImage: `url(
           "https://drive.google.com/file/d/1VdYvOqQePlsXbZs2Ck1M2yWqirgFc8RO/view?usp=sharing"
         )`,
-        height: "100vh",
       }}
     >
       <VerticalTimeline>
         {timelineData.map((element, index) => {
-
           return (
             <VerticalTimelineElement
               key={element.key}
               date={element.date}
               dateClassName="date"
-              iconStyle={{ background: "black",
-              }}
+              iconStyle={{ background: "black" }}
               icon={<div />}
-              style={{ margin: "8vh 0vh" }}
+              style={{ margin: "15vh 0vh" }}
               contentStyle={{ boxShadow: " 0px 0px 20px 0px #a38a7d" }}
               position={index % 2 == 0 ? "right" : "left"}
-
             >
               <h3 className="vertical-timeline-element-title">
                 {element.title}
@@ -44,7 +40,6 @@ const Timeline = ({ timelineData }) => {
                 {element.location}
               </h5>
               <p id="description">{element.description}</p>
-              
             </VerticalTimelineElement>
           );
         })}
