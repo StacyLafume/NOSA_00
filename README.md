@@ -1,6 +1,6 @@
 # Nubian Open Studio for the Arts (NOSA) 🎨⚛️
 
-[![Alt Text](content/images/profile.png)](https://brandi-chanel-events.netlify.app/)
+[![Alt Text](src/content/images/profile.png)](https://brandi-chanel-events.netlify.app/)
 
 ## [NOSA Site](https://brandi-chanel-events.netlify.app/)
 
