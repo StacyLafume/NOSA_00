@@ -31,15 +31,14 @@ A community‑driven digital platform that connects local artists with the publi
 
 ## 🔧 Tech Stack
 
-| Layer           | Technology               |
-| --------------- | ------------------------ | --- |
-| Frontend        | React, Material‑UI ⚛️ 🎨 |
-| CMS / Backend   | Netlify CMS 🗂️           |
-| Payments        | Stripe 💳                |
-| CRM / Marketing | HubSpot 📈               |
-| Media Storage   | Cloudinary ☁️📸          |
-| Deployment      | Netlify (Frontend) 🚀    |
-| CI / CD         | GitHub Actions / Netlify | 🤖  |
+| Layer | Technology  
+| Frontend | React, Material‑UI ⚛️ 🎨
+| CMS / Backend | Netlify CMS 🗂️  
+| Payments | Stripe 💳  
+| CRM / Marketing | HubSpot 📈  
+| Media Storage | Cloudinary ☁️📸  
+| Deployment | Netlify (Frontend) 🚀  
+| CI / CD | GitHub Actions / Netlify 🤖
 
 ---
 
@@ -64,16 +63,16 @@ A community‑driven digital platform that connects local artists with the publi
 
    ```
 
-2. npm install
+2. #### npm install
 
-   # or
+   or
 
-   yarn install
+   #### yarn install
 
-3. Run the dev server
-   npm start
-   # or
-   yarn start
+3. ## Run the dev server
+   #### npm start
+   or
+   #### yarn start
 
 Visit http://localhost:3000 to explore NOSA locally 🌟
 
@@ -84,4 +83,4 @@ Visit http://localhost:3000 to explore NOSA locally 🌟
 ### 📫 Contact
 
     Stacy Lafume – @stacylafume
-    Project Link: https://github.com/your-org/nosa
+    Project Link: https://github.com/StacyLafume/NOSA_00
