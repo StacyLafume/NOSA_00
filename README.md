@@ -1,5 +1,7 @@
 # Nubian Open Studio for the Arts (NOSA) 🎨⚛️
 
+[](images/profile.png)](https://brandi-chanel-events.netlify.app/)
+
 ## [NOSA Site](https://brandi-chanel-events.netlify.app/)
 
 A community‑driven digital platform thßat connects local artists with the public, sparks collaboration, and uplifts small businesses across Boston. Under the hood, it uses a headless CMS (Netlify CMS) for flexible content management, Stripe for seamless payments, HubSpot for CRM & marketing automation, and Cloudinary for fast, on‑the‑fly image delivery. 🚀
