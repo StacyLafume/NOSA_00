@@ -29,8 +29,7 @@ const Footer = () => {
   return (
     <div>
       <Grid
-        sx={{ padding: "30px", alignItems: "center" }}
-        height={"30vh"}
+        sx={{ marginTop: "", padding: "30px", alignItems: "center" }}
         backgroundColor={"black"}
         color={"white"}
         container
@@ -42,16 +41,12 @@ const Footer = () => {
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
             <Grid item xs={2} sm={4} md={4}>
-              <Grid
-                sx={{ display: "flex", alignItems: "center" }}
-                height={"25vh"}
-                item
-              >
+              <Grid sx={{ display: "flex", alignItems: "center" }} item>
                 <img src="https://cdn-az.allevents.in/events5/banners/d4425956a5f0d65bfacf7dedb1031dde91a7fe828b1b7ba632b4f65dc970718e-rimg-w1200-h800-gmir.jpg?v=1693230844" />
               </Grid>
             </Grid>
             <Grid item xs={2} sm={4} md={4}>
-              <Grid height={"25vh"} item>
+              <Grid item>
                 <List>
                   <LinkScroll
                     isDynamic={true}
@@ -142,7 +137,7 @@ const Footer = () => {
               </Grid>
             </Grid>
             <Grid item xs={2} sm={4} md={4}>
-              <Grid height={"25vh"} item>
+              <Grid item>
                 <List>
                   <ListItem>Sunday Closed</ListItem>
                   <ListItem>Monday Closed</ListItem>
@@ -174,7 +169,6 @@ const Footer = () => {
           <Box>
             <img
               src={require("../images/Nosa_Logo_white.png")}
-              height={"125vh"}
               alt="NOSA fornt door"
             />
             <Box mt={5}>
