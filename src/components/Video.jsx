@@ -37,18 +37,25 @@ const Video = ({
           id="/"
           aria-labelledby="home-title"
           sx={{
-            display: "flex",
-            flexWrap: "wrap",
+            position: "relative",
+            display: "grid",
+            placeItems: "center",
             p: 0,
             m: 0,
-            minHeight: videoHeight,
+            height: videoHeight,
             borderRadius: 0,
+            overflow: "hidden",
           }}
         >
-          <h1 id="home-title" className="visually-hidden">NOSA Boston</h1>
           <Card
             component="div"
-            sx={{ width: "100%", minWidth: 0, flexGrow: 1, borderRadius: 0 }}
+            sx={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              minWidth: 0,
+              borderRadius: 0,
+            }}
           >
             <CardCover sx={{ borderRadius: 0 }}>
               <video
@@ -71,6 +78,32 @@ const Video = ({
             </CardCover>
             <CardContent></CardContent>
           </Card>
+          <Box
+            sx={{
+              position: "relative",
+              zIndex: 1,
+              width: "fit-content",
+              maxWidth: "min(90%, 48rem)",
+              px: { xs: 2.5, sm: 4, md: 6 },
+              py: { xs: 2, sm: 3, md: 4 },
+              border: "2px solid #fff",
+              backgroundColor: "#161616",
+              color: "#fff",
+              textAlign: "center",
+              boxShadow: "0 8px 32px rgb(0 0 0 / 45%)",
+            }}
+          >
+            <h1
+              id="home-title"
+              style={{
+                color: "inherit",
+                fontSize: "clamp(1.75rem, 5vw, 3.5rem)",
+                lineHeight: 1.15,
+              }}
+            >
+              Nubian Open Studios for the Arts
+            </h1>
+          </Box>
         </Box>
       </JoyCssVarsProvider>
     </MaterialCssVarsProvider>
