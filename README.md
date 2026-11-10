@@ -4,7 +4,6 @@
 
 ## [NOSA Site](https://brandi-chanel-events.netlify.app/)
 
-ß
 A community‑driven digital platform thßat connects local artists with the public, sparks collaboration, and uplifts small businesses across Boston. Under the hood, it uses a headless CMS (Netlify CMS) for flexible content management, Stripe for seamless payments, HubSpot for CRM & marketing automation, and Cloudinary for fast, on‑the‑fly image delivery. 🚀
 
 ---
@@ -26,24 +25,26 @@ A community‑driven digital platform thßat connects local artists with the pub
 - **Connect & Collaborate**: Showcase local artists’ portfolios and events 🎭
 - **Community Marketplace**: Empower small Boston businesses with integrated storefronts 🛍️
 - **Content Management**: Netlify CMS headless setup for markdown‑driven pages 🗂️
-- **Secure Payments**: Stripe checkout for one‑off purchases & subscriptions 💳
+- **Secure Payments**: Stripe-hosted donation link, currently configured in test mode
 - **Lead Management**: HubSpot forms & workflows to capture and nurture leads 📈
 - **Media Optimization**: Cloudinary delivers responsive, optimized images ☁️📸
-- 🔐 Authentication-ready (JWT / OAuth stubs)
+- CMS administrator authentication through Netlify Identity
+  and Git Gateway
+- Hosted on Netlify
 - 📱 Fully responsive & accessibility‑first
 
 ---
 
 ## 🔧 Tech Stack
 
-| Layer | Technology  
-| Frontend | React, Material‑UI ⚛️ 🎨
-| CMS / Backend | Netlify CMS 🗂️  
-| Payments | Stripe 💳  
-| CRM / Marketing | HubSpot 📈  
-| Media Storage | Cloudinary ☁️📸  
-| Deployment | Netlify (Frontend) 🚀  
-| CI / CD | GitHub Actions / Netlify 🤖
+| Layer              | Technology         |
+| ------------------ | ------------------ |
+| Frontend           | React, Material UI |
+| Content management | Netlify CMS        |
+| Payments           | Stripe             |
+| CRM / Marketing    | HubSpot            |
+| Media              | Cloudinary         |
+| Hosting            | Netlify            |
 
 ---
 
