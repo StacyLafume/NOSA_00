@@ -4,13 +4,14 @@ import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
-import { Box, Container, Typography, Button } from "@mui/material";
+import { Box } from "@mui/material";
 
 const GetInvolved = ({ setShowNotTakingSubmissions, linksData }) => {
   const linksDataReversed = [...linksData].reverse();
   // console.log("linksData.reverse()", )
   return (
     <Box
+      component="section"
       sx={{
         // backgroundColor: "#ff8b25",
         backgroundImage:
@@ -22,18 +23,22 @@ const GetInvolved = ({ setShowNotTakingSubmissions, linksData }) => {
         pb: { xs: 6, md: 8 },
       }}
       id="/getInvolved"
+      aria-labelledby="get-involved-heading"
     >
-      <h1
+      <h2
+        id="get-involved-heading"
         style={{
-          paddingLeft: "6.1rem",
-          height: "3.8rem",
+          padding: "0.75rem 1.25rem",
+          margin: "0 1.25rem",
+          width: "fit-content",
           display: "flex",
-          alignItems: "flex-start",
+          alignItems: "center",
           color: "white",
+          backgroundColor: "#161616",
         }}
       >
         Get Involved
-      </h1>
+      </h2>
       <Divider
         variant="middle"
         sx={{ backgroundColor: "white", height: ".1rem", margin: "0" }}
@@ -48,7 +53,7 @@ const GetInvolved = ({ setShowNotTakingSubmissions, linksData }) => {
           <VerticalTimeline>
             {linksDataReversed.map(
               ({ link_title, link, link_color, link_description }, index) => {
-                return link_description == "" ? (
+                return link_description === "" ? (
                   <></>
                 ) : (
                   <VerticalTimelineElement
@@ -81,7 +86,7 @@ const GetInvolved = ({ setShowNotTakingSubmissions, linksData }) => {
                             marginTop: "1rem",
                             marginBottom: "-0.5rem",
                             display: "block",
-                            backgroundColor: "#ff8b25",
+                            backgroundColor: "#b33b00",
                           }}
                         >
                           Visual Artist
@@ -96,7 +101,7 @@ const GetInvolved = ({ setShowNotTakingSubmissions, linksData }) => {
                             marginTop: "1rem",
                             marginBottom: "-0.5rem",
                             display: "block",
-                            backgroundColor: "rgb(37 173 255)",
+                            backgroundColor: "#b33b00",
                           }}
                           onClick={() => setShowNotTakingSubmissions(true)}
                         >
@@ -112,7 +117,7 @@ const GetInvolved = ({ setShowNotTakingSubmissions, linksData }) => {
                             marginTop: "1rem",
                             marginBottom: "-0.5rem",
                             display: "block",
-                            backgroundColor: "#4caf50",
+                            backgroundColor: "#b33b00",
                           }}
                           onClick={() => setShowNotTakingSubmissions(true)}
                         >
@@ -130,7 +135,7 @@ const GetInvolved = ({ setShowNotTakingSubmissions, linksData }) => {
                           marginTop: "1rem",
                           marginBottom: "-0.5rem",
                           display: "block",
-                          backgroundColor: "#ff8b25",
+                          backgroundColor: "#b33b00",
                         }}
                         onClick={() => setShowNotTakingSubmissions(true)}
                       >

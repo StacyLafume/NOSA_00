@@ -3,13 +3,14 @@ import Divider from "@mui/material/Divider";
 import { Box, Grid, Typography } from "@mui/material";
 import KPI from "../components/KPI";
 import { DonateButton } from "../components/Buttons";
-import { makeStyles } from "@mui/styles";
 import painting from "../images/painting.jpeg";
 
 const OurMission = () => {
   return (
     <Box
+      component="section"
       id="/ourmission"
+      aria-labelledby="our-mission-heading"
       sx={{
         flexGrow: 1,
         bgcolor: "black",
@@ -33,6 +34,9 @@ const OurMission = () => {
             sx={{ borderColor: "white", color: "white" }}
           >
             <Typography
+              id="our-mission-heading"
+              component="h2"
+              variant="h2"
               sx={{
                 fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.6rem" },
                 px: 2,
@@ -45,14 +49,15 @@ const OurMission = () => {
           </Divider>
         </Grid>
         <Grid
+          item
           container
           xs={12}
-          md={18}
+          md={12}
           justifyContent={{ xs: "space-around", md: "space-around" }}
         >
           <Typography
             sx={{
-              fontSize: { sx: "1.2", sm: "2rem", md: "2rem" },
+              fontSize: { xs: "1.2rem", sm: "2rem", md: "2rem" },
               fontWeight: 300,
               textAlign: { xs: "center", md: "left" },
               color: "#ffff",
@@ -64,7 +69,7 @@ const OurMission = () => {
           </Typography>
 
           <DonateButton
-            color={"#e55f1a"}
+            color={"#b33b00"}
             sx={{ width: { xs: "80%", sm: "50%", md: "12vw" } }}
           />
         </Grid>

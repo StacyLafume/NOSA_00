@@ -34,7 +34,7 @@
 } */
 
 .image-gallery-slide .image-gallery-description {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.9);
     color: #fff;
     left: 45%; 
     bottom: 93%;
@@ -49,4 +49,14 @@
 .image-gallery-fullscreen-button {
     right: 0;
     color: #e56017;
+}
+
+@media (max-width: 600px) {
+    .image-gallery-thumbnails-wrapper {
+        margin: 0 1rem;
+    }
+
+    .image-gallery-slide .image-gallery-image {
+        width: 100%;
+    }
 }

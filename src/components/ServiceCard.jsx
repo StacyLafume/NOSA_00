@@ -18,7 +18,6 @@ import {
   THEME_ID as MATERIAL_THEME_ID,
 } from "@mui/material/styles";
 import { CssVarsProvider as JoyCssVarsProvider } from "@mui/joy/styles";
-import Video from "./Video";
 
 const materialTheme = materialExtendTheme();
 
@@ -27,7 +26,6 @@ const ServiceCard = ({ service }) => {
     <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
       <JoyCssVarsProvider>
         <Card
-          borderRadius="0"
           size="lg"
           variant="plain"
           orientation="horizontal"
@@ -42,12 +40,14 @@ const ServiceCard = ({ service }) => {
             gap={2}
           >
             <CardOverflow
+              aria-hidden="true"
               sx={{
                 flex: "1",
                 borderRadius: 0,
                 backgroundImage: `url("${service.video}")`,
                 backgroundSize: "cover",
                 backgroundPosition: "left center",
+                minHeight: { xs: 180, md: 240 },
               }}
             ></CardOverflow>
             <CardContent
@@ -61,7 +61,7 @@ const ServiceCard = ({ service }) => {
             >
               {/* Your pricing card content */}
               <Card size="lg" variant="outlined">
-                <Typography level="h2" fontSize="xl3" fontFamily="Blinker">
+                <Typography level="h2" fontFamily="Blinker">
                   {service.title}
                 </Typography>
                 <Divider inset="none" />
@@ -69,9 +69,9 @@ const ServiceCard = ({ service }) => {
                   size="sm"
                   sx={{ mx: "calc(-1 * var(--ListItem-paddingX))" }}
                 >
-                  {service.description.map((point, index, array) => (
-                    <ListItem >
-                      <ListItemDecorator style={{minWidth: '15rem !important'}} >
+                  {service.description.map((point, index) => (
+                    <ListItem key={`${service.title}-${index}`}>
+                      <ListItemDecorator>
                         <Check style={{ margin: "9px" }} />
                         <br />
                         {point}

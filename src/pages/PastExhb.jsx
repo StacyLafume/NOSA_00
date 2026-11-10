@@ -80,7 +80,7 @@ const PastExhb = ({ artistData }) => {
               Previous Exhibitions
             </h1>
           </Divider>
-          <Button  style={{ color: "#e56017", margin:"4vh" }} onClick={() => getPastArtistOfTheMonth(artistData[0])}>
+          <Button  style={{ color: "#b33b00", margin:"4vh" }} onClick={() => getPastArtistOfTheMonth(artistData[0])}>
           <ArrowBackIosIcon/>
             {" "}
             Back to Current Artist

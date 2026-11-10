@@ -5,13 +5,7 @@ import {
 
 import "react-vertical-timeline-component/style.min.css";
 
-import { makeStyles, useTheme } from "@mui/styles";
-
-const useStyles = makeStyles({});
-
 const Timeline = ({ timelineData }) => {
-  const classes = useStyles();
-
   return (
     <div
       style={{
@@ -24,14 +18,13 @@ const Timeline = ({ timelineData }) => {
         {timelineData.map((element, index) => {
           return (
             <VerticalTimelineElement
-              key={element.key}
+              key={`${element.title}-${index}`}
               date={element.date}
               dateClassName="date"
               iconStyle={{ background: "black" }}
               icon={<div />}
-              style={{ margin: "15vh 0vh" }}
               contentStyle={{ boxShadow: " 0px 0px 20px 0px #a38a7d" }}
-              position={index % 2 == 0 ? "right" : "left"}
+              position={index % 2 === 0 ? "right" : "left"}
             >
               <h3 className="vertical-timeline-element-title">
                 {element.title}

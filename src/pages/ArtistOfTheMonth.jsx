@@ -1,23 +1,13 @@
 import React from "react";
 import Container from "@mui/material/Box";
-import SGridWCarousel from "../components/SGridWCarousel";
-import Divider from "@mui/material/Divider";
 import { Grid } from "@mui/material";
-import { Box } from "@mui/joy";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import PastExhb from "./PastExhb";
-import { makeStyles } from "@mui/styles";
 import "../monthlyArtist.css";
 import ArtistOfTheMonthImageGallery from "../components/ArtistOfTheMonthImageGallery";
 import { Link as LinkScroll } from "react-scroll";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-
-const useStyles = makeStyles((theme) => ({
-  hideMe: {
-    display: "none",
-  },
-}));
 
 const ArtistOfTheMonth = ({
   artistOfTheMonthData,
@@ -62,8 +52,6 @@ const ArtistOfTheMonth = ({
     setIsCurrentArtist(!isCurrentArtist);
   };
 
-  const classes = useStyles();
-
   const month = [
     "January",
     "February",
@@ -80,7 +68,7 @@ const ArtistOfTheMonth = ({
   ];
 
   return (
-    <div id="/artistofthemonth">
+    <section id="/artistofthemonth">
       {showPerviousExhibition ? (
         <PastExhb artistData={pastArtistOfTheMonthData} />
       ) : (
@@ -88,7 +76,6 @@ const ArtistOfTheMonth = ({
           <div
             style={{
               // marginTop: "10vh",
-              height: "95vh",
               backgroundImage: `url(${exhibition_poster})`,
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
@@ -99,10 +86,10 @@ const ArtistOfTheMonth = ({
           >
             <div className="top-matter">
               <div className="title">
-                <h1 style={{ width: "32vw" }}>
+                <h2 id="artist-of-the-month-heading">
                   {/* {console.log("artist_name", artistData, artistOfTheMonthData)} */}
                   Artist of the Month <span>{`${artist_name}`}</span>
-                </h1>
+                </h2>
               </div>
               <div className="intro">
                 <p>
@@ -116,11 +103,11 @@ const ArtistOfTheMonth = ({
           <Container sx={{ width: "95vw" }}>
             <ArtistOfTheMonthImageGallery images={exhibition_pieces} />
           </Container>
-          <div class="article-container">
+          <div className="article-container">
             <div>
               <h2>About the Artist</h2>
               <p>{artist_statement}</p>
-              <img src={headshot} height="100%" />
+              <img src={headshot} alt={`${artist_name} portrait`} height="100%" />
               <h2>About {exhibition_name}</h2>
               <p>{exhibition_statement}</p>
             </div>
@@ -130,9 +117,9 @@ const ArtistOfTheMonth = ({
             <Grid
               container
               sx={{
-                flexWrap: "nowrap",
+                flexWrap: { xs: "wrap", md: "nowrap" },
                 backgroundColor: backgroundColor,
-                padding: " 1rem 4rem 2rem 4rem",
+                padding: { xs: "1rem", md: "1rem 4rem 2rem 4rem" },
               }}
               spacing={1}
             >
@@ -165,7 +152,7 @@ const ArtistOfTheMonth = ({
               duration={500}
             >
               <Button
-                style={{ color: "#e56017", backgroundColor: "white" }}
+                style={{ color: "#b33b00", backgroundColor: "white" }}
                 onClick={getPastExhibitions}
               >
                 {" "}
@@ -176,7 +163,7 @@ const ArtistOfTheMonth = ({
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

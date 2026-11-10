@@ -42,7 +42,7 @@ const Footer = () => {
           >
             <Grid item xs={2} sm={4} md={4}>
               <Grid sx={{ display: "flex", alignItems: "center" }} item>
-                <img src="https://cdn-az.allevents.in/events5/banners/d4425956a5f0d65bfacf7dedb1031dde91a7fe828b1b7ba632b4f65dc970718e-rimg-w1200-h800-gmir.jpg?v=1693230844" />
+                <img src="https://cdn-az.allevents.in/events5/banners/d4425956a5f0d65bfacf7dedb1031dde91a7fe828b1b7ba632b4f65dc970718e-rimg-w1200-h800-gmir.jpg?v=1693230844" alt="" />
               </Grid>
             </Grid>
             <Grid item xs={2} sm={4} md={4}>
@@ -159,7 +159,7 @@ const Footer = () => {
                     />
                   </Button>
                 </a>
-                <DonateButton style={{ marginLeft: "3px" }} color="#e56017" />
+                <DonateButton style={{ marginLeft: "3px" }} color="#b33b00" />
               </Grid>
             </Grid>
           </Grid>

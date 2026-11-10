@@ -1,7 +1,7 @@
 import React from "react";
 import Divider from "@mui/material/Divider";
 import Timeline from "../components/Timeline";
-import { Box, Typography, Container } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const AboutUs = () => {
   const timelineData = [
@@ -36,13 +36,17 @@ const AboutUs = () => {
   ];
   return (
     <Box
+      component="section"
       id="/aboutus"
+      aria-labelledby="about-us-heading"
       sx={{
         pt: { xs: 4, sm: 6, md: 8 },
         pb: { xs: 4, sm: 6, md: 8 },
       }}
     >
       <Typography
+        id="about-us-heading"
+        component="h2"
         variant="h1"
         sx={{ mb: 2, pl: { xs: 0, sm: 4 }, fontWeight: 500 }}
       >

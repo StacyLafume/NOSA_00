@@ -100,9 +100,10 @@ const ContactForm = () => {
   return (
     <Container maxWidth="xl">
       <Grid container spacing={1} className={classes.gridContainer}>
-        <Grid item xs={7} className={classes.contactFormSection}>
+        <Grid item xs={12} md={7} className={classes.contactFormSection}>
           <Box sx={{ height: "100%" }}>
             <h2
+              id="contact-heading"
               style={{
                 display: "flex",
                 flexDirection: "row",
@@ -115,11 +116,12 @@ const ContactForm = () => {
             <div className={classes.formContainer}>
               <form onSubmit={handleSubmit}>
                 <Grid container spacing={2}>
-                  <Grid item xs={6}>
+                  <Grid item xs={12} sm={6}>
                     <TextField
                       required
                       name="firstName"
                       label="First Name"
+                      autoComplete="given-name"
                       value={formData.firstName}
                       onChange={handleChange}
                       fullWidth
@@ -128,11 +130,12 @@ const ContactForm = () => {
                       helperText={errors.firstName}
                     />
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid item xs={12} sm={6}>
                     <TextField
                       required
                       name="lastName"
                       label="Last Name"
+                      autoComplete="family-name"
                       value={formData.lastName}
                       onChange={handleChange}
                       fullWidth
@@ -147,6 +150,7 @@ const ContactForm = () => {
                   name="email"
                   label="Email"
                   type="email"
+                  autoComplete="email"
                   value={formData.email}
                   onChange={handleChange}
                   fullWidth
@@ -158,7 +162,7 @@ const ContactForm = () => {
                   required
                   name="subject"
                   label="Subject"
-                  type="subject"
+                  type="text"
                   value={formData.subject}
                   onChange={handleChange}
                   fullWidth
@@ -182,7 +186,7 @@ const ContactForm = () => {
             </div>
           </Box>
         </Grid>
-        <Grid item xs={5}>
+        <Grid item xs={12} md={5}>
           <Box style={{ minHeight: "53vh" }}>
             <div className={classes.flexContainer}>
               <JoinEmailListForm />

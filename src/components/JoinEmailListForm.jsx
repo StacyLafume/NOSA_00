@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
   formContainer: {
     width: "100%",
     display: "flex",
-    paddingLeft: "50px",
+    padding: "1rem",
     minHeight: "40vh",
     alignItems: "center",
     flexDirection: "column",
@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
   },
   submitButton: {
-    height: "3vh",
     width: "100%",
+    minHeight: "48px",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -71,7 +71,9 @@ const JoinEmailListForm = () => {
               <TextField
                 required
                 type="email"
-                label=""
+                name="email"
+                label="Email address"
+                autoComplete="email"
                 value={email}
                 onChange={handleEmailChange}
                 fullWidth

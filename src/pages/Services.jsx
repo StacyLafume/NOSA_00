@@ -4,8 +4,14 @@ import { Box, Container, Typography } from '@mui/material';
 
 const Services = ({ services }) => {
   return (
-    <Container id="/services" maxWidth="xl" sx={{ py: 4 }}>
-      <Typography variant="h4" component="h1" align="center" gutterBottom>
+    <Container
+      component="section"
+      id="/services"
+      aria-labelledby="services-heading"
+      maxWidth="xl"
+      sx={{ py: 4 }}
+    >
+      <Typography id="services-heading" variant="h4" component="h2" align="center" gutterBottom>
         Services
       </Typography>
       <Box display="flex" flexWrap="wrap" justifyContent="center" gap={4}>
